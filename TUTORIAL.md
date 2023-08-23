@@ -23,7 +23,7 @@ After executing the above code, ```tokenizer``` will correspond to the classifie
 ## Using Qwen-VL-Chat
 ### **Multi-round visual question answering**
 #### **The first question**
-Let's get started with a simple example. As shown below, the file ```assets/mm_tutorial/Rebecca_(1939_poster).jpeg`` is a poster for the 1940 film Rebecca.
+Let's get started with a simple example. As shown below, the file ```assets/mm_tutorial/Rebecca_(1939_poster).jpeg``` is a poster for the 1940 film Rebecca.
 
 ![](assets/mm_tutorial/Rebecca_(1939_poster)_Small.jpeg)
 
