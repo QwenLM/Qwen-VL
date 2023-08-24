@@ -214,7 +214,7 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
 - For zero-shot image captioning, Qwen-VL achieves the **SOTA** on Flickr30K and competitive results on Nocaps with InstructBlip.
 - For general VQA, Qwen-VL achieves the **SOTA** under the same generalist LVLM scale settings.
 
-### Text-oriented VQA (focuse on text understanding capabilities in images)
+### Text-oriented VQA (Focused on text understanding capabilities in images)
 
 <table>
 <thead>
@@ -462,8 +462,8 @@ TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities o
 | MiniGPT4      | 531.7 |
 | InstructBLIP  | 552.4 |
 | LLaMA-AdapterV2 | 590.1 |
-| mPLUG-Owl     | 605.4 |
 | LLaVA         | 602.7 |
+| mPLUG-Owl     | 605.4 |
 | Qwen-VL-Chat   | 645.2 |
 
 #### Chinese evaluation
