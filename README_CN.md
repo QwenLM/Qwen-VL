@@ -462,8 +462,8 @@ TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力
 | MiniGPT4      | 531.7 |
 | InstructBLIP  | 552.4 |
 | LLaMA-AdapterV2 | 590.1 |
-| mPLUG-Owl     | 605.4 |
 | LLaVA         | 602.7 |
+| mPLUG-Owl     | 605.4 |
 | Qwen-VL-Chat   | 645.2 |
 
 #### 中文版本测评
