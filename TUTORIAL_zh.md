@@ -1,7 +1,6 @@
 # Qwen-VL-Chat使用教程
 Qwen-VL-Chat是通用多模态大规模语言模型，因此它可以完成多种视觉语言任务。在本教程之中，我们会给出一些简明的例子，用以展示Qwen-VL-Chat在**视觉问答，文字理解，图表数学推理，多图理解和Grounding**(根据指令标注图片中指定区域的包围框)等多方面的能力。请注意，展示的例子远非Qwen-VL-Chat能力的极限，**您可以通过更换不同的输入图像和提示词（Prompt），来进一步挖掘Qwen-VL-Chat的能力！**
 
-## 初始化Qwen-VL-Chat
 ## 初始化Qwen-VL-Chat模型
 在使用Qwen-VL-Chat之前，您首先需要初始化Qwen-VL-Chat的分词器（Tokenizer）和Qwen-VL-Chat的模型：
 ```python
