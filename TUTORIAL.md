@@ -1,7 +1,6 @@
 # Qwen-VL-Chat Tutorial
 Qwen-VL-Chat is a generalist multimodal large-scale language model, and it can perform a wide range of vision-language tasks. In this tutorial, we will give some concise examples to demonstrate the capabilities of Qwen-VL-Chat in **Visual Question Answering, Text Understanding, Mathematical Reasoning with Diagrams, Multi-Figure Reasoning, and Grounding**. Please note that the examples shown are far from the limit of Qwen-VL-Chat's capabilities, **you can further explore Qwen-VL-Chat's capabilities by changing the input images and prompts!**
 
-## Initializing Qwen-VL-Chat
 ## Initializing the Qwen-VL-Chat model
 Before you can use Qwen-VL-Chat, you first need to initialize Qwen-VL-Chat's tokenizer and Qwen-VL-Chat's model:
 
