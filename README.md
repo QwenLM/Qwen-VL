@@ -120,8 +120,8 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
   <tr>
     <td>Kosmos-2</td>
     <td>-</td>
-    <td>66.7</td>
-    <td>45.6</td>
+    <td>80.5</td>
+    <td>51.1</td>
     <td>-</td>
     <td>-</td>
     <td>-</td>
