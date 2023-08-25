@@ -527,7 +527,7 @@ response, history = model.chat(tokenizer, query=query, history=None)
 print(response)
 # 图中是一名女子在沙滩上和狗玩耍，旁边是一只拉布拉多犬，它们处于沙滩上。
 
-# 2st dialogue turn
+# 2nd dialogue turn
 response, history = model.chat(tokenizer, '框出图中击掌的位置', history=history)
 print(response)
 # <ref>击掌</ref><box>(536,509),(588,602)</box>
@@ -628,7 +628,7 @@ response, history = model.chat(tokenizer, query=f'<img>{image_path}</img>这是�
 print(response)
 # 图中是一名年轻女子在沙滩上和她的狗玩耍，狗的品种是拉布拉多。她们坐在沙滩上，狗的前腿抬起来，与人互动。
 
-# 2st dialogue turn
+# 2nd dialogue turn
 response, history = model.chat(tokenizer, '输出击掌的检测框', history=history)
 print(response)
 # <ref>"击掌"</ref><box>(211,412),(577,891)</box>
