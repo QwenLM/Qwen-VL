@@ -109,7 +109,7 @@ if __name__ == '__main__':
         rank=int(os.getenv('RANK', '0')),
     )
 
-    torch.cuda.set_device(torch.distributed.get_rank())
+    torch.cuda.set_device(int(os.getenv('LOCAL_RANK', 0)))
 
     prompt = '<img>{}</img>Describe the image in English:'
 
@@ -118,12 +118,13 @@ if __name__ == '__main__':
 
     tokenizer = AutoTokenizer.from_pretrained(args.checkpoint,
                                               trust_remote_code=True)
+    tokenizer.padding_side = 'left'
+    tokenizer.pad_token_id = tokenizer.eod_id
 
     random.seed(args.seed)
     dataset = CaptionDataset(
         train=ds_collections[args.dataset]['train'],
         test=ds_collections[args.dataset]['test'],
-        tokenizer=tokenizer,
         prompt=prompt,
         few_shot=args.few_shot,
     )
@@ -174,6 +175,8 @@ if __name__ == '__main__':
     ]
 
     if torch.distributed.get_rank() == 0:
+        print(f"Evaluating {args.dataset} ...")
+
         results = []
         for image_id, caption in zip(merged_ids, merged_captions):
             results.append({
