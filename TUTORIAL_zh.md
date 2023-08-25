@@ -11,10 +11,10 @@ from transformers.generation import GenerationConfig
 # 如果您希望结果可复现，可以设置随机数种子。
 # torch.manual_seed(1234)
 
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL-Chat-Chat", trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
 
-model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat-Chat", device_map="cuda", trust_remote_code=True).eval()
-model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL-Chat-Chat", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat", device_map="cuda", trust_remote_code=True).eval()
+model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
 ```
 在执行完上述代码后，```tokenizer```将对应Qwen-VL-Chat使用的分词器，而```model```将对应Qwen-VL-Chat的模型。```tokenizer```用于对图文混排输入进行分词和预处理，而```model```则是Qwen-VL-Chat模型本身。
 
