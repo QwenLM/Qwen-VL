@@ -12,10 +12,10 @@ from transformers.generation import GenerationConfig
 # If you expect the results to be reproducible, set a random seed.
 # torch.manual_seed(1234)
 
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL-Chat-Chat", trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
 
-model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat-Chat", device_map="cuda", trust_remote_code=True).eval()
-model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL-Chat-Chat", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat", device_map="cuda", trust_remote_code=True).eval()
+model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
 ```
 After executing the above code, ```tokenizer``` will correspond to the classifier used by Qwen-VL-Chat, while ```model``` will correspond to the model of Qwen-VL-Chat. The ```tokenizer``` is used for preprocessing the interleaved multimodal inputs, while the ```model``` is the Qwen-VL-Chat model itself.
 
