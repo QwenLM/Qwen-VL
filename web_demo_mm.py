@@ -19,6 +19,7 @@ from transformers.generation import GenerationConfig
 
 DEFAULT_CKPT_PATH = 'Qwen/Qwen-VL-Chat'
 BOX_TAG_PATTERN = r"<box>([\s\S]*?)</box>"
+PUNCTUATION = "！？。＂＃＄％＆＇（）＊＋，－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘’‛“”„‟…‧﹏."
 
 
 def _get_args():
@@ -101,6 +102,7 @@ def _launch_demo(args, model, tokenizer):
     )
 
     def predict(_chatbot, task_history):
+        chat_query = _chatbot[-1][0]
         query = task_history[-1][0]
         print("User: " + _parse_text(query))
         history_cp = copy.deepcopy(task_history)
@@ -128,14 +130,14 @@ def _launch_demo(args, model, tokenizer):
             name = f"tmp{secrets.token_hex(5)}.jpg"
             filename = temp_dir / name
             image.save(str(filename))
-            _chatbot[-1] = (_parse_text(query), (str(filename),))
+            _chatbot[-1] = (_parse_text(chat_query), (str(filename),))
             chat_response = response.replace("<ref>", "")
             chat_response = chat_response.replace(r"</ref>", "")
             chat_response = re.sub(BOX_TAG_PATTERN, "", chat_response)
             if chat_response != "":
                 _chatbot.append((None, chat_response))
         else:
-            _chatbot[-1] = (_parse_text(query), response)
+            _chatbot[-1] = (_parse_text(chat_query), response)
         full_response = _parse_text(response)
 
         task_history[-1] = (query, full_response)
@@ -157,8 +159,11 @@ def _launch_demo(args, model, tokenizer):
         return predict(_chatbot, task_history)
 
     def add_text(history, task_history, text):
+        task_text = text
+        if len(text) >= 2 and text[-1] in PUNCTUATION and text[-2] not in PUNCTUATION:
+            task_text = text[:-1]
         history = history + [(_parse_text(text), None)]
-        task_history = task_history + [(text, None)]
+        task_history = task_history + [(task_text, None)]
         return history, task_history, ""
 
     def add_file(history, task_history, file):
