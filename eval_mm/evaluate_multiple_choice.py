@@ -117,7 +117,7 @@ if __name__ == '__main__':
         rank=int(os.getenv('RANK', '0')),
     )
 
-    torch.cuda.set_device(torch.distributed.get_rank())
+    torch.cuda.set_device(int(os.getenv('LOCAL_RANK', 0)))
 
     model = AutoModelForCausalLM.from_pretrained(
         args.checkpoint, device_map='cuda', trust_remote_code=True).eval()
@@ -179,6 +179,7 @@ if __name__ == '__main__':
     merged_results = [_ for _ in itertools.chain.from_iterable(merged_results)]
 
     if torch.distributed.get_rank() == 0:
+        print(f"Evaluating {args.dataset} ...")
         print(f'Acc@1: {sum(merged_results) / len(merged_results)}')
 
     torch.distributed.barrier()

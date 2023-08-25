@@ -116,7 +116,7 @@ if __name__ == '__main__':
         rank=int(os.getenv('RANK', '0')),
     )
 
-    torch.cuda.set_device(torch.distributed.get_rank())
+    torch.cuda.set_device(int(os.getenv('LOCAL_RANK', 0)))
 
     model = AutoModelForCausalLM.from_pretrained(
         args.checkpoint, device_map='cuda', trust_remote_code=True).eval()
@@ -209,5 +209,6 @@ if __name__ == '__main__':
             if iou >= 0.5:
                 correct += 1
 
+        print(f"Evaluating {args.dataset} ...")
         print(f'Precision @ 1: {correct / total_cnt} \n')
     torch.distributed.barrier()
