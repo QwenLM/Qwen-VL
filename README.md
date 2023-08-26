@@ -12,7 +12,7 @@
 <br>
 
 <p align="center">
-        <a href="README_CN.md">中文</a>&nbsp ｜ &nbsp English
+        <a href="README_CN.md">中文</a>&nbsp ｜ &nbsp English ｜ &nbsp <a href="README_JA.md">日本語</a>
 </p>
 <br><br>
 

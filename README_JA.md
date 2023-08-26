@@ -7,20 +7,25 @@
 
 <p align="center">
         Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ &nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/pdf/2308.12966.pdf">Report</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>
+
 </p>
 <br>
 
 <p align="center">
-        中文</a>&nbsp ｜ &nbsp<a href="README.md">English</a> ｜ &nbsp <a href="README_JA.md">日本語</a>
+        <a href="README_CN.md">中文</a>&nbsp ｜ &nbsp <a href="README.md">English</a> ｜ &nbsp 日本語
 </p>
 <br><br>
+<p align="left">
+        Japanese document maintainer: Ikko Eltociear Ashimine
+</p>
+<br>
 
-**Qwen-VL** 是阿里云研发的大规模视觉语言模型（Large Vision Language Model, LVLM）。Qwen-VL 可以以图像、文本、检测框作为输入，并以文本和检测框作为输出。Qwen-VL 系列模型的特点包括：
-- **强大的性能**：在四大类多模态任务的标准英文测评中（Zero-shot Captioning/VQA/DocVQA/Grounding）上，均取得同等通用模型大小下最好效果；
-- **多语言对话模型**：天然支持英文、中文等多语言对话，端到端支持图片里中英双语的长文本识别；
-- **多图交错对话**：支持多图输入和比较，指定图片问答，多图文学创作等；
-- **首个支持中文开放域定位的通用模型**：通过中文开放域语言表达进行检测框标注；
-- **细粒度识别和理解**：相比于目前其它开源LVLM使用的224分辨率，Qwen-VL是首个开源的448分辨率的LVLM模型。更高分辨率可以提升细粒度的文字识别、文档问答和检测框标注。
+**Qwen-VL** （Qwen Large Vision Language Model）は、アリババクラウドが提唱するラージモデルシリーズ Qwen（略称: Tongyi Qianwen）のマルチモーダル版です。Qwen-VL は、画像、テキスト、バウンディングボックスを入力として受け付け、テキストとバウンディングボックスを出力します。Qwen-VL の特徴は以下の通りです:
+- **好調なパフォーマンス**: 複数の英語評価ベンチマーク（Zero-shot Captioning、VQA、DocVQA、Grounding を含む）において、同様のモデル規模でオープンソース化された既存のラージビジョン言語モデル（LVLM）を大幅に上回ります。
+- **テキスト認識をサポートする多言語 LVLM**: Qwen-VL は、英語、中国語、多言語の会話を自然にサポートし、画像内の中国語と英語の二言語テキストのエンドツーエンドの認識を促進します。
+- **複数画像のインターリーブ会話**: この機能により、複数の画像を入力し、比較することができる。また、画像に関連する質問を指定し、複数の画像によるストーリーテリングを行うこともできます。
+- **中国語のグラウンディングを支える初のジェネラリストモデル**: 中国語と英語のオープンドメイン言語表現によるバウンディングボックスの検出。
+- **きめ細やかな認識と理解**: 現在他のオープンソース LVLM で使用されている 224\*224 の解像度と比較して、448\*448 の解像度は、きめ細かいテキスト認識、文書 QA、バウンディングボックス注釈を促進する。
 
 <br>
 <p align="center">
@@ -28,34 +33,34 @@
 <p>
 <br>
 
-目前，我们提供了 Qwen-VL 系列的两个模型：
-- Qwen-VL: Qwen-VL 以 Qwen-7B 的预训练模型作为语言模型的初始化，并以 [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) 作为视觉编码器的初始化，中间加入单层随机初始化的 cross-attention，经过约1.5B的图文数据训练得到。最终图像输入分辨率为448。
-- Qwen-VL-Chat: 在 Qwen-VL 的基础上，我们使用对齐机制打造了基于大语言模型的视觉AI助手Qwen-VL-Chat，它支持更灵活的交互方式，包括多图、多轮问答、创作等能力。
+Qwen-VL シリーズの 2 つのモデルを公開します:
+- Qwen-VL: LLM の初期化に Qwen-7B を、視覚エンコーダの初期化に [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) を用いた学習済み LVLM モデル。そして、それらをランダムに初期化されたクロスアテンションレイヤーで接続する。
+- Qwen-VL-Chat: マルチモーダルな LLM ベースの AI アシスタント。Qwen-VL-Chat は、複数の画像入力、複数ラウンドの質問応答、クリエイティブな機能など、より柔軟なインタラクションをサポートします。
 
 
-## 评测
+## 評価
 
-我们从两个角度评测了两个模型的能力：
-1. 在**英文标准 Benchmark** 上评测模型的基础任务能力。目前评测了四大类多模态任务：
-    - Zero-shot Captioning: 评测模型在未见过数据集上的零样本图片描述能力；
-    - General VQA: 评测模型的通用问答能力，例如判断题、颜色、个数、类目等问答能力；
-    - Text-based VQA：评测模型对于图片中文字相关的识别/问答能力，例如文档问答、图表问答、文字问答等；
-    - Referring Expression Compression：评测模型给定物体描述画检测框的能力；
+モデルの能力を2つの観点から評価しました:
+1. **標準ベンチマーク**: マルチモーダルなタスクの4つの主要カテゴリーについて、モデルの基本的なタスク能力を評価する:
+   - ゼロショットキャプション: 未見のデータセットに対して、モデルのゼロショット画像キャプション能力を評価する;
+   - 一般的なVQA: 判定、色、数、カテゴリなど、画像の一般的な質問応答能力を評価する;
+   - テキストベースVQA: 文書QA、図表QAなど、写真内のテキストを認識するモデルの能力を評価する;
+   - 参照表現理解: 参照表現理解: 参照表現で記述された画像内の対象物を特定する能力を評価する。
 
-2. **试金石 (TouchStone)**：为了评测模型整体的图文对话能力和人类对齐水平。我们为此构建了一个基于 GPT4 打分来评测 LVLM 模型的 Benchmark：TouchStone。在 TouchStone-v0.1 中：
-    - 评测基准总计涵盖 300+张图片、800+道题目、27个类别。包括基础属性问答、人物地标问答、影视作品问答、视觉推理、反事实推理、诗歌创作、故事写作，商品比较、图片解题等**尽可能广泛的类别**。
-    - 为了弥补目前 GPT4 无法直接读取图片的缺陷，我们给所有的带评测图片提供了**人工标注的充分详细描述**，并且将图片的详细描述、问题和模型的输出结果一起交给 GPT4 打分。
-    - 评测同时包含英文版本和中文版本。
-  
-评测结果如下：
+2. **TouchStone**: 総合的なテキスト画像対話能力と人間とのアライメントレベルを評価するために、GPT4 によるスコアリングに基づく TouchStone と呼ばれるベンチマークを構築し、LVLM モデルを評価しました。
+   - TouchStone ベンチマークは、合計 300 以上の画像、800 以上の質問、27 のカテゴリをカバーしています。例えば、属性ベースの Q&A、有名人の認識、詩の作文、複数の画像の要約、商品比較、数学の問題解決などです;
+   - 画像の直接入力という GPT4 の現在の制限を打ち破るため、TouchStone は人間のラベル付けによるきめ細かい画像注釈を提供します。これらの詳細な注釈は、質問とモデルの出力と共に、採点のために GPT4 に提示されます。
+   - ベンチマークには英語版と中国語版があります。
 
-Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优势，并且在能力范围也覆盖更加全面。
+評価結果は以下の通りです:
+
+Qwen-VL は、複数の VL タスクにおいて、現行の SOTA ジェネラリストモデルを上回り、また、能力 範囲の点でより包括的なカバレッジを持ちます。
 
 <p align="center">
     <img src="assets/radar.png" width="600"/>
 <p>
 
-### 零样本图像描述生成（Zero-shot Image Caption） 及 通用视觉问答（General VQA）
+### ゼロショットキャプションと一般的な VQA
 <table>
 <thead>
   <tr>
@@ -119,8 +124,8 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
   <tr>
     <td>Kosmos-2</td>
     <td>-</td>
-    <td>66.7</td>
-    <td>45.6</td>
+    <td>80.5</td>
+    <td>51.1</td>
     <td>-</td>
     <td>-</td>
     <td>-</td>
@@ -210,10 +215,10 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 </tbody>
 </table>
 
-- 在 Zero-shot Captioning 中，Qwen-VL 在 Flickr30K 数据集上取得了 **SOTA** 的结果，并在 Nocaps 数据集上取得了和 InstructBlip 可竞争的结果。
-- 在 General VQA 中，Qwen-VL 取得了 LVLM 模型同等量级和设定下 **SOTA** 的结果。
+- ゼロショット画像のキャプション付けでは、Qwen-VL は Flickr30K で **SOTA** を達成し、InstructBlip を使用した Nocaps でも競争力のある結果を得ています。
+- 一般的な VQA では、Qwen-VL は同じ一般的な LVLM スケール設定で **SOTA** を達成しています。
 
-### 文本导向的视觉问答（Text-oriented VQA）
+### テキスト指向VQA（画像中のテキスト理解能力に重点を置く）
 
 <table>
 <thead>
@@ -281,10 +286,10 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 </tbody>
 </table>
 
-- 在文字相关的识别/问答评测上，取得了当前规模下通用 LVLM 达到的最好结果。
-- 分辨率对上述某几个评测非常重要，大部分 224 分辨率的开源 LVLM 模型无法完成以上评测，或只能通过切图的方式解决。Qwen-VL 将分辨率提升到 448，可以直接以端到端的方式进行以上评测。Qwen-VL 在很多任务上甚至超过了 1024 分辨率的 Pic2Struct-Large 模型。
+- テキスト関連の認識/QA 評価において、Qwen-VL は汎用の LVLM スケール設定で SOTA を達成しています。
+- 解像度は上記のいくつかの評価において重要である。解像度が 224 のオープンソースの LVLM モデルの多くは、これらの評価ができないか、画像をカットすることでしか解決できないが、Qwen-VL は解像度を 448 にスケーリングし、エンドツーエンドで評価できるようにしました。Qwen-VL は、一部のタスクにおいて、解像度 1024 の Pic2Struct-Large モデルをも凌駕しています。
 
-### 细粒度视觉定位（Referring Expression Comprehension）
+### 表現理解の参照
 <table>
 <thead>
   <tr>
@@ -404,7 +409,6 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
     <td><b>85.96</b></td>
     <td><b>86.32</b></td>
     <td>-</td>
-  </tr>
   <tr>
     <td rowspan="3">Specialist SOTAs<br>(Specialist/Finetuned)</td>
     <td>G-DINO-L</td>
@@ -445,16 +449,16 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 </tbody>
 </table>
 
-- 在定位任务上，Qwen-VL 全面超过 Shikra-13B，取得了目前 Generalist LVLM 模型上在 Refcoco 上的 **SOTA**。
-- Qwen-VL 并没有在任何中文定位数据上训练过，但通过中文 Caption 数据和 英文 Grounding 数据的训练，可以 Zero-shot 泛化出中文 Grounding 能力。
+- Qwen-VL は、上記のすべての参照表現理解ベンチマークで **SOTA** を達成した。
+- Qwen-VL は中国語の下地データを学習していないが、中国語のキャプションデータと英語の下地データを学習することで、ゼロショットで中国語の下地タスクに汎化することができます。
 
-我们提供了以上**所有**评测脚本以供复现我们的实验结果。请阅读 [eval_mm/EVALUATION.md](eval_mm/EVALUATION.md) 了解更多信息。
+私たちの実験結果を再現するために、上記の評価スクリプトをすべて提供しています。詳しくは [eval_mm/EVALUATION.md](eval_mm/EVALUATION.md) をお読みください。
 
-### Chat 能力测评
+### チャット評価
 
-TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力和人类对齐水平的基准。它涵盖了 300+张图片、800+道题目、27个类别，包括基础属性、人物地标、视觉推理、诗歌创作、故事写作、商品比较、图片解题等**尽可能广泛的类别**。关于 TouchStone 的详细介绍，请参考[touchstone/README_CN.md](touchstone/README_CN.md)了解更多信息。
+TouchStone は GPT4 によるスコアリングに基づくベンチマークで、テキストと画像の対話および人間とのアライメントレベルにおける LVLM モデルの能力を評価する。合計 300 以上の画像、800 以上の質問、属性ベースの Q&A、有名人の認識、詩の作成、複数の画像の要約、商品比較、数学の問題解決など27のカテゴリをカバーしています。詳しくは [touchstone/README_JA.md](touchstone/README_JA.md) をお読みください。
 
-#### 英文版本测评
+#### 英語評価
 
 | Model         | Score |
 |---------------|-------|
@@ -466,36 +470,36 @@ TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力
 | mPLUG-Owl     | 605.4 |
 | Qwen-VL-Chat   | 645.2 |
 
-#### 中文版本测评
+#### 中国語評価
 
 | Model         | Score |
 |---------------|-------|
 | VisualGLM     | 247.1 |
 | Qwen-VL-Chat   | 401.2 |
 
-Qwen-VL-Chat 模型在中英文的对齐评测中均取得当前 LVLM 模型下的最好结果。
+Qwen-VL-Chat は中国語と英語のアライメント評価で最高の結果を得ました。
 
-## 部署要求
+## 必要条件
 
-* python 3.8及以上版本
-* pytorch 1.12及以上版本，推荐2.0及以上版本
-* 建议使用CUDA 11.4及以上（GPU用户需考虑此选项）
+* python 3.8 以上
+* pytorch 1.12 以上、2.0 以上を推奨
+* CUDA 11.4 以上を推奨（GPU ユーザー向けです）
 
-## 快速使用
+## クイックスタート
 
-我们提供简单的示例来说明如何利用 🤖 ModelScope 和 🤗 Transformers 快速使用 Qwen-VL 和 Qwen-VL-Chat。
+以下では、Qwen-VL と Qwen-VL-Chat を 🤖 ModelScope と 🤗 Transformers とともに使う方法を、簡単な例で示します。
 
-在开始前，请确保你已经配置好环境并安装好相关的代码包。最重要的是，确保你满足上述要求，然后安装相关的依赖库。
+コードを実行する前に、環境のセットアップと必要なパッケージのインストールが済んでいることを 確認してください。上記の要件を満たしていることを確認してから、依存するライブラリをインストールしてください。
 
 ```bash
 pip install -r requirements.txt
 ```
 
-接下来你可以开始使用Transformers或者ModelScope来使用我们的模型。关于视觉模块的更多用法，请参考[教程](TUTORIAL_zh.md)。
+これで ModelScope や Transformers を使い始めることができます。ビジョンエンコーダについての詳しい使い方は、[チュートリアル](TUTORIAL.md)を参照してください。
 
 #### 🤗 Transformers
 
-如希望使用 Qwen-VL-chat 进行推理，所需要写的只是如下所示的数行代码。**请确保你使用的是最新代码。**
+Qwen-VL-Chat を推論に使用するために必要なのは、以下に示す数行のコードを入力することだけです。ただし、**最新のコードを使用していることを確認してください。**
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -503,31 +507,31 @@ from transformers.generation import GenerationConfig
 import torch
 torch.manual_seed(1234)
 
-# 请注意：分词器默认行为已更改为默认关闭特殊token攻击防护。
+# Note: デフォルトの動作では、インジェクション攻撃防止機能がオフになりました。
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
 
-# 打开bf16精度，A100、H100、RTX3060、RTX3070等显卡建议启用以节省显存
+# bf16 の使用
 # model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat", device_map="auto", trust_remote_code=True, bf16=True).eval()
-# 打开fp16精度，V100、P100、T4等显卡建议启用以节省显存
+# fp16 の使用
 # model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat", device_map="auto", trust_remote_code=True, fp16=True).eval()
-# 使用CPU进行推理，需要约32GB内存
+# cpu のみの使用
 # model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat", device_map="cpu", trust_remote_code=True).eval()
-# 默认gpu进行推理，需要约24GB显存
+# cuda デバイスの使用
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat", device_map="cuda", trust_remote_code=True).eval()
 
-# 可指定不同的生成长度、top_p等相关超参
+# 生成のためのハイパーパラメータの指定
 model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
 
-# 第一轮对话 1st dialogue turn
+# 第 1 回 対話ターン
 query = tokenizer.from_list_format([
-    {'image': 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'}, # Either a local path or an url
+    {'image': 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'}, # ローカルパスまたは url
     {'text': '这是什么?'},
 ])
 response, history = model.chat(tokenizer, query=query, history=None)
 print(response)
-# 图中是一名女子在沙滩上和狗玩耍，旁边是一只拉布拉多犬，它们处于沙滩上。
+# 写真はビーチでラブラドールの隣で愛犬と戯れる女性が写っており、彼らは砂の中にいる。
 
-# 第二轮对话 2nd dialogue turn
+# 第 2 回 対話ターン
 response, history = model.chat(tokenizer, '框出图中击掌的位置', history=history)
 print(response)
 # <ref>击掌</ref><box>(536,509),(588,602)</box>
@@ -542,9 +546,10 @@ else:
     <img src="assets/demo_highfive.jpg" width="500"/>
 <p>
 
-运行Qwen-VL同样非常简单。
+<details>
+  <summary>Running Qwen-VL</summary>
 
-  <summary>运行Qwen-VL</summary>
+Running Qwen-VL pretrained base model is also simple.
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -554,20 +559,20 @@ torch.manual_seed(1234)
 
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL", trust_remote_code=True)
 
-# 打开bf16精度，A100、H100、RTX3060、RTX3070等显卡建议启用以节省显存
+# bf16 の使用
 # model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL", device_map="auto", trust_remote_code=True, bf16=True).eval()
-# 打开fp16精度，V100、P100、T4等显卡建议启用以节省显存
+# fp16 の使用
 # model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL", device_map="auto", trust_remote_code=True, fp16=True).eval()
-# 使用CPU进行推理，需要约32GB内存
+# cpu のみの使用
 # model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL", device_map="cpu", trust_remote_code=True).eval()
-# 默认gpu进行推理，需要约24GB显存
+# cuda デバイスの使用
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL", device_map="cuda", trust_remote_code=True).eval()
 
-# 可指定不同的生成长度、top_p等相关超参
+# 生成のためのハイパーパラメータの指定
 model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL", trust_remote_code=True)
 
 query = tokenizer.from_list_format([
-    {'image': 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'}, # Either a local path or an url
+    {'image': 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'}, # ローカルパスまたは url
     {'text': 'Generate the caption in English with grounding:'},
 ])
 inputs = tokenizer(query, return_tensors='pt')
@@ -587,10 +592,12 @@ else:
     <img src="assets/demo_spotting_caption.jpg" width="500"/>
 <p>
 
+</details>
+
 
 #### 🤖 ModelScope
 
-魔搭（ModelScope）是开源的模型即服务共享平台，为泛AI开发者提供灵活、易用、低成本的一站式模型服务产品。使用ModelScope同样非常简单，代码如下所示：
+ModelScope は、MaaS（Model-as-a-Service）のためのオープンソースプラットフォームであり、AI 開発者に柔軟で費用対効果の高いモデルサービスを提供します。同様に、以下のように ModelScope でモデルを実行することができます:
 
 ```python
 from modelscope import (
@@ -606,26 +613,26 @@ torch.manual_seed(1234)
 tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
 if not hasattr(tokenizer, 'model_dir'):
     tokenizer.model_dir = model_dir
-# use bf16
+# bf16 の使用
 # model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True, bf16=True).eval()
-# use fp16
+# fp16 の使用
 model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True, fp16=True).eval()
-# use cpu
+# cpu の使用
 # model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="cpu", trust_remote_code=True).eval()
-# use auto
+# auto の使用
 # model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True).eval()
 
-# Specify hyperparameters for generation
+# 生成のためのハイパーパラメータの指定
 model.generation_config = GenerationConfig.from_pretrained(model_dir, trust_remote_code=True)
 
-# 1st dialogue turn
+# 第 1 回 対話ターン
 # Either a local path or an url between <img></img> tags.
 image_path = 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'
 response, history = model.chat(tokenizer, query=f'<img>{image_path}</img>这是什么', history=None)
 print(response)
-# 图中是一名年轻女子在沙滩上和她的狗玩耍，狗的品种是拉布拉多。她们坐在沙滩上，狗的前腿抬起来，与人互动。
+# 写真は、若い女性がビーチで愛犬のラブラドール種と戯れているところ。 二人は浜辺に座り、犬の前脚を上げて触れ合っている。
 
-# 2nd dialogue turn
+# 第 2 回 対話ターン
 response, history = model.chat(tokenizer, '输出击掌的检测框', history=history)
 print(response)
 # <ref>"击掌"</ref><box>(211,412),(577,891)</box>
@@ -636,31 +643,36 @@ else:
   print("no box")
 ```
 
-## Demo
+<p align="center">
+    <img src="assets/demo_highfive.jpg" width="500"/>
+<p>
+
+## デモ
 
 ### Web UI
 
-我们提供了Web UI的demo供用户使用。在开始前，确保已经安装如下代码库：
+Web UI デモを構築するためのコードを提供します。始める前に、以下のパッケージがインストールされていることを確認してください:
 
-```
+```bash
 pip install -r requirements_web_demo.txt
 ```
 
-随后运行如下命令，并点击生成链接：
+次に以下のコマンドを実行し、生成されたリンクをクリックします:
 
-```
+```bash
 python web_demo_mm.py
 ```
 
 ## FAQ
 
-如遇到问题，敬请查阅 [FAQ](FAQ_zh.md)以及issue区，如仍无法解决再提交issue。
+問題が発生した場合は、[FAQ](FAQ_ja.md) や issue を参照し、新しい issue を立ち上げる前に解決策を探してください。
 
 
-## 使用协议
+## ライセンス契約
 
-研究人员与开发者可使用Qwen-VL和Qwen-VL-Chat或进行二次开发。我们同样允许商业使用，具体细节请查看[LICENSE](LICENSE)。如需商用，请填写[问卷](https://dashscope.console.aliyun.com/openModelApply/qianwen)申请。
+研究者や開発者は、Qwen-VL と Qwen-VL-Chat のコードとモデルウェイトを自由に使用することができます。また、商用利用も可能です。詳しくは [LICENSE](LICENSE) をご覧ください。
 
-## 联系我们
+## お問い合わせ
 
-如果你想给我们的研发团队和产品团队留言，请通过邮件（qianwen_opensource@alibabacloud.com）联系我们。
+研究チームまたは製品チームへのメッセージは、qianwen_opensource@alibabacloud.com までお気軽にお送りください。
+
