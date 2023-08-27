@@ -254,7 +254,7 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
     <td>-</td>
   </tr>
   <tr>
-    <td>Pic2Struct-Large (1.3B)</td>
+    <td>Pix2Struct-Large (1.3B)</td>
     <td>-</td>
     <td><b>76.6</b></td>
     <td>58.6</td>
@@ -282,7 +282,7 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 </table>
 
 - 在文字相关的识别/问答评测上，取得了当前规模下通用 LVLM 达到的最好结果。
-- 分辨率对上述某几个评测非常重要，大部分 224 分辨率的开源 LVLM 模型无法完成以上评测，或只能通过切图的方式解决。Qwen-VL 将分辨率提升到 448，可以直接以端到端的方式进行以上评测。Qwen-VL 在很多任务上甚至超过了 1024 分辨率的 Pic2Struct-Large 模型。
+- 分辨率对上述某几个评测非常重要，大部分 224 分辨率的开源 LVLM 模型无法完成以上评测，或只能通过切图的方式解决。Qwen-VL 将分辨率提升到 448，可以直接以端到端的方式进行以上评测。Qwen-VL 在很多任务上甚至超过了 1024 分辨率的 Pix2Struct-Large 模型。
 
 ### 细粒度视觉定位（Referring Expression Comprehension）
 <table>

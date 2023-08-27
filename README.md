@@ -255,7 +255,7 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
     <td>-</td>
   </tr>
   <tr>
-    <td>Pic2Struct-Large (1.3B)</td>
+    <td>Pix2Struct-Large (1.3B)</td>
     <td>-</td>
     <td><b>76.6</b></td>
     <td>58.6</td>
@@ -283,7 +283,7 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
 </table>
 
 - In text-related recognition/QA evaluation, Qwen-VL achieves the SOTA under the generalist LVLM scale settings.
-- Resolution is important for several above evaluations. While most open-sourced LVLM models with 224 resolution are incapable of these evaluations or can only solve these by cutting images, Qwen-VL scales the resolution to 448 so that it can be evaluated end-to-end. Qwen-VL even outperforms Pic2Struct-Large models of 1024 resolution on some tasks.
+- Resolution is important for several above evaluations. While most open-sourced LVLM models with 224 resolution are incapable of these evaluations or can only solve these by cutting images, Qwen-VL scales the resolution to 448 so that it can be evaluated end-to-end. Qwen-VL even outperforms Pix2Struct-Large models of 1024 resolution on some tasks.
 
 ### Referring Expression Comprehension
 <table>
