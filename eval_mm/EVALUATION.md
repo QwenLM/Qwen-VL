@@ -21,8 +21,8 @@ mkdir -p data/flickr && cd data/flickr
 # karpathy split annotations can be downloaded from https://cs.stanford.edu/people/karpathy/deepimagesent/
 
 # download converted files
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/flickr30k/flickr30k_karpathy_test.json
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/flickr30k/flickr30k_karpathy_train.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/flickr30k/flickr30k_karpathy_test.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/flickr30k/flickr30k_karpathy_train.json
 
 cd ../..
 ```
@@ -63,7 +63,7 @@ mkdir -p data/nocaps && cd data/nocaps
 # original annotations can be downloaded from https://nocaps.s3.amazonaws.com/nocaps_val_4500_captions.json
 
 # download converted files
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/nocaps/nocaps_val.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/nocaps/nocaps_val.json
 
 cd ../..
 ```
@@ -131,8 +131,8 @@ wget https://s3.amazonaws.com/cvmlp/vqa/mscoco/vqa/v2_Questions_Val_mscoco.zip &
 wget https://s3.amazonaws.com/cvmlp/vqa/mscoco/vqa/v2_Questions_Test_mscoco.zip && unzip v2_Questions_Test_mscoco.zip
 
 # download converted files
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/vqav2/vqav2_train.jsonl
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/vqav2/vqav2_val.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vqav2/vqav2_train.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vqav2/vqav2_val.jsonl
 wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vqav2/vqav2_testdev.jsonl
 ```
 
@@ -174,8 +174,8 @@ wget https://okvqa.allenai.org/static/data/mscoco_val2014_annotations.json.zip &
 wget https://okvqa.allenai.org/static/data/OpenEnded_mscoco_val2014_questions.json.zip && unzip OpenEnded_mscoco_val2014_questions.json.zip
 
 # download converted files
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/okvqa/okvqa_train.jsonl
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/okvqa/okvqa_val.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/okvqa/okvqa_train.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/okvqa/okvqa_val.jsonl
 
 cd ../..
 ```
@@ -219,12 +219,12 @@ wget https://dl.fbaipublicfiles.com/textvqa/data/TextVQA_0.5.1_train.json
 wget https://dl.fbaipublicfiles.com/textvqa/data/TextVQA_0.5.1_val.json
 
 # download converted files
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/textvqa/textvqa_train_annotations.json
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/textvqa/textvqa_train_questions.json
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/textvqa/textvqa_train.jsonl
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/textvqa/textvqa_val_annotations.json
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/textvqa/textvqa_val_questions.json
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/textvqa/textvqa_val.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/textvqa/textvqa_train_annotations.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/textvqa/textvqa_train_questions.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/textvqa/textvqa_train.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/textvqa/textvqa_val_annotations.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/textvqa/textvqa_val_questions.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/textvqa/textvqa_val.jsonl
 
 cd ../..
 ```
@@ -269,13 +269,13 @@ wget https://vizwiz.cs.colorado.edu/VizWiz_final/vqa_data/Annotations.zip && unz
 
 # download converted files
 # train
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/vizwiz/vizwiz_train_annotations.json
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/vizwiz/vizwiz_train_questions.json
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/vizwiz/vizwiz_train.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vizwiz/vizwiz_train_annotations.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vizwiz/vizwiz_train_questions.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vizwiz/vizwiz_train.jsonl
 # val
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/vizwiz/vizwiz_val_annotations.json
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/vizwiz/vizwiz_val_questions.json
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/vizwiz/vizwiz_val.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vizwiz/vizwiz_val_annotations.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vizwiz/vizwiz_val_questions.json
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vizwiz/vizwiz_val.jsonl
 # test
 wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/vizwiz/vizwiz_test.jsonl
 cd ../..
@@ -323,7 +323,7 @@ cd ..
 wget https://github.com/lupantech/ScienceQA/blob/main/data/scienceqa/problems.json
 
 # download converted files
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/scienceqa/scienceqa_test_img.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/scienceqa/scienceqa_test_img.jsonl
 
 cd ../..
 ```
@@ -362,9 +362,9 @@ python -m torch.distributed.launch --use-env \
 mkdir -p data/refcoco && cd data/refcoco
 
 # download converted files
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/refcoco/refcoco_val.jsonl
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/refcoco/refcoco_testA.jsonl
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/refcoco/refcoco_testB.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/refcoco/refcoco_val.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/refcoco/refcoco_testA.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/refcoco/refcoco_testB.jsonl
 
 cd ../..
 ```
@@ -400,9 +400,9 @@ for ds in "refcoco_val" "refcoco_testA" "refcoco_testB"
 mkdir -p data/refcoco+ && cd data/refcoco+
 
 # download converted files
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/refcoco%2B/refcoco%2B_val.jsonl
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/refcoco%2B/refcoco%2B_testA.jsonl
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/refcoco%2B/refcoco%2B_testB.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/refcoco%2B/refcoco%2B_val.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/refcoco%2B/refcoco%2B_testA.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/refcoco%2B/refcoco%2B_testB.jsonl
 
 cd ../..
 ```
@@ -438,8 +438,8 @@ for ds in "refcoco+_val" "refcoco+_testA" "refcoco+_testB"
 mkdir -p data/refcocog && data/refcocog
 
 # download converted files
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/refcocog/refcocog_val.jsonl
-wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/QwenVL/evaluation/refcocog/refcocog_test.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/refcocog/refcocog_val.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/refcocog/refcocog_test.jsonl
 
 cd ../..
 ```
