@@ -1,4 +1,7 @@
-<br>
+<p align="left">
+        <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp
+</p>
+<br><br>
 
 <p align="center">
     <img src="assets/logo.jpg" width="400"/>
@@ -6,22 +9,19 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ &nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/pdf/2308.12966.pdf">Report</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>
-
-</p>
+        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
 <br>
-
-<p align="center">
-        <a href="README_CN.md">中文</a>&nbsp ｜ &nbsp English ｜ &nbsp <a href="README_JA.md">日本語</a>
+<a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://github.com/QwenLM/Qwen-VL/blob/main/visual_memo.md">Report</a>
 </p>
 <br><br>
 
 **Qwen-VL** (Qwen Large Vision Language Model) is the multimodal version of the large model series, Qwen (abbr. Tongyi Qianwen), proposed by Alibaba Cloud. Qwen-VL accepts image, text, and bounding box as inputs, outputs text and bounding box. The features of Qwen-VL include:
-- **Strong performance**: It significantly surpasses existing open-sourced Large Vision Language Models (LVLM) under similar model scale on multiple English evaluation benchmarks (including Zero-shot Captioning, VQA, DocVQA, and Grounding).
+
+- **Strong performance**: It significantly surpasses existing open-source Large Vision Language Models (LVLM) under similar model scale on multiple English evaluation benchmarks (including Zero-shot Captioning, VQA, DocVQA, and Grounding).
 - **Multi-lingual LVLM supporting text recognition**: Qwen-VL naturally supports English, Chinese, and multi-lingual conversation, and it promotes end-to-end recognition of Chinese and English bi-lingual text in images.
 - **Multi-image interleaved conversations**: This feature allows for the input and comparison of multiple images, as well as the ability to specify questions related to the images and engage in multi-image storytelling.
 - **First generalist model supporting grounding in Chinese**: Detecting bounding boxes through open-domain language expression in both Chinese and English.
-- **Fine-grained recognition and understanding**: Compared to the 224\*224 resolution currently used by other open-sourced LVLM, the 448\*448 resolution promotes fine-grained text recognition, document QA, and bounding box annotation.
+- **Fine-grained recognition and understanding**: Compared to the 224\*224 resolution currently used by other open-source LVLM, the 448\*448 resolution promotes fine-grained text recognition, document QA, and bounding box annotation.
 
 <br>
 <p align="center">
@@ -30,20 +30,24 @@
 <br>
 
 We release two models of the Qwen-VL series:
-- Qwen-VL: The pre-trained LVLM model uses Qwen-7B as the initialization of the LLM, and [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) as the initialization of the visual encoder. And connects them with a randomly initialized cross-attention layer.
+
+- Qwen-VL: The pre-trained LVLM model uses Qwen-7B as the initialization of the LLM, and [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) as the initialization of the visual encoder. And connects them with a randomly initialized cross-attention layer. Qwen-VL was trained on about 1.5B image-text paired data.
 - Qwen-VL-Chat: A multimodal LLM-based AI assistant, which is trained with alignment techniques. Qwen-VL-Chat supports more flexible interaction, such as multiple image inputs, multi-round question answering, and creative capabilities.
 
+For more details about Qwen-VL, please refer to our [technical memo](visual_memo.md).
 
 ## Evaluation
 
 We evaluated the model's abilities from two perspectives:
+
 1. **Standard Benchmarks**: We evaluate the model's basic task capabilities on four major categories of multimodal tasks:
+   
    - Zero-shot Captioning: Evaluate model's zero-shot image captioning ability on unseen datasets;
    - General VQA: Evaluate the general question-answering ability of pictures, such as the judgment, color, number, category, etc;
    - Text-based VQA: Evaluate the model's ability to recognize text in pictures, such as document QA, chart QA, etc;
    - Referring Expression Comprehension: Evaluate the ability to localize a target object in an image described by a referring expression.
-
 2. **TouchStone**: To evaluate the overall text-image dialogue capability and alignment level with humans, we have constructed a benchmark called TouchStone, which is based on scoring with GPT4 to evaluate the LVLM model.
+   
    - The TouchStone benchmark covers a total of 300+ images, 800+ questions, and 27 categories. Such as attribute-based Q&A, celebrity recognition, writing poetry, summarizing multiple images, product comparison, math problem solving, etc;
    - In order to break the current limitation of GPT4 in terms of direct image input, TouchStone provides fine-grained image annotations by human labeling. These detailed annotations, along with the questions and the model's output, are then presented to GPT4 for scoring.
    - The benchmark includes both English and Chinese versions.
@@ -57,6 +61,7 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
 <p>
 
 ### Zero-shot Captioning & General VQA
+
 <table>
 <thead>
   <tr>
@@ -120,8 +125,8 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
   <tr>
     <td>Kosmos-2</td>
     <td>-</td>
-    <td>80.5</td>
-    <td>51.1</td>
+    <td>66.7</td>
+    <td>45.6</td>
     <td>-</td>
     <td>-</td>
     <td>-</td>
@@ -255,7 +260,7 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
     <td>-</td>
   </tr>
   <tr>
-    <td>Pix2Struct-Large (1.3B)</td>
+    <td>Pic2Struct-Large (1.3B)</td>
     <td>-</td>
     <td><b>76.6</b></td>
     <td>58.6</td>
@@ -283,9 +288,10 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
 </table>
 
 - In text-related recognition/QA evaluation, Qwen-VL achieves the SOTA under the generalist LVLM scale settings.
-- Resolution is important for several above evaluations. While most open-sourced LVLM models with 224 resolution are incapable of these evaluations or can only solve these by cutting images, Qwen-VL scales the resolution to 448 so that it can be evaluated end-to-end. Qwen-VL even outperforms Pix2Struct-Large models of 1024 resolution on some tasks.
+- Resolution is important for several above evaluations. While most open-source LVLM models with 224 resolution are incapable of these evaluations or can only solve these by cutting images, Qwen-VL scales the resolution to 448 so that it can be evaluated end-to-end. Qwen-VL even outperforms Pic2Struct-Large models of 1024 resolution on some tasks.
 
 ### Referring Expression Comprehension
+
 <table>
 <thead>
   <tr>
@@ -448,11 +454,11 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
 - Qwen-VL achieves the **SOTA** in all above referring expression comprehension benchmarks.
 - Qwen-VL has not been trained on any Chinese grounding data, but it can still generalize to the Chinese Grounding tasks in a zero-shot way by training Chinese Caption data and English Grounding data.
 
-We provide all of the above evaluation scripts for reproducing our experimental results. Please read [eval_mm/EVALUATION.md](eval_mm/EVALUATION.md) for more information.
+We provide all of the above evaluation scripts for reproducing our experimental results. Please read [eval/EVALUATION.md](eval/EVALUATION.md) for more information.
 
 ### Chat evaluation
 
-TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities of the LVLM model on text-image dialogue and alignment levels with humans. It covers a total of 300+ images, 800+ questions, and 27 categories, such as attribute-based Q&A, celebrity recognition, writing poetry, summarizing multiple images, product comparison, math problem solving, etc. Please read [touchstone/README.md](touchstone/README.md) for more information.
+TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities of the LVLM model on text-image dialogue and alignment levels with humans. It covers a total of 300+ images, 800+ questions, and 27 categories, such as attribute-based Q&A, celebrity recognition, writing poetry, summarizing multiple images, product comparison, math problem solving, etc. Please read [touchstone/README_CN.md](touchstone/README.md) for more information.
 
 #### English evaluation
 
@@ -527,7 +533,7 @@ response, history = model.chat(tokenizer, query=query, history=None)
 print(response)
 # 图中是一名女子在沙滩上和狗玩耍，旁边是一只拉布拉多犬，它们处于沙滩上。
 
-# 2nd dialogue turn
+# 2st dialogue turn
 response, history = model.chat(tokenizer, '框出图中击掌的位置', history=history)
 print(response)
 # <ref>击掌</ref><box>(536,509),(588,602)</box>
@@ -543,7 +549,7 @@ else:
 <p>
 
 <details>
-  <summary>Running Qwen-VL</summary>
+<summary>Running Qwen-VL</summary>
 
 Running Qwen-VL pretrained base model is also simple.
 
@@ -587,9 +593,8 @@ else:
 <p align="center">
     <img src="assets/demo_spotting_caption.jpg" width="500"/>
 <p>
-      
-</details>
 
+</details>
 
 #### 🤖 ModelScope
 
@@ -628,7 +633,7 @@ response, history = model.chat(tokenizer, query=f'<img>{image_path}</img>这是�
 print(response)
 # 图中是一名年轻女子在沙滩上和她的狗玩耍，狗的品种是拉布拉多。她们坐在沙滩上，狗的前腿抬起来，与人互动。
 
-# 2nd dialogue turn
+# 2st dialogue turn
 response, history = model.chat(tokenizer, '输出击掌的检测框', history=history)
 print(response)
 # <ref>"击掌"</ref><box>(211,412),(577,891)</box>
@@ -662,7 +667,6 @@ python web_demo_mm.py
 ## FAQ
 
 If you meet problems, please refer to [FAQ](FAQ.md) and the issues first to search a solution before you launch a new issue.
-
 
 ## License Agreement
 
