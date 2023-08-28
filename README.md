@@ -670,6 +670,19 @@ If you meet problems, please refer to [FAQ](FAQ.md) and the issues first to sear
 
 Researchers and developers are free to use the codes and model weights of both Qwen-VL and Qwen-VL-Chat. We also allow their commercial use. Check our license at [LICENSE](LICENSE) for more details.
 
+## Citation
+
+If you find our paper and code useful in your research, please consider giving a star :star: and citation :pencil: :)
+
+```BibTeX
+@article{Qwen-VL,
+  title={Qwen-VL: A Frontier Large Vision-Language Model with Versatile Abilities},
+  author={Bai, Jinze and Bai, Shuai and Yang, Shusheng and Wang, Shijie and Tan, Sinan and Wang, Peng and Lin, Junyang and Zhou, Chang and Zhou, Jingren},
+  journal={arXiv preprint arXiv:2308.12966},
+  year={2023}
+}
+```
+
 ## Contact Us
 
 If you are interested to leave a message to either our research team or product team, feel free to send an email to qianwen_opensource@alibabacloud.com.

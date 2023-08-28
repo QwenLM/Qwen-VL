@@ -664,6 +664,19 @@ python web_demo_mm.py
 
 研究人员与开发者可使用Qwen-VL和Qwen-VL-Chat或进行二次开发。我们同样允许商业使用，具体细节请查看[LICENSE](LICENSE)。如需商用，请填写[问卷](https://dashscope.console.aliyun.com/openModelApply/qianwen)申请。
 
+## Citation
+
+如果你觉得我们的论文和代码对你的研究有帮助，请考虑:star: 和引用 :pencil: :)
+
+```BibTeX
+@article{Qwen-VL,
+  title={Qwen-VL: A Frontier Large Vision-Language Model with Versatile Abilities},
+  author={Bai, Jinze and Bai, Shuai and Yang, Shusheng and Wang, Shijie and Tan, Sinan and Wang, Peng and Lin, Junyang and Zhou, Chang and Zhou, Jingren},
+  journal={arXiv preprint arXiv:2308.12966},
+  year={2023}
+}
+```
+
 ## 联系我们
 
 如果你想给我们的研发团队和产品团队留言，请通过邮件（qianwen_opensource@alibabacloud.com）联系我们。
