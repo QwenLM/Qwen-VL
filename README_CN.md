@@ -1,4 +1,7 @@
-<br>
+<p align="left">
+        中文</a>&nbsp ｜ &nbsp<a href="README.md">English</a>
+</p>
+<br><br>
 
 <p align="center">
     <img src="assets/logo.jpg" width="400"/>
@@ -6,16 +9,14 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ &nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/pdf/2308.12966.pdf">Report</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp ｜ &nbsp<a href="https://qianwen-res.oss-cn-beijing.aliyuncs.com/qwen_wechat_group.PNG">WeChat</a>
-</p>
+        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
 <br>
-
-<p align="center">
-        中文</a>&nbsp ｜ &nbsp<a href="README.md">English</a> ｜ &nbsp <a href="README_JA.md">日本語</a>
+<a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://github.com/QwenLM/Qwen-VL/blob/main/visual_memo.md">Report</a>
 </p>
 <br><br>
 
 **Qwen-VL** 是阿里云研发的大规模视觉语言模型（Large Vision Language Model, LVLM）。Qwen-VL 可以以图像、文本、检测框作为输入，并以文本和检测框作为输出。Qwen-VL 系列模型的特点包括：
+
 - **强大的性能**：在四大类多模态任务的标准英文测评中（Zero-shot Captioning/VQA/DocVQA/Grounding）上，均取得同等通用模型大小下最好效果；
 - **多语言对话模型**：天然支持英文、中文等多语言对话，端到端支持图片里中英双语的长文本识别；
 - **多图交错对话**：支持多图输入和比较，指定图片问答，多图文学创作等；
@@ -29,24 +30,26 @@
 <br>
 
 目前，我们提供了 Qwen-VL 系列的两个模型：
+
 - Qwen-VL: Qwen-VL 以 Qwen-7B 的预训练模型作为语言模型的初始化，并以 [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) 作为视觉编码器的初始化，中间加入单层随机初始化的 cross-attention，经过约1.5B的图文数据训练得到。最终图像输入分辨率为448。
 - Qwen-VL-Chat: 在 Qwen-VL 的基础上，我们使用对齐机制打造了基于大语言模型的视觉AI助手Qwen-VL-Chat，它支持更灵活的交互方式，包括多图、多轮问答、创作等能力。
-
 
 ## 评测
 
 我们从两个角度评测了两个模型的能力：
-1. 在**英文标准 Benchmark** 上评测模型的基础任务能力。目前评测了四大类多模态任务：
-    - Zero-shot Captioning: 评测模型在未见过数据集上的零样本图片描述能力；
-    - General VQA: 评测模型的通用问答能力，例如判断题、颜色、个数、类目等问答能力；
-    - Text-based VQA：评测模型对于图片中文字相关的识别/问答能力，例如文档问答、图表问答、文字问答等；
-    - Referring Expression Compression：评测模型给定物体描述画检测框的能力；
 
+1. 在**英文标准 Benchmark** 上评测模型的基础任务能力。目前评测了四大类多模态任务：
+   
+   - Zero-shot Captioning: 评测模型在未见过数据集上的零样本图片描述能力；
+   - General VQA: 评测模型的通用问答能力，例如判断题、颜色、个数、类目等问答能力；
+   - Text-based VQA：评测模型对于图片中文字相关的识别/问答能力，例如文档问答、图表问答、文字问答等；
+   - Referring Expression Compression：评测模型给定物体描述画检测框的能力；
 2. **试金石 (TouchStone)**：为了评测模型整体的图文对话能力和人类对齐水平。我们为此构建了一个基于 GPT4 打分来评测 LVLM 模型的 Benchmark：TouchStone。在 TouchStone-v0.1 中：
-    - 评测基准总计涵盖 300+张图片、800+道题目、27个类别。包括基础属性问答、人物地标问答、影视作品问答、视觉推理、反事实推理、诗歌创作、故事写作，商品比较、图片解题等**尽可能广泛的类别**。
-    - 为了弥补目前 GPT4 无法直接读取图片的缺陷，我们给所有的带评测图片提供了**人工标注的充分详细描述**，并且将图片的详细描述、问题和模型的输出结果一起交给 GPT4 打分。
-    - 评测同时包含英文版本和中文版本。
-  
+   
+   - 评测基准总计涵盖 300+张图片、800+道题目、27个类别。包括基础属性问答、人物地标问答、影视作品问答、视觉推理、反事实推理、诗歌创作、故事写作，商品比较、图片解题等**尽可能广泛的类别**。
+   - 为了弥补目前 GPT4 无法直接读取图片的缺陷，我们给所有的带评测图片提供了**人工标注的充分详细描述**，并且将图片的详细描述、问题和模型的输出结果一起交给 GPT4 打分。
+   - 评测同时包含英文版本和中文版本。
+
 评测结果如下：
 
 Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优势，并且在能力范围也覆盖更加全面。
@@ -56,6 +59,7 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 <p>
 
 ### 零样本图像描述生成（Zero-shot Image Caption） 及 通用视觉问答（General VQA）
+
 <table>
 <thead>
   <tr>
@@ -285,6 +289,7 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 - 分辨率对上述某几个评测非常重要，大部分 224 分辨率的开源 LVLM 模型无法完成以上评测，或只能通过切图的方式解决。Qwen-VL 将分辨率提升到 448，可以直接以端到端的方式进行以上评测。Qwen-VL 在很多任务上甚至超过了 1024 分辨率的 Pix2Struct-Large 模型。
 
 ### 细粒度视觉定位（Referring Expression Comprehension）
+
 <table>
 <thead>
   <tr>
@@ -544,7 +549,7 @@ else:
 
 运行Qwen-VL同样非常简单。
 
-  <summary>运行Qwen-VL</summary>
+<summary>运行Qwen-VL</summary>
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -586,7 +591,6 @@ else:
 <p align="center">
     <img src="assets/demo_spotting_caption.jpg" width="500"/>
 <p>
-
 
 #### 🤖 ModelScope
 
@@ -656,7 +660,6 @@ python web_demo_mm.py
 
 如遇到问题，敬请查阅 [FAQ](FAQ_zh.md)以及issue区，如仍无法解决再提交issue。
 
-
 ## 使用协议
 
 研究人员与开发者可使用Qwen-VL和Qwen-VL-Chat或进行二次开发。我们同样允许商业使用，具体细节请查看[LICENSE](LICENSE)。如需商用，请填写[问卷](https://dashscope.console.aliyun.com/openModelApply/qianwen)申请。
@@ -664,3 +667,4 @@ python web_demo_mm.py
 ## 联系我们
 
 如果你想给我们的研发团队和产品团队留言，请通过邮件（qianwen_opensource@alibabacloud.com）联系我们。
+
