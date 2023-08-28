@@ -15,6 +15,7 @@
 </p>
 <br><br>
 
+
 **Qwen-VL** 是阿里云研发的大规模视觉语言模型（Large Vision Language Model, LVLM）。Qwen-VL 可以以图像、文本、检测框作为输入，并以文本和检测框作为输出。Qwen-VL 系列模型的特点包括：
 
 - **强大的性能**：在四大类多模态任务的标准英文测评中（Zero-shot Captioning/VQA/DocVQA/Grounding）上，均取得同等通用模型大小下最好效果；
@@ -33,8 +34,6 @@
 
 - Qwen-VL: Qwen-VL 以 Qwen-7B 的预训练模型作为语言模型的初始化，并以 [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) 作为视觉编码器的初始化，中间加入单层随机初始化的 cross-attention，经过约1.5B的图文数据训练得到。最终图像输入分辨率为448。
 - Qwen-VL-Chat: 在 Qwen-VL 的基础上，我们使用对齐机制打造了基于大语言模型的视觉AI助手Qwen-VL-Chat，它支持更灵活的交互方式，包括多图、多轮问答、创作等能力。
-
-如果想了解更多关于模型的信息，请点击[链接](visual_memo.md)查看我们的技术备忘录。
 
 ## 评测
 
@@ -260,7 +259,7 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
     <td>-</td>
   </tr>
   <tr>
-    <td>Pic2Struct-Large (1.3B)</td>
+    <td>Pix2Struct-Large (1.3B)</td>
     <td>-</td>
     <td><b>76.6</b></td>
     <td>58.6</td>
@@ -288,7 +287,7 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 </table>
 
 - 在文字相关的识别/问答评测上，取得了当前规模下通用 LVLM 达到的最好结果。
-- 分辨率对上述某几个评测非常重要，大部分 224 分辨率的开源 LVLM 模型无法完成以上评测，或只能通过切图的方式解决。Qwen-VL 将分辨率提升到 448，可以直接以端到端的方式进行以上评测。Qwen-VL 在很多任务上甚至超过了 1024 分辨率的 Pic2Struct-Large 模型。
+- 分辨率对上述某几个评测非常重要，大部分 224 分辨率的开源 LVLM 模型无法完成以上评测，或只能通过切图的方式解决。Qwen-VL 将分辨率提升到 448，可以直接以端到端的方式进行以上评测。Qwen-VL 在很多任务上甚至超过了 1024 分辨率的 Pix2Struct-Large 模型。
 
 ### 细粒度视觉定位（Referring Expression Comprehension）
 
@@ -455,7 +454,7 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 - 在定位任务上，Qwen-VL 全面超过 Shikra-13B，取得了目前 Generalist LVLM 模型上在 Refcoco 上的 **SOTA**。
 - Qwen-VL 并没有在任何中文定位数据上训练过，但通过中文 Caption 数据和 英文 Grounding 数据的训练，可以 Zero-shot 泛化出中文 Grounding 能力。
 
-我们提供了以上**所有**评测脚本以供复现我们的实验结果。请阅读 [eval/EVALUATION.md](eval/EVALUATION.md) 了解更多信息。
+我们提供了以上**所有**评测脚本以供复现我们的实验结果。请阅读 [eval_mm/EVALUATION.md](eval_mm/EVALUATION.md) 了解更多信息。
 
 ### Chat 能力测评
 
@@ -463,22 +462,22 @@ TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力
 
 #### 英文版本测评
 
-| Model         | Score |
-|---------------|-------|
-| PandaGPT      | 488.5 |
-| MiniGPT4      | 531.7 |
-| InstructBLIP  | 552.4 |
+| Model           | Score |
+| --------------- | ----- |
+| PandaGPT        | 488.5 |
+| MiniGPT4        | 531.7 |
+| InstructBLIP    | 552.4 |
 | LLaMA-AdapterV2 | 590.1 |
-| LLaVA         | 602.7 |
-| mPLUG-Owl     | 605.4 |
-| Qwen-VL-Chat   | 645.2 |
+| LLaVA           | 602.7 |
+| mPLUG-Owl       | 605.4 |
+| Qwen-VL-Chat    | 645.2 |
 
 #### 中文版本测评
 
-| Model         | Score |
-|---------------|-------|
-| VisualGLM     | 247.1 |
-| Qwen-VL-Chat   | 401.2 |
+| Model        | Score |
+| ------------ | ----- |
+| VisualGLM    | 247.1 |
+| Qwen-VL-Chat | 401.2 |
 
 Qwen-VL-Chat 模型在中英文的对齐评测中均取得当前 LVLM 模型下的最好结果。
 
@@ -534,7 +533,7 @@ response, history = model.chat(tokenizer, query=query, history=None)
 print(response)
 # 图中是一名女子在沙滩上和狗玩耍，旁边是一只拉布拉多犬，它们处于沙滩上。
 
-# 第二轮对话 2st dialogue turn
+# 第二轮对话 2nd dialogue turn
 response, history = model.chat(tokenizer, '框出图中击掌的位置', history=history)
 print(response)
 # <ref>击掌</ref><box>(536,509),(588,602)</box>
@@ -631,7 +630,7 @@ response, history = model.chat(tokenizer, query=f'<img>{image_path}</img>这是�
 print(response)
 # 图中是一名年轻女子在沙滩上和她的狗玩耍，狗的品种是拉布拉多。她们坐在沙滩上，狗的前腿抬起来，与人互动。
 
-# 2st dialogue turn
+# 2nd dialogue turn
 response, history = model.chat(tokenizer, '输出击掌的检测框', history=history)
 print(response)
 # <ref>"击掌"</ref><box>(211,412),(577,891)</box>
