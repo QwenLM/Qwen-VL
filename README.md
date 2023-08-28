@@ -6,7 +6,7 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ &nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/pdf/2308.12966.pdf">Report</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>
+        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ &nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/pdf/2308.12966.pdf">Report</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp ｜ &nbsp<a href="https://qianwen-res.oss-cn-beijing.aliyuncs.com/qwen_wechat_group.PNG">WeChat</a>
 
 </p>
 <br>
@@ -456,22 +456,22 @@ TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities o
 
 #### English evaluation
 
-| Model         | Score |
-|---------------|-------|
-| PandaGPT      | 488.5 |
-| MiniGPT4      | 531.7 |
-| InstructBLIP  | 552.4 |
+| Model           | Score |
+| --------------- | ----- |
+| PandaGPT        | 488.5 |
+| MiniGPT4        | 531.7 |
+| InstructBLIP    | 552.4 |
 | LLaMA-AdapterV2 | 590.1 |
-| LLaVA         | 602.7 |
-| mPLUG-Owl     | 605.4 |
-| Qwen-VL-Chat   | 645.2 |
+| LLaVA           | 602.7 |
+| mPLUG-Owl       | 605.4 |
+| Qwen-VL-Chat    | 645.2 |
 
 #### Chinese evaluation
 
-| Model         | Score |
-|---------------|-------|
-| VisualGLM     | 247.1 |
-| Qwen-VL-Chat   | 401.2 |
+| Model        | Score |
+| ------------ | ----- |
+| VisualGLM    | 247.1 |
+| Qwen-VL-Chat | 401.2 |
 
 Qwen-VL-Chat has achieved the best results in both Chinese and English alignment evaluation.
 
