@@ -6,7 +6,7 @@
 <br>
 
 <p align="center">
-        <a href="touchstone/README_CN.md">中文</a>&nbsp ｜ &nbspEnglish ｜ &nbsp<a href="../touchstone/README_JA.md">日本語</a>
+        <a href="../touchstone/README_CN.md">中文</a>&nbsp ｜ &nbspEnglish ｜ &nbsp<a href="../touchstone/README_JA.md">日本語</a>
 </p>
 <br><br>
 
