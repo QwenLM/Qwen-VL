@@ -688,7 +688,7 @@ print(response)
 
 ベンチマーク**[TouchStone](https://github.com/OFA-Sys/TouchStone)**において、BF16モデルとInt4モデルの両方のモデル性能を例示し、量子化モデルが大きな性能劣化に悩まされないことを見出した。結果を以下に示します：
 
-| Quantization | ZH.        | EN            |
+| Quantization | ZH         | EN            |
 | ------------ | :--------: | :-----------: | 
 | BF16         | 401.2      |    645.2      |
 | Int4         | 386.6      |    651.4      |
