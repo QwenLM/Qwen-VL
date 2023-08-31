@@ -33,7 +33,7 @@ We release two models of the Qwen-VL series:
 
 - Qwen-VL: The pre-trained LVLM model uses Qwen-7B as the initialization of the LLM, and [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) as the initialization of the visual encoder. And connects them with a randomly initialized cross-attention layer.
 - Qwen-VL-Chat: A multimodal LLM-based AI assistant, which is trained with alignment techniques. Qwen-VL-Chat supports more flexible interaction, such as multiple image inputs, multi-round question answering, and creative capabilities.
-<br>
+  <br>
 
 ## Evaluation
 
@@ -413,7 +413,7 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
   <tr>
     <td rowspan="3">Specialist SOTAs<br>(Specialist/Finetuned)</td>
     <td>G-DINO-L</td>
-    <td>90.56&nbsp;&nbsp;</td>
+    <td>90.56</td>
     <td>93.19</td>
     <td>88.24</td>
     <td>82.75</td>
@@ -727,6 +727,7 @@ Then run the command below and click on the generated link:
 ```
 python web_demo_mm.py
 ```
+
 <br>
 
 ## FAQ
@@ -751,8 +752,10 @@ If you find our paper and code useful in your research, please consider giving a
   year={2023}
 }
 ```
+
 <br>
 
 ## Contact Us
 
 If you are interested to leave a message to either our research team or product team, feel free to send an email to qianwen_opensource@alibabacloud.com.
+
