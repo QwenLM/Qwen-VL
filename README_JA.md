@@ -499,7 +499,7 @@ Qwen-VL-Chat は中国語と英語のアライメント評価で最高の結果�
 pip install -r requirements.txt
 ```
 
-これで ModelScope や Transformers を使い始めることができます。ビジョンエンコーダについての詳しい使い方は、[チュートリアル](TUTORIAL.md)を参照してください。
+これで ModelScope や Transformers を使い始めることができます。ビジョンエンコーダについての詳しい使い方は、[チュートリアル](TUTORIAL_ja.md)を参照してください。
 
 #### 🤗 Transformers
 
