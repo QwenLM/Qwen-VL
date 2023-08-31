@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
+        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ Qwen-VL-Chat-Int4 <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
 <br>
 <a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Report</a>
 </p>
@@ -33,6 +33,7 @@
 
 - Qwen-VL: Qwen-VL 以 Qwen-7B 的预训练模型作为语言模型的初始化，并以 [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) 作为视觉编码器的初始化，中间加入单层随机初始化的 cross-attention，经过约1.5B的图文数据训练得到。最终图像输入分辨率为448。
 - Qwen-VL-Chat: 在 Qwen-VL 的基础上，我们使用对齐机制打造了基于大语言模型的视觉AI助手Qwen-VL-Chat，它支持更灵活的交互方式，包括多图、多轮问答、创作等能力。
+  <br>
 
 ## 评测
 
@@ -455,11 +456,11 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 
 我们提供了以上**所有**评测脚本以供复现我们的实验结果。请阅读 [eval_mm/EVALUATION.md](eval_mm/EVALUATION.md) 了解更多信息。
 
-### Chat 能力测评
+### 闲聊能力测评
 
 TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力和人类对齐水平的基准。它涵盖了 300+张图片、800+道题目、27个类别，包括基础属性、人物地标、视觉推理、诗歌创作、故事写作、商品比较、图片解题等**尽可能广泛的类别**。关于 TouchStone 的详细介绍，请参考[touchstone/README_CN.md](touchstone/README_CN.md)了解更多信息。
 
-#### 英文版本测评
+#### 英语
 
 | Model           | Score |
 | --------------- | ----- |
@@ -471,7 +472,7 @@ TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力
 | mPLUG-Owl       | 605.4 |
 | Qwen-VL-Chat    | 645.2 |
 
-#### 中文版本测评
+#### 中文
 
 | Model        | Score |
 | ------------ | ----- |
@@ -479,12 +480,14 @@ TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力
 | Qwen-VL-Chat | 401.2 |
 
 Qwen-VL-Chat 模型在中英文的对齐评测中均取得当前 LVLM 模型下的最好结果。
+<br>
 
 ## 部署要求
 
 * python 3.8及以上版本
 * pytorch 1.12及以上版本，推荐2.0及以上版本
 * 建议使用CUDA 11.4及以上（GPU用户需考虑此选项）
+<br>
 
 ## 快速使用
 
@@ -520,10 +523,10 @@ tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code
 # 默认gpu进行推理，需要约24GB显存
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat", device_map="cuda", trust_remote_code=True).eval()
 
-# 可指定不同的生成长度、top_p等相关超参
-model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
+# 可指定不同的生成长度、top_p等相关超参（transformers 4.32.0及以上无需执行此操作）
+# model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
 
-# 第一轮对话 1st dialogue turn
+# 第一轮对话
 query = tokenizer.from_list_format([
     {'image': 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'}, # Either a local path or an url
     {'text': '这是什么?'},
@@ -532,7 +535,7 @@ response, history = model.chat(tokenizer, query=query, history=None)
 print(response)
 # 图中是一名女子在沙滩上和狗玩耍，旁边是一只拉布拉多犬，它们处于沙滩上。
 
-# 第二轮对话 2nd dialogue turn
+# 第二轮对话
 response, history = model.chat(tokenizer, '框出图中击掌的位置', history=history)
 print(response)
 # <ref>击掌</ref><box>(536,509),(588,602)</box>
@@ -568,8 +571,8 @@ tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL", trust_remote_code=True
 # 默认gpu进行推理，需要约24GB显存
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL", device_map="cuda", trust_remote_code=True).eval()
 
-# 可指定不同的生成长度、top_p等相关超参
-model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL", trust_remote_code=True)
+# 可指定不同的生成长度、top_p等相关超参（transformers 4.32.0及以上无需执行此操作）
+# model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL", trust_remote_code=True)
 
 query = tokenizer.from_list_format([
     {'image': 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'}, # Either a local path or an url
@@ -610,26 +613,26 @@ torch.manual_seed(1234)
 tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
 if not hasattr(tokenizer, 'model_dir'):
     tokenizer.model_dir = model_dir
-# use bf16
+# 打开bf16精度，A100、H100、RTX3060、RTX3070等显卡建议启用以节省显存
 # model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True, bf16=True).eval()
-# use fp16
+# 打开fp16精度，V100、P100、T4等显卡建议启用以节省显存
 model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True, fp16=True).eval()
-# use cpu
+# 使用CPU进行推理，需要约32GB内存
 # model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="cpu", trust_remote_code=True).eval()
-# use auto
-# model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True).eval()
+# 默认gpu进行推理，需要约24GB显存
+model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True).eval()
 
-# Specify hyperparameters for generation
-model.generation_config = GenerationConfig.from_pretrained(model_dir, trust_remote_code=True)
+# 指定生成超参数（transformers 4.32.0及以上无需执行此操作）
+# model.generation_config = GenerationConfig.from_pretrained(model_dir, trust_remote_code=True)
 
-# 1st dialogue turn
+# 第一轮对话
 # Either a local path or an url between <img></img> tags.
 image_path = 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'
 response, history = model.chat(tokenizer, query=f'<img>{image_path}</img>这是什么', history=None)
 print(response)
 # 图中是一名年轻女子在沙滩上和她的狗玩耍，狗的品种是拉布拉多。她们坐在沙滩上，狗的前腿抬起来，与人互动。
 
-# 2nd dialogue turn
+# 第二轮对话
 response, history = model.chat(tokenizer, '输出击掌的检测框', history=history)
 print(response)
 # <ref>"击掌"</ref><box>(211,412),(577,891)</box>
@@ -639,6 +642,70 @@ if image:
 else:
   print("no box")
 ```
+
+<br>
+
+## 量化
+
+### 用法
+
+当前我们提供了基于[AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ)的量化方案，并提供了Qwen-VL-Chat的Int4量化版本Qwen-VL-Chat-Int4 [点击此处](https://huggingface.co/Qwen/Qwen-VL-Chat-Int4)。该模型在效果评测上几乎无损，并在显存占用和推理速度上具有明显优势。
+
+下文说明如何使用该量化模型。开始之前，请确保你满足要求（如torch2.0及以上、transformers 4.32.0及以上，等）并安装所需的代码库：
+
+```bash
+pip install optimum
+git clone https://github.com/JustinLin610/AutoGPTQ.git & cd AutoGPTQ
+pip install -v .
+```
+
+如遇到安装 `auto-gptq` 的问题，建议您前往官方[repo](https://github.com/PanQiWei/AutoGPTQ) 寻找合适的wheel。
+
+随后你便可以按照上述用法****，轻松调用量化模型：
+
+```python
+model = AutoModelForCausalLM.from_pretrained(
+    "Qwen/Qwen-VL-Chat-Int4",
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+# Either a local path or an url between <img></img> tags.
+image_path = 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'
+response, history = model.chat(tokenizer, query=f'<img>{image_path}</img>这是什么', history=None)
+print(response)
+```
+
+### 效果评测
+
+我们列出不同精度下模型在评测基准 **[TouchStone](https://github.com/OFA-Sys/TouchStone)** 上的表现，并发现量化模型并没有显著性能损失。结果如下所示：
+
+| Quantization | ZH.        | EN            |
+| ------------ | :--------: | :-----------: | 
+| BF16         | 401.2      |    645.2      |
+| Int4         | 386.6      |    651.4      |
+
+### 推理速度
+
+我们测算了在输入一张图片（即258个token）的条件下BF16和Int4的模型生成1792 (2048-258) 和 7934 (8192-258) 个token的平均速度。
+
+| Quantization | Speed (2048 tokens) | Speed (8192 tokens) |
+| ------------ | :-----------------: | :-----------------: |
+| BF16         |        28.87        |        24.32        |
+| Int4         |        37.79        |        34.34        |
+
+推理速度测算是在单卡 A100-SXM4-80G GPU上运行，使用PyTorch 2.0.1及CUDA 11.4。
+
+### GPU显存占用
+
+我们还测算了在一张图片输入的条件下BF16和Int4模型生成1792 (2048-258) 和 7934 (8192-258) 个token所需显存。结果如下所示：
+
+| Quantization | Peak Usage for Encoding 2048 Tokens | Peak Usage for Generating 8192 Tokens |
+| ------------ | :---------------------------------: | :-----------------------------------: |
+| BF16         |               22.60GB               |                28.01GB                |
+| Int4         |               11.82GB               |                17.23GB                |
+
+上述速度和显存测算使用[此脚本](https://qianwen-res.oss-cn-beijing.aliyuncs.com/profile_mm.py)完成。
+<br>
 
 ## Demo
 
@@ -656,15 +723,19 @@ pip install -r requirements_web_demo.txt
 python web_demo_mm.py
 ```
 
+<br>
+
 ## FAQ
 
 如遇到问题，敬请查阅 [FAQ](FAQ_zh.md)以及issue区，如仍无法解决再提交issue。
+<br>
 
 ## 使用协议
 
 研究人员与开发者可使用Qwen-VL和Qwen-VL-Chat或进行二次开发。我们同样允许商业使用，具体细节请查看[LICENSE](LICENSE)。如需商用，请填写[问卷](https://dashscope.console.aliyun.com/openModelApply/qianwen)申请。
+<br>
 
-## Citation
+## 引用
 
 如果你觉得我们的论文和代码对你的研究有帮助，请考虑:star: 和引用 :pencil: :)
 
@@ -676,6 +747,7 @@ python web_demo_mm.py
   year={2023}
 }
 ```
+<br>
 
 ## 联系我们
 

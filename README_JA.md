@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
+        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ Qwen-VL-Chat-Int4 <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
 <br>
 <a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Report</a>
 </p>
@@ -37,19 +37,20 @@ Qwen-VL シリーズの 2 つのモデルを公開します:
 
 - Qwen-VL: LLM の初期化に Qwen-7B を、視覚エンコーダの初期化に [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) を用いた学習済み LVLM モデル。そして、それらをランダムに初期化されたクロスアテンションレイヤーで接続する。
 - Qwen-VL-Chat: マルチモーダルな LLM ベースの AI アシスタント。Qwen-VL-Chat は、複数の画像入力、複数ラウンドの質問応答、クリエイティブな機能など、より柔軟なインタラクションをサポートします。
+  <br>
 
 ## 評価
 
 モデルの能力を2つの観点から評価しました:
 
 1. **標準ベンチマーク**: マルチモーダルなタスクの 4 つの主要カテゴリーについて、モデルの基本的なタスク能力を評価する:
-
+   
    - ゼロショットキャプション: 未見のデータセットに対して、モデルのゼロショット画像キャプション能力を評価する;
    - 一般的な VQA: 判定、色、数、カテゴリなど、画像の一般的な質問応答能力を評価する;
    - テキストベース VQA: 文書 QA、図表 QAなど、写真内のテキストを認識するモデルの能力を評価する;
    - 参照表現理解: 参照表現理解: 参照表現で記述された画像内の対象物を特定する能力を評価する。
 2. **TouchStone**: 総合的なテキスト画像対話能力と人間とのアライメントレベルを評価するために、GPT4 によるスコアリングに基づく TouchStone と呼ばれるベンチマークを構築し、LVLM モデルを評価しました。
-
+   
    - TouchStone ベンチマークは、合計 300 以上の画像、800 以上の質問、27 のカテゴリをカバーしています。例えば、属性ベースの Q&A、有名人の認識、詩の作文、複数の画像の要約、商品比較、数学の問題解決などです;
    - 画像の直接入力という GPT4 の現在の制限を打ち破るため、TouchStone は人間のラベル付けによるきめ細かい画像注釈を提供します。これらの詳細な注釈は、質問とモデルの出力と共に、採点のために GPT4 に提示されます。
    - ベンチマークには英語版と中国語版があります。
@@ -462,7 +463,7 @@ Qwen-VL は、複数の VL タスクにおいて、現行の SOTA ジェネラ�
 
 TouchStone は GPT4 によるスコアリングに基づくベンチマークで、テキストと画像の対話および人間とのアライメントレベルにおける LVLM モデルの能力を評価する。合計 300 以上の画像、800 以上の質問、属性ベースの Q&A、有名人の認識、詩の作成、複数の画像の要約、商品比較、数学の問題解決など27のカテゴリをカバーしています。詳しくは [touchstone/README_JA.md](touchstone/README_JA.md) をお読みください。
 
-#### 英語評価
+#### 英語
 
 | Model           | Score |
 | --------------- | ----- |
@@ -474,7 +475,7 @@ TouchStone は GPT4 によるスコアリングに基づくベンチマークで
 | mPLUG-Owl       | 605.4 |
 | Qwen-VL-Chat    | 645.2 |
 
-#### 中国語評価
+#### 中国語
 
 | Model        | Score |
 | ------------ | ----- |
@@ -482,12 +483,14 @@ TouchStone は GPT4 によるスコアリングに基づくベンチマークで
 | Qwen-VL-Chat | 401.2 |
 
 Qwen-VL-Chat は中国語と英語のアライメント評価で最高の結果を得ました。
+<br>
 
 ## 必要条件
 
 * python 3.8 以上
 * pytorch 1.12 以上、2.0 以上を推奨
 * CUDA 11.4 以上を推奨（GPU ユーザー向けです）
+  <br>
 
 ## クイックスタート
 
@@ -524,7 +527,7 @@ tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat", device_map="cuda", trust_remote_code=True).eval()
 
 # 生成のためのハイパーパラメータの指定
-model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
+# model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL-Chat", trust_remote_code=True)
 
 # 第 1 回 対話ターン
 query = tokenizer.from_list_format([
@@ -598,7 +601,6 @@ else:
 
 </details>
 
-
 #### 🤖 ModelScope
 
 ModelScope は、MaaS（Model-as-a-Service）のためのオープンソースプラットフォームであり、AI 開発者に柔軟で費用対効果の高いモデルサービスを提供します。同様に、以下のように ModelScope でモデルを実行することができます:
@@ -624,7 +626,7 @@ model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust
 # cpu の使用
 # model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="cpu", trust_remote_code=True).eval()
 # auto の使用
-# model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True).eval()
+model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True).eval()
 
 # 生成のためのハイパーパラメータの指定
 model.generation_config = GenerationConfig.from_pretrained(model_dir, trust_remote_code=True)
@@ -650,6 +652,69 @@ else:
 <p align="center">
     <img src="assets/demo_highfive.jpg" width="500"/>
 <p>
+<br>
+
+## 量子化
+
+### 使用方法
+
+私たちは、[AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ)に基づいた新しいソリューションを提供し、Qwen-VL-ChatのためのInt4量子化モデル、Qwen-VL-Chat-Int4[Click here](https://huggingface.co/Qwen/Qwen-VL-Chat-Int4)をリリースします。このモデルは、ほぼ無損失なモデル効果を達成しながら、メモリコストと推論速度の両方のパフォーマンスを向上させます。
+
+ここでは、量子化されたモデルを推論に使用する方法を説明します。始める前に、必要な要件（torch 2.0以上、transformers 4.32.0以上など）を満たしていることを確認し、必要なパッケージをインストールしてください：
+
+```bash
+pip install optimum
+git clone https://github.com/JustinLin610/AutoGPTQ.git & cd AutoGPTQ
+pip install -v .
+```
+
+auto-gptq`のインストールに問題がある場合は、公式の[repo](https://github.com/PanQiWei/AutoGPTQ)をチェックして、ホイールを見つけることをお勧めする。
+
+そうすれば、量子化されたモデルを簡単にロードすることができ、いつもと同じように推論を実行することができる：
+
+```python
+model = AutoModelForCausalLM.from_pretrained(
+    "Qwen/Qwen-VL-Chat-Int4",
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+# Either a local path or an url between <img></img> tags.
+image_path = 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'
+response, history = model.chat(tokenizer, query=f'<img>{image_path}</img>这是什么', history=None)
+print(response)
+```
+
+### 性能
+
+ベンチマーク**[TouchStone](https://github.com/OFA-Sys/TouchStone)**において、BF16モデルとInt4モデルの両方のモデル性能を例示し、量子化モデルが大きな性能劣化に悩まされないことを見出した。結果を以下に示します：
+
+| Quantization | ZH.        | EN            |
+| ------------ | :--------: | :-----------: | 
+| BF16         | 401.2      |    645.2      |
+| Int4         | 386.6      |    651.4      |
+
+### 推論スピード
+
+BF16精度とInt4量子化の下で、画像（258トークンを要する）のコンテキストで1792（2048-258）トークンと7934（8192-258）トークンを生成する平均推論速度（トークン/秒）をそれぞれ測定した。
+
+| Quantization | Speed (2048 tokens) | Speed (8192 tokens) |
+| ------------ | :-----------------: | :-----------------: |
+| BF16         |        28.87        |        24.32        |
+| Int4         |        37.79        |        34.34        |
+
+プロファイリングは、PyTorch 2.0.1とCUDA 11.4を搭載したシングルA100-SXM4-80G GPUで実行されます。
+
+### GPUメモリ使用量
+
+また、1792 (2048-258) 個のトークン (画像を含む) をコンテキストとしてエンコードする場合 (および単一のトークンを生成する場合) と、7934 (8192-258) 個のトークン (画像をコンテキストとして生成する場合) をそれぞれ BF16 または Int4 量子化レベルでエンコードする場合の GPU メモリ使用量のピーク値をプロファイリングしました。結果を以下に示す。
+
+| Quantization | Peak Usage for Encoding 2048 Tokens | Peak Usage for Generating 8192 Tokens |
+| ------------ | :---------------------------------: | :-----------------------------------: |
+| BF16         |               22.60GB               |                28.01GB                |
+| Int4         |               11.82GB               |                17.23GB                |
+
+上記のスピードとメモリーのプロファイリングは、[このスクリプト](https://qianwen-res.oss-cn-beijing.aliyuncs.com/profile_mm.py)を使用しています。
+<br>
 
 ## デモ
 
@@ -667,14 +732,17 @@ pip install -r requirements_web_demo.txt
 python web_demo_mm.py
 ```
 
+<br>
+
 ## FAQ
 
 問題が発生した場合は、[FAQ](FAQ_ja.md) や issue を参照し、新しい issue を立ち上げる前に解決策を探してください。
-
+<br>
 
 ## ライセンス契約
 
 研究者や開発者は、Qwen-VL と Qwen-VL-Chat のコードとモデルウェイトを自由に使用することができます。また、商用利用も可能です。詳しくは [LICENSE](LICENSE) をご覧ください。
+<br>
 
 ## 引用
 
@@ -688,6 +756,7 @@ python web_demo_mm.py
   year={2023}
 }
 ```
+<br>
 
 ## お問い合わせ
 
