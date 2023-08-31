@@ -668,7 +668,7 @@ git clone https://github.com/JustinLin610/AutoGPTQ.git & cd AutoGPTQ
 pip install -v .
 ```
 
-auto-gptq`のインストールに問題がある場合は、公式の[repo](https://github.com/PanQiWei/AutoGPTQ)をチェックして、ホイールを見つけることをお勧めする。
+`auto-gptq`のインストールに問題がある場合は、公式の[repo](https://github.com/PanQiWei/AutoGPTQ)をチェックして、ホイールを見つけることをお勧めする。
 
 そうすれば、量子化されたモデルを簡単にロードすることができ、いつもと同じように推論を実行することができる：
 
