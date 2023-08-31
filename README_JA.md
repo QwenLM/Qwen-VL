@@ -1,4 +1,7 @@
-<br>
+<p align="left">
+        <a href="README_CN.md">中文</a>&nbsp ｜ &nbsp <a href="README.md">English</a>&nbsp ｜ &nbsp日本語&nbsp
+</p>
+<br><br>
 
 <p align="center">
     <img src="assets/logo.jpg" width="400"/>
@@ -6,22 +9,19 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ &nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/pdf/2308.12966.pdf">Report</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp ｜ &nbsp<a href="https://qianwen-res.oss-cn-beijing.aliyuncs.com/qwen_wechat_group.PNG">WeChat</a>
-
-</p>
+        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
 <br>
-
-<p align="center">
-        <a href="README_CN.md">中文</a>&nbsp ｜ &nbsp <a href="README.md">English</a> ｜ &nbsp 日本語
+<a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Report</a>
 </p>
 <br><br>
 <p align="left">
-        Japanese document maintainer: Ikko Eltociear Ashimine
+        日本語ドキュメントメンテナー: <a href="https://github.com/eltociear">Ikko Eltociear Ashimine</a>
 </p>
 <br>
 
 **Qwen-VL** （Qwen Large Vision Language Model）は、アリババクラウドが提唱するラージモデルシリーズ Qwen（略称: Tongyi Qianwen）のマルチモーダル版です。Qwen-VL は、画像、テキスト、バウンディングボックスを入力として受け付け、テキストとバウンディングボックスを出力します。Qwen-VL の特徴は以下の通りです:
-- **好調なパフォーマンス**: 複数の英語評価ベンチマーク（Zero-shot Captioning、VQA、DocVQA、Grounding を含む）において、同様のモデル規模でオープンソース化された既存のラージビジョン言語モデル（LVLM）を大幅に上回ります。
+
+- **好調なパフォーマンス**: 複数の英語評価ベンチマーク（Zero-shot Captioning、VQA、DocVQA、Grounding を含む）において、同様のモデル規模でオープンソース化された既存の大規模ビジョン言語モデル（LVLM）を大幅に上回ります。
 - **テキスト認識をサポートする多言語 LVLM**: Qwen-VL は、英語、中国語、多言語の会話を自然にサポートし、画像内の中国語と英語の二言語テキストのエンドツーエンドの認識を促進します。
 - **複数画像のインターリーブ会話**: この機能により、複数の画像を入力し、比較することができる。また、画像に関連する質問を指定し、複数の画像によるストーリーテリングを行うこともできます。
 - **中国語のグラウンディングを支える初のジェネラリストモデル**: 中国語と英語のオープンドメイン言語表現によるバウンディングボックスの検出。
@@ -34,33 +34,36 @@
 <br>
 
 Qwen-VL シリーズの 2 つのモデルを公開します:
+
 - Qwen-VL: LLM の初期化に Qwen-7B を、視覚エンコーダの初期化に [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) を用いた学習済み LVLM モデル。そして、それらをランダムに初期化されたクロスアテンションレイヤーで接続する。
 - Qwen-VL-Chat: マルチモーダルな LLM ベースの AI アシスタント。Qwen-VL-Chat は、複数の画像入力、複数ラウンドの質問応答、クリエイティブな機能など、より柔軟なインタラクションをサポートします。
-
 
 ## 評価
 
 モデルの能力を2つの観点から評価しました:
-1. **標準ベンチマーク**: マルチモーダルなタスクの4つの主要カテゴリーについて、モデルの基本的なタスク能力を評価する:
-   - ゼロショットキャプション: 未見のデータセットに対して、モデルのゼロショット画像キャプション能力を評価する;
-   - 一般的なVQA: 判定、色、数、カテゴリなど、画像の一般的な質問応答能力を評価する;
-   - テキストベースVQA: 文書QA、図表QAなど、写真内のテキストを認識するモデルの能力を評価する;
-   - 参照表現理解: 参照表現理解: 参照表現で記述された画像内の対象物を特定する能力を評価する。
 
+1. **標準ベンチマーク**: マルチモーダルなタスクの 4 つの主要カテゴリーについて、モデルの基本的なタスク能力を評価する:
+
+   - ゼロショットキャプション: 未見のデータセットに対して、モデルのゼロショット画像キャプション能力を評価する;
+   - 一般的な VQA: 判定、色、数、カテゴリなど、画像の一般的な質問応答能力を評価する;
+   - テキストベース VQA: 文書 QA、図表 QAなど、写真内のテキストを認識するモデルの能力を評価する;
+   - 参照表現理解: 参照表現理解: 参照表現で記述された画像内の対象物を特定する能力を評価する。
 2. **TouchStone**: 総合的なテキスト画像対話能力と人間とのアライメントレベルを評価するために、GPT4 によるスコアリングに基づく TouchStone と呼ばれるベンチマークを構築し、LVLM モデルを評価しました。
+
    - TouchStone ベンチマークは、合計 300 以上の画像、800 以上の質問、27 のカテゴリをカバーしています。例えば、属性ベースの Q&A、有名人の認識、詩の作文、複数の画像の要約、商品比較、数学の問題解決などです;
    - 画像の直接入力という GPT4 の現在の制限を打ち破るため、TouchStone は人間のラベル付けによるきめ細かい画像注釈を提供します。これらの詳細な注釈は、質問とモデルの出力と共に、採点のために GPT4 に提示されます。
    - ベンチマークには英語版と中国語版があります。
 
 評価結果は以下の通りです:
 
-Qwen-VL は、複数の VL タスクにおいて、現行の SOTA ジェネラリストモデルを上回り、また、能力 範囲の点でより包括的なカバレッジを持ちます。
+Qwen-VL は、複数の VL タスクにおいて、現行の SOTA ジェネラリストモデルを上回り、また、能力範囲の点でより包括的なカバレッジを持ちます。
 
 <p align="center">
     <img src="assets/radar.png" width="600"/>
 <p>
 
 ### ゼロショットキャプションと一般的な VQA
+
 <table>
 <thead>
   <tr>
@@ -290,6 +293,7 @@ Qwen-VL は、複数の VL タスクにおいて、現行の SOTA ジェネラ�
 - 解像度は上記のいくつかの評価において重要である。解像度が 224 のオープンソースの LVLM モデルの多くは、これらの評価ができないか、画像をカットすることでしか解決できないが、Qwen-VL は解像度を 448 にスケーリングし、エンドツーエンドで評価できるようにしました。Qwen-VL は、一部のタスクにおいて、解像度 1024 の Pix2Struct-Large モデルをも凌駕しています。
 
 ### 表現理解の参照
+
 <table>
 <thead>
   <tr>
@@ -672,9 +676,9 @@ python web_demo_mm.py
 
 研究者や開発者は、Qwen-VL と Qwen-VL-Chat のコードとモデルウェイトを自由に使用することができます。また、商用利用も可能です。詳しくは [LICENSE](LICENSE) をご覧ください。
 
-## Citation
+## 引用
 
-If you find our paper and code useful in your research, please consider giving a star :star: and citation :pencil: :)
+私たちの論文やコードがあなたの研究に役立つとお感じになりましたら、スター :star: と 引用 :pencil: をお付けください :)
 
 ```BibTeX
 @article{Qwen-VL,
