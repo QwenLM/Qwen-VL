@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
+        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ Qwen-VL-Chat-Int4 <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
 <br>
 <a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Report</a>
 </p>
@@ -33,6 +33,7 @@ We release two models of the Qwen-VL series:
 
 - Qwen-VL: The pre-trained LVLM model uses Qwen-7B as the initialization of the LLM, and [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) as the initialization of the visual encoder. And connects them with a randomly initialized cross-attention layer.
 - Qwen-VL-Chat: A multimodal LLM-based AI assistant, which is trained with alignment techniques. Qwen-VL-Chat supports more flexible interaction, such as multiple image inputs, multi-round question answering, and creative capabilities.
+<br>
 
 ## Evaluation
 
@@ -478,12 +479,14 @@ TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities o
 | Qwen-VL-Chat | 401.2 |
 
 Qwen-VL-Chat has achieved the best results in both Chinese and English alignment evaluation.
+<br>
 
 ## Requirements
 
 * python 3.8 and above
 * pytorch 1.12 and above, 2.0 and above are recommended
 * CUDA 11.4 and above are recommended (this is for GPU users)
+<br>
 
 ## Quickstart
 
@@ -568,8 +571,8 @@ tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL", trust_remote_code=True
 # use cuda device
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL", device_map="cuda", trust_remote_code=True).eval()
 
-# Specify hyperparameters for generation
-model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL", trust_remote_code=True)
+# Specify hyperparameters for generation (No need to do this if you are using transformers>4.32.0)
+# model.generation_config = GenerationConfig.from_pretrained("Qwen/Qwen-VL", trust_remote_code=True)
 
 query = tokenizer.from_list_format([
     {'image': 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'}, # Either a local path or an url
@@ -619,10 +622,10 @@ model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust
 # use cpu
 # model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="cpu", trust_remote_code=True).eval()
 # use auto
-# model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True).eval()
+model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True).eval()
 
-# Specify hyperparameters for generation
-model.generation_config = GenerationConfig.from_pretrained(model_dir, trust_remote_code=True)
+# Specify hyperparameters for generation (No need to do this if you are using transformers>=4.32.0)
+# model.generation_config = GenerationConfig.from_pretrained(model_dir, trust_remote_code=True)
 
 # 1st dialogue turn
 # Either a local path or an url between <img></img> tags.
@@ -645,6 +648,67 @@ else:
 <p align="center">
     <img src="assets/demo_highfive.jpg" width="500"/>
 <p>
+<br>
+
+## Quantization
+
+### Usage
+
+We provide a new solution based on [AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ), and release an Int4 quantized model for Qwen-VL-Chat, Qwen-VL-Chat-Int4 [Click here](https://huggingface.co/Qwen/Qwen-VL-Chat-Int4), which achieves nearly lossless model effects but improved performance on both memory costs and inference speed.
+
+Here we demonstrate how to use our provided quantized models for inference. Before you start, make sure you meet the requirements (e.g., torch 2.0 and above, transformers 4.32.0 and above, etc.) and install the required packages:
+
+```bash
+pip install auto-gptq optimum
+```
+
+If you meet problems installing `auto-gptq`, we advise you to check out the official [repo](https://github.com/PanQiWei/AutoGPTQ) to find a wheel.
+
+Then you can load the quantized model easily and run inference as same as usual:
+
+```python
+model = AutoModelForCausalLM.from_pretrained(
+    "Qwen/Qwen-VL-Chat-Int4",
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+# Either a local path or an url between <img></img> tags.
+image_path = 'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg'
+response, history = model.chat(tokenizer, query=f'<img>{image_path}</img>这是什么', history=None)
+print(response)
+```
+
+### Performance
+
+We illustrate the model performance of both BF16 and Int4 models on the benchmark **[TouchStone](https://github.com/OFA-Sys/TouchStone)**, and we find that the quantized model does not suffer from significant performance degradation. Results are shown below:
+
+| Quantization | ZH.        | EN            |
+| ------------ | :--------: | :-----------: | 
+| BF16         | 401.2      |    645.2      |
+| Int4         | 386.6      |    651.4      |
+
+### Inference Speed
+
+We measured the average inference speed (tokens/s) of generating 1792 (2048-258) and 7934 (8192-258) tokens with the context of an image (which takes 258 tokens) under BF16 precision and Int4 quantization, respectively.
+
+| Quantization | Speed (2048 tokens) | Speed (8192 tokens) |
+| ------------ | :-----------------: | :-----------------: |
+| BF16         |        28.87        |        24.32        |
+| Int4         |        37.79        |        34.34        |
+
+The profiling runs on a single A100-SXM4-80G GPU with PyTorch 2.0.1 and CUDA 11.4.
+
+### GPU Memory Usage
+
+We also profile the peak GPU memory usage for encoding 1792 (2048-258) tokens (including an image) as context (and generating single token) and generating 7934 (8192-258) tokens (with an image as context) under BF16 or Int4 quantization level, respectively. The results are shown below.
+
+| Quantization | Peak Usage for Encoding 2048 Tokens | Peak Usage for Generating 8192 Tokens |
+| ------------ | :---------------------------------: | :-----------------------------------: |
+| BF16         |               22.60GB               |                28.01GB                |
+| Int4         |               11.82GB               |                17.23GB                |
+
+The above speed and memory profiling are conducted using [this script](https://qianwen-res.oss-cn-beijing.aliyuncs.com/profile_mm.py).
+<br>
 
 ## Demo
 
@@ -661,14 +725,17 @@ Then run the command below and click on the generated link:
 ```
 python web_demo_mm.py
 ```
+<br>
 
 ## FAQ
 
 If you meet problems, please refer to [FAQ](FAQ.md) and the issues first to search a solution before you launch a new issue.
+<br>
 
 ## License Agreement
 
 Researchers and developers are free to use the codes and model weights of both Qwen-VL and Qwen-VL-Chat. We also allow their commercial use. Check our license at [LICENSE](LICENSE) for more details.
+<br>
 
 ## Citation
 
@@ -682,6 +749,7 @@ If you find our paper and code useful in your research, please consider giving a
   year={2023}
 }
 ```
+<br>
 
 ## Contact Us
 
