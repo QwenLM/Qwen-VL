@@ -40,13 +40,13 @@ We release two models of the Qwen-VL series:
 We evaluated the model's abilities from two perspectives:
 
 1. **Standard Benchmarks**: We evaluate the model's basic task capabilities on four major categories of multimodal tasks:
-
+   
    - Zero-shot Captioning: Evaluate model's zero-shot image captioning ability on unseen datasets;
    - General VQA: Evaluate the general question-answering ability of pictures, such as the judgment, color, number, category, etc;
    - Text-based VQA: Evaluate the model's ability to recognize text in pictures, such as document QA, chart QA, etc;
    - Referring Expression Comprehension: Evaluate the ability to localize a target object in an image described by a referring expression.
 2. **TouchStone**: To evaluate the overall text-image dialogue capability and alignment level with humans, we have constructed a benchmark called TouchStone, which is based on scoring with GPT4 to evaluate the LVLM model.
-
+   
    - The TouchStone benchmark covers a total of 300+ images, 800+ questions, and 27 categories. Such as attribute-based Q&A, celebrity recognition, writing poetry, summarizing multiple images, product comparison, math problem solving, etc;
    - In order to break the current limitation of GPT4 in terms of direct image input, TouchStone provides fine-grained image annotations by human labeling. These detailed annotations, along with the questions and the model's output, are then presented to GPT4 for scoring.
    - The benchmark includes both English and Chinese versions.
@@ -413,7 +413,7 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
   <tr>
     <td rowspan="3">Specialist SOTAs<br>(Specialist/Finetuned)</td>
     <td>G-DINO-L</td>
-    <td>90.56  </td>
+    <td>90.56</td>
     <td>93.19</td>
     <td>88.24</td>
     <td>82.75</td>
@@ -461,9 +461,8 @@ TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities o
 
 #### English evaluation
 
-
 | Model           | Score |
-| ----------------- | ------- |
+| --------------- | ----- |
 | PandaGPT        | 488.5 |
 | MiniGPT4        | 531.7 |
 | InstructBLIP    | 552.4 |
@@ -474,9 +473,8 @@ TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities o
 
 #### Chinese evaluation
 
-
 | Model        | Score |
-| -------------- | ------- |
+| ------------ | ----- |
 | VisualGLM    | 247.1 |
 | Qwen-VL-Chat | 401.2 |
 
@@ -661,7 +659,9 @@ We provide a new solution based on [AutoGPTQ](https://github.com/PanQiWei/AutoGP
 Here we demonstrate how to use our provided quantized models for inference. Before you start, make sure you meet the requirements (e.g., torch 2.0 and above, transformers 4.32.0 and above, etc.) and install the required packages:
 
 ```bash
-pip install auto-gptq optimum
+pip install optimum
+git clone https://github.com/JustinLin610/AutoGPTQ.git & cd AutoGPTQ
+pip install -v .
 ```
 
 If you meet problems installing `auto-gptq`, we advise you to check out the official [repo](https://github.com/PanQiWei/AutoGPTQ) to find a wheel.
@@ -684,19 +684,17 @@ print(response)
 
 We illustrate the model performance of both BF16 and Int4 models on the benchmark **[TouchStone](https://github.com/OFA-Sys/TouchStone)**, and we find that the quantized model does not suffer from significant performance degradation. Results are shown below:
 
-
-| Quantization |  ZH.  |  EN  |
-| -------------- | :-----: | :-----: |
-| BF16         | 401.2 | 645.2 |
-| Int4         | 386.6 | 651.4 |
+| Quantization | ZH.        | EN            |
+| ------------ | :--------: | :-----------: | 
+| BF16         | 401.2      |    645.2      |
+| Int4         | 386.6      |    651.4      |
 
 ### Inference Speed
 
 We measured the average inference speed (tokens/s) of generating 1792 (2048-258) and 7934 (8192-258) tokens with the context of an image (which takes 258 tokens) under BF16 precision and Int4 quantization, respectively.
 
-
 | Quantization | Speed (2048 tokens) | Speed (8192 tokens) |
-| -------------- | :-------------------: | :-------------------: |
+| ------------ | :-----------------: | :-----------------: |
 | BF16         |        28.87        |        24.32        |
 | Int4         |        37.79        |        34.34        |
 
@@ -706,9 +704,8 @@ The profiling runs on a single A100-SXM4-80G GPU with PyTorch 2.0.1 and CUDA 11.
 
 We also profile the peak GPU memory usage for encoding 1792 (2048-258) tokens (including an image) as context (and generating single token) and generating 7934 (8192-258) tokens (with an image as context) under BF16 or Int4 quantization level, respectively. The results are shown below.
 
-
 | Quantization | Peak Usage for Encoding 2048 Tokens | Peak Usage for Generating 8192 Tokens |
-| -------------- | :-----------------------------------: | :-------------------------------------: |
+| ------------ | :---------------------------------: | :-----------------------------------: |
 | BF16         |               22.60GB               |                28.01GB                |
 | Int4         |               11.82GB               |                17.23GB                |
 
@@ -761,3 +758,4 @@ If you find our paper and code useful in your research, please consider giving a
 ## Contact Us
 
 If you are interested to leave a message to either our research team or product team, feel free to send an email to qianwen_opensource@alibabacloud.com.
+
