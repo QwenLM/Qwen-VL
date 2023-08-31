@@ -38,15 +38,10 @@ WORKDIR ${workdir}
 # copy model
 # RUN git clone https://huggingface.co/Qwen/Qwen-VL-Chat
 COPY --chown=20001:20001 Qwen-VL-Chat ./Qwen-VL-Chat
-
-# Install OpenAI API dependencies
-WORKDIR ${workdir}
-COPY requirements_openai_api.txt ./
-RUN pip install -r requirements_openai_api.txt
 # copy fonts
 COPY --chown=20001:20001 SimSun.ttf ./
 # copy main app
-COPY --chown=20001:20001 openai_api.py ./
+COPY --chown=20001:20001 web_demo_mm.py ./
 
-EXPOSE 8080
-CMD ["python3", "openai_api.py", "-c", "./Qwen-VL-Chat", "--server-name", "0.0.0.0", "--server-port", "8080"]
+EXPOSE 8000
+CMD ["python3", "web_demo_mm.py", "-c", "./Qwen-VL-Chat", "--server-name", "0.0.0.0", "--server-port", "8000"]
