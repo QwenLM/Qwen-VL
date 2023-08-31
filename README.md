@@ -684,7 +684,7 @@ print(response)
 
 We illustrate the model performance of both BF16 and Int4 models on the benchmark **[TouchStone](https://github.com/OFA-Sys/TouchStone)**, and we find that the quantized model does not suffer from significant performance degradation. Results are shown below:
 
-| Quantization | ZH.        | EN            |
+| Quantization | ZH         | EN            |
 | ------------ | :--------: | :-----------: | 
 | BF16         | 401.2      |    645.2      |
 | Int4         | 386.6      |    651.4      |
