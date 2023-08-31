@@ -663,7 +663,9 @@ else:
 ここでは、量子化されたモデルを推論に使用する方法を説明します。始める前に、必要な要件（torch 2.0以上、transformers 4.32.0以上など）を満たしていることを確認し、必要なパッケージをインストールしてください：
 
 ```bash
-pip install auto-gptq optimum
+pip install optimum
+git clone https://github.com/JustinLin610/AutoGPTQ.git & cd AutoGPTQ
+pip install -v .
 ```
 
 auto-gptq`のインストールに問題がある場合は、公式の[repo](https://github.com/PanQiWei/AutoGPTQ)をチェックして、ホイールを見つけることをお勧めする。

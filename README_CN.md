@@ -654,7 +654,9 @@ else:
 下文说明如何使用该量化模型。开始之前，请确保你满足要求（如torch2.0及以上、transformers 4.32.0及以上，等）并安装所需的代码库：
 
 ```bash
-pip install auto-gptq optimum
+pip install optimum
+git clone https://github.com/JustinLin610/AutoGPTQ.git & cd AutoGPTQ
+pip install -v .
 ```
 
 如遇到安装 `auto-gptq` 的问题，建议您前往官方[repo](https://github.com/PanQiWei/AutoGPTQ) 寻找合适的wheel。
