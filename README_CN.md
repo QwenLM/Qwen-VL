@@ -679,7 +679,7 @@ print(response)
 
 我们列出不同精度下模型在评测基准 **[TouchStone](https://github.com/OFA-Sys/TouchStone)** 上的表现，并发现量化模型并没有显著性能损失。结果如下所示：
 
-| Quantization | ZH.        | EN            |
+| Quantization | ZH         | EN            |
 | ------------ | :--------: | :-----------: | 
 | BF16         | 401.2      |    645.2      |
 | Int4         | 386.6      |    651.4      |
