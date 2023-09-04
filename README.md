@@ -492,7 +492,7 @@ Qwen-VL-Chat has achieved the best results in both Chinese and English alignment
 
 #### SEED-Bench
 
-[SEED-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard) is a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs, covering 12 evaluation dimensions including both **image** and **video** understanding. See more details on [HERE](eval_mm/seed_bench/EVAL_SEED.md).
+SEED-Bench is a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs, covering 12 evaluation dimensions including both **image** and **video** understanding. See more details on [HERE](eval_mm/seed_bench/EVAL_SEED.md).
 
 Qwen-VL and Qwen-VL-Chat achieve SOTAs on this benchmark.
 
