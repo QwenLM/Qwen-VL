@@ -72,13 +72,13 @@ ds_collections = {
         'max_new_tokens': 100,
     },
     'chartqa_test_human': {
-        'train': 'data/chartqa/train.jsonl',
+        'train': 'data/chartqa/train_human.jsonl',
         'test': 'data/chartqa/test_human.jsonl',
         'metric': 'relaxed_accuracy',
         'max_new_tokens': 100,
     },
     'chartqa_test_augmented': {
-        'train': 'data/chartqa/train.jsonl',
+        'train': 'data/chartqa/train_augmented.jsonl',
         'test': 'data/chartqa/test_augmented.jsonl',
         'metric': 'relaxed_accuracy',
         'max_new_tokens': 100,
@@ -101,7 +101,7 @@ ds_collections = {
         'metric': 'accuracy',
         'max_new_tokens': 100,
     },
-    'ai2diagram': {
+    'ai2diagram_test': {
         'train': 'data/ai2diagram/train.jsonl',
         'test': 'data/ai2diagram/test.jsonl',
         'metric': 'accuracy',
@@ -333,7 +333,7 @@ if __name__ == '__main__':
                     'answer': answer,
                     'annotation': annotation,
                 })
-            elif args.dataset in ['ai2diagram']:
+            elif args.dataset in ['ai2diagram_test']:
                 outputs.append({
                     'image': question_id,
                     'answer': answer,
