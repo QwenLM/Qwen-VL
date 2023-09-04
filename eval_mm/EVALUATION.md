@@ -306,6 +306,167 @@ python -m torch.distributed.launch --use-env \
 
 </details>
 
+### [ChartQA](https://aclanthology.org/2022.findings-acl.177/)
+
+<details>
+<summary>Data Preparation</summary>
+
+```bash
+mkdir -p data/chartqa && cd data/chartqa
+
+# download images from https://drive.google.com/file/d/1Lm_w6zeET1Hyl_9ks6w5nEsgpoyPHalV/view
+
+# download converted files
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/chartqa/train_human.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/chartqa/train_augmented.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/chartqa/test_human.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/chartqa/test_augmented.jsonl
+
+cd ../..
+```
+
+</details>
+
+<details>
+<summary>Evaluate</summary>
+
+```bash
+checkpoint=/PATH/TO/CHECKPOINT
+for ds in "chartqa_test_human" "chartqa_test_augmented"
+    python -m torch.distributed.launch --use-env \
+        --nproc_per_node ${NPROC_PER_NODE:-8} \
+        --nnodes ${WORLD_SIZE:-1} \
+        --node_rank ${RANK:-0} \
+        --master_addr ${MASTER_ADDR:-127.0.0.1} \
+        --master_port ${MASTER_PORT:-12345} \
+        evaluate_vqa.py \
+        --checkpoint $checkpoint \
+        --dataset $ds \
+        --batch-size 8 \
+        --num-workers 2
+```
+
+</details>
+
+### [GQA](https://cs.stanford.edu/people/dorarad/gqa/about.html)
+
+<details>
+<summary>Data Preparation</summary>
+
+```bash
+mkdir -p data/gqa && cd data/gqa
+
+# download images
+wget https://downloads.cs.stanford.edu/nlp/data/gqa/images.zip
+unzip images.zip
+
+# download converted files
+https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/gqa/test_balanced.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/gqa/train_balanced.jsonl
+
+cd ../..
+```
+</details>
+
+<details>
+<summary>Evaluate</summary>
+
+```bash
+checkpoint=/PATH/TO/CHECKPOINT
+ds="gqa_testdev"
+python -m torch.distributed.launch --use-env \
+    --nproc_per_node ${NPROC_PER_NODE:-8} \
+    --nnodes ${WORLD_SIZE:-1} \
+    --node_rank ${RANK:-0} \
+    --master_addr ${MASTER_ADDR:-127.0.0.1} \
+    --master_port ${MASTER_PORT:-12345} \
+    evaluate_vqa.py \
+    --checkpoint $checkpoint \
+    --dataset $ds \
+    --batch-size 8 \
+    --num-workers 2
+```
+
+</details>
+
+### [OCRVQA](https://ocr-vqa.github.io/)
+
+<details>
+<summary>Data Preparation</summary>
+
+```bash
+mkdir -p data/ocrvqa && cd data/ocrvqa
+
+# download images by following instructions at https://ocr-vqa.github.io/kvqa_ProjectFiles/README.txt
+
+# download converted files
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/ocrvqa/ocrvqa_train.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/ocrvqa/ocrvqa_val.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/ocrvqa/ocrvqa_test.jsonl
+
+cd ../..
+```
+</details>
+
+<details>
+<summary>Evaluate</summary>
+
+```bash
+checkpoint=/PATH/TO/CHECKPOINT
+ds="ocrvqa_test"
+python -m torch.distributed.launch --use-env \
+    --nproc_per_node ${NPROC_PER_NODE:-8} \
+    --nnodes ${WORLD_SIZE:-1} \
+    --node_rank ${RANK:-0} \
+    --master_addr ${MASTER_ADDR:-127.0.0.1} \
+    --master_port ${MASTER_PORT:-12345} \
+    evaluate_vqa.py \
+    --checkpoint $checkpoint \
+    --dataset $ds \
+    --batch-size 8 \
+    --num-workers 2
+```
+</details>
+
+### [AI2Diagram](https://allenai.org/data/diagrams)
+
+<details>
+<summary>Data Preparation</summary>
+
+```bash
+mkdir -p data/ai2diagram && cd data/ai2diagram
+
+# download images
+wget https://ai2-public-datasets.s3.amazonaws.com/diagrams/ai2d-all.zip
+
+# download converted files
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/ai2diagram/train.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/ai2diagram/test.jsonl
+
+cd ../..
+```
+</details>
+
+<details>
+<summary>Evaluate</summary>
+
+```bash
+checkpoint=/PATH/TO/CHECKPOINT
+ds="ai2diagram_test"
+python -m torch.distributed.launch --use-env \
+    --nproc_per_node ${NPROC_PER_NODE:-8} \
+    --nnodes ${WORLD_SIZE:-1} \
+    --node_rank ${RANK:-0} \
+    --master_addr ${MASTER_ADDR:-127.0.0.1} \
+    --master_port ${MASTER_PORT:-12345} \
+    evaluate_vqa.py \
+    --checkpoint $checkpoint \
+    --dataset $ds \
+    --batch-size 8 \
+    --num-workers 2
+```
+</details>
+
 ### [ScienceQA](https://github.com/lupantech/ScienceQA)
 
 <details>
