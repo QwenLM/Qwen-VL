@@ -37,6 +37,7 @@
 
 ## 新闻
 
+* 2023年9月4日 在社区多模态通用模型榜单 [SEED-Bench](eval_mm/seed_bench/EVAL_SEED.md) 上取得了图像理解和视频理解的当前最好结果。
 * 2023年9月1日 发布[TouchStone](https://github.com/OFA-Sys/TouchStone) 测评, 这是一个综合评估LVLM能力的测评,它不仅考察模型的视觉描述和推理能力，还包括根据视觉内容的文学创作能力。同时它是将多模态信息用文本表述并用LLMs进行评估的方法。
 * 2023年8月31日 发布Qwen-VL-Chat量化模型，**Qwen-VL-Chat-Int4**,该模型显存占用低，推理速度相比半精度模型显著提升，在基准评测上效果损失较小。
 * 2023年8月22日 在魔搭社区（ModelScope）和Hugging Face同步推出Qwen-VL和Qwen-VL-Chat模型。同时，我们提供一个[论文](https://arxiv.org/abs/2308.12966)介绍了相关的模型结构、训练细节和模型表现。
@@ -488,6 +489,16 @@ TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力
 
 Qwen-VL-Chat 模型在中英文的对齐评测中均取得当前 LVLM 模型下的最好结果。
 <br>
+
+### 其它榜单测评
+
+#### SEED-Bench
+
+SEED-Bench是一个包含1.9万选择题的多模态基准测评，通过人工注释的结果评估多模态大模型，涵盖12个评估维度，包括**图像和视频理解**。Qwen-VL和Qwen-VL- chat在这个基准上实现了SOTAs。完整复现[见此](eval_mm/seed_bench/EVAL_SEED.md)。
+
+<p align="center">
+    <img src="eval_mm/seed_bench/leaderboard.jpg"/>
+<p>
 
 ## 部署要求
 
