@@ -486,7 +486,6 @@ TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities o
 | Qwen-VL-Chat | 401.2 |
 
 Qwen-VL-Chat has achieved the best results in both Chinese and English alignment evaluation.
-<be>
 
 ### Other Benchmarks
 
