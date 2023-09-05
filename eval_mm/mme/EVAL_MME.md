@@ -8,7 +8,7 @@ Perception Evaluation
 
 | Rank |      Model      |          Version         |  Score  |
 |:----:|:---------------:|:------------------------:|:-------:|
-|   1  | **Qwen-VL-Chat**|        **Qwen-7B**       | **1487.57** |
+|   1  | **[Qwen-VL-Chat](https://github.com/QwenLM/Qwen-VL/)**|        **[Qwen-7B](https://github.com/QwenLM/Qwen-7B)**       | **1487.57** |
 |   2  |    Skywork-MM   |      Skywork-MM-13B      | 1419.08 |
 |   3  |      MMICL      |         FlanT5xxl        | 1376.00 |
 |   4  |       Lynx      |         vicuna-7b        | 1373.23 |
@@ -18,7 +18,7 @@ Cognition Evaluation
 
 | Rank |       Model      |     Version    |    Score   |
 |:----:|:----------------:|:--------------:|:----------:|
-|   1  | **Qwen-VL-Chat** |   **Qwen-7B**  | **360.71** |
+|   1  | **[Qwen-VL-Chat](https://github.com/QwenLM/Qwen-VL/)** |   **[Qwen-7B](https://github.com/QwenLM/Qwen-7B)**  | **360.71** |
 |   2  |       MMICL      |    FlanT5xxl   |   360.36   |
 |   3  |    Skywork-MM    | Skywork-MM-13B |   356.43   |
 |   4  |       BLIVA      |    FlanT5xxl   |   331.43   |
