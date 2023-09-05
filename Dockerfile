@@ -37,7 +37,16 @@ RUN useradd -r -m appuser -u 20001 -g 0
 WORKDIR ${workdir}
 # copy model
 # RUN git clone https://huggingface.co/Qwen/Qwen-VL-Chat
-COPY --chown=20001:20001 Qwen-VL-Chat ./Qwen-VL-Chat
+# COPY --chown=20001:20001 Qwen-VL-Chat ./Qwen-VL-Chat
+# RUN git clone https://huggingface.co/Qwen/Qwen-VL-Chat-Int4
+COPY --chown=20001:20001 Qwen-VL-Chat-Int4 ./Qwen-VL-Chat-Int4
+
+# Install AutoGPTQ
+RUN pip install optimum
+# RUN git clone https://github.com/JustinLin610/AutoGPTQ.git && \
+#     cd AutoGPTQ && \
+#     pip install -v .
+RUN pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu117/
 
 # Install OpenAI API dependencies
 WORKDIR ${workdir}
@@ -49,4 +58,5 @@ COPY --chown=20001:20001 SimSun.ttf ./
 COPY --chown=20001:20001 openai_api.py ./
 
 EXPOSE 8080
-CMD ["python3", "openai_api.py", "-c", "./Qwen-VL-Chat", "--server-name", "0.0.0.0", "--server-port", "8080"]
+# CMD ["python3", "openai_api.py", "-c", "./Qwen-VL-Chat", "--server-name", "0.0.0.0", "--server-port", "8080"]
+CMD ["python3", "openai_api.py", "-c", "./Qwen-VL-Chat-Int4", "--server-name", "0.0.0.0", "--server-port", "8080"]

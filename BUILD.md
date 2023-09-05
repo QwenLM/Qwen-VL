@@ -26,6 +26,20 @@ docker build -t qwen-vl-chat:openai --platform linux/amd64 -f Dockerfile.qwenope
 docker run -it --gpus all -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name qwen-vl-chat -p 8080:8080 --user=20001:20001 --platform linux/amd64 qwen-vl-chat:openai
 ```
 
+## qwen-int4 openai api
+
+### build
+
+```
+docker build -t qwen-vl-chat:int4-openai --platform linux/amd64 -f Dockerfile.qwenint4openai . 
+```
+
+### run
+
+```
+docker run -it --gpus all -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name qwen-vl-chat-int4 -p 8080:8080 --user=20001:20001 --platform linux/amd64 qwen-vl-chat:int4-openai
+```
+
 ## whisper openai api
 
 ### build
