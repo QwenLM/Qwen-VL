@@ -59,7 +59,7 @@ We evaluated the model's abilities from three perspectives:
    - In order to break the current limitation of GPT4 in terms of direct image input, TouchStone provides fine-grained image annotations by human labeling. These detailed annotations, along with the questions and the model's output, are then presented to GPT4 for scoring.
    - The benchmark includes both English and Chinese versions.
   
-3. **Other Multimodal Benchmark**: We also evaluated our model's capabilities in other multimodal benchmarks:
+3. **Other Multimodal Benchmarks**: We also evaluated our model's capabilities in other multimodal benchmarks:
 
    - [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. Qwen-VL-Chat achieves SOTAs on both perception and cognition tracks.
    - [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs. Qwen series achieves SOTAs on this benchmark.
