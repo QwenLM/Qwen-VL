@@ -36,14 +36,16 @@ We release two models of the Qwen-VL series:
   <br>
 
 ## News and Updates
-* 2023.9.1 We release the [TouchStone](https://github.com/OFA-Sys/TouchStone) Evaluation, which is a comprehensive assessment of multimodal language models, encompassing not only basic recognition and comprehension but also extending to literary creation. By using strong LLMs as judges and converting multimodal information into text.
-* 2023.8.31 We release the Int4 quantized model for Qwen-VL-Chat, **Qwen-VL-Chat-Int4**, which requires low memory costs but achieves improved inference speed. Besides, there is no significant performance degradation on the benchmark evaluation.
-* 2023.8.22 We release both **Qwen-VL** and **Qwen-VL-Chat** on ModelScope and Hugging Face. We also provide a [paper](https://arxiv.org/abs/2308.12966) for more details about the model, including training details and model performance.
+* ```2023.9.5``` 👏👏👏 Qwen-VL-Chat achieves SOTAs on [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. It measures both perception and cognition abilities on a total of 14 subtasks.
+* ```2023.9.4``` ⭐⭐⭐ Qwen-VL series achieve SOTAs on [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs including both image and video understanding.
+* ```2023.9.1``` 🔥🔥🔥 We release the [TouchStone](https://github.com/OFA-Sys/TouchStone) Evaluation, which is a comprehensive assessment of multimodal language models, encompassing not only basic recognition and comprehension but also extending to literary creation. By using strong LLMs as judges and converting multimodal information into text.
+* ```2023.8.31``` 🌟🌟🌟 We release the Int4 quantized model for Qwen-VL-Chat, **Qwen-VL-Chat-Int4**, which requires low memory costs but achieves improved inference speed. Besides, there is no significant performance degradation on the benchmark evaluation.
+* ```2023.8.22``` 🎉🎉🎉 We release both **Qwen-VL** and **Qwen-VL-Chat** on ModelScope and Hugging Face. We also provide a [paper](https://arxiv.org/abs/2308.12966) for more details about the model, including training details and model performance.
 <br>
 
 ## Evaluation
 
-We evaluated the model's abilities from two perspectives:
+We evaluated the model's abilities from three perspectives:
 
 1. **Standard Benchmarks**: We evaluate the model's basic task capabilities on four major categories of multimodal tasks:
    
@@ -51,11 +53,16 @@ We evaluated the model's abilities from two perspectives:
    - General VQA: Evaluate the general question-answering ability of pictures, such as the judgment, color, number, category, etc;
    - Text-based VQA: Evaluate the model's ability to recognize text in pictures, such as document QA, chart QA, etc;
    - Referring Expression Comprehension: Evaluate the ability to localize a target object in an image described by a referring expression.
-2. **TouchStone**: To evaluate the overall text-image dialogue capability and alignment level with humans, we have constructed a benchmark called TouchStone, which is based on scoring with GPT4 to evaluate the LVLM model.
+2. **TouchStone**: To evaluate the overall text-image dialogue capability and alignment level with humans, we have constructed a benchmark called [TouchStone](https://github.com/OFA-Sys/TouchStone), which is based on scoring with GPT4 to evaluate the LVLM model.
    
    - The TouchStone benchmark covers a total of 300+ images, 800+ questions, and 27 categories. Such as attribute-based Q&A, celebrity recognition, writing poetry, summarizing multiple images, product comparison, math problem solving, etc;
    - In order to break the current limitation of GPT4 in terms of direct image input, TouchStone provides fine-grained image annotations by human labeling. These detailed annotations, along with the questions and the model's output, are then presented to GPT4 for scoring.
    - The benchmark includes both English and Chinese versions.
+  
+3. **Other Multimodal Benchmarks**: We also evaluated our model's capabilities in other multimodal benchmarks:
+
+   - [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. Qwen-VL-Chat achieves SOTAs on both perception and cognition tracks.
+   - [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs. Qwen series achieves SOTAs on this benchmark.
 
 The results of the evaluation are as follows:
 
@@ -485,7 +492,31 @@ TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities o
 | Qwen-VL-Chat | 401.2 |
 
 Qwen-VL-Chat has achieved the best results in both Chinese and English alignment evaluation.
-<br>
+
+### Other Benchmarks
+
+#### MME Benchmark
+
+[MME](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) is a comprehensive evaluation benchmark for multimodal large language models. It measures both perception and cognition abilities on a total of 14 subtasks, including existence, count, position, color, poster, celebrity, scene, landmark, artwork, OCR, commonsense reasoning, numerical calculation, text translation, and code reasoning.
+
+Qwen-VL-Chat achieves SOTAs on both perception and cognition evaluation. See more details on [HERE](eval_mm/mme/EVAL_MME.md).
+
+<p align="center">
+    <img src="eval_mm/mme/perception.jpg" width="600"/>
+<p>
+<p align="center">
+    <img src="eval_mm/mme/cognition.jpg" width="600"/>
+<p>
+
+#### SEED-Bench
+
+[SEED-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard) is a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs, covering 12 evaluation dimensions including both **image** and **video** understanding. See more details on [HERE](eval_mm/seed_bench/EVAL_SEED.md).
+
+Qwen-VL and Qwen-VL-Chat achieve SOTAs on this benchmark.
+
+<p align="center">
+    <img src="eval_mm/seed_bench/leaderboard.jpg"/>
+<p>
 
 ## Requirements
 
