@@ -45,7 +45,7 @@ We release two models of the Qwen-VL series:
 
 ## Evaluation
 
-We evaluated the model's abilities from two perspectives:
+We evaluated the model's abilities from three perspectives:
 
 1. **Standard Benchmarks**: We evaluate the model's basic task capabilities on four major categories of multimodal tasks:
    
@@ -53,11 +53,16 @@ We evaluated the model's abilities from two perspectives:
    - General VQA: Evaluate the general question-answering ability of pictures, such as the judgment, color, number, category, etc;
    - Text-based VQA: Evaluate the model's ability to recognize text in pictures, such as document QA, chart QA, etc;
    - Referring Expression Comprehension: Evaluate the ability to localize a target object in an image described by a referring expression.
-2. **TouchStone**: To evaluate the overall text-image dialogue capability and alignment level with humans, we have constructed a benchmark called TouchStone, which is based on scoring with GPT4 to evaluate the LVLM model.
+2. **TouchStone**: To evaluate the overall text-image dialogue capability and alignment level with humans, we have constructed a benchmark called [TouchStone](https://github.com/OFA-Sys/TouchStone), which is based on scoring with GPT4 to evaluate the LVLM model.
    
    - The TouchStone benchmark covers a total of 300+ images, 800+ questions, and 27 categories. Such as attribute-based Q&A, celebrity recognition, writing poetry, summarizing multiple images, product comparison, math problem solving, etc;
    - In order to break the current limitation of GPT4 in terms of direct image input, TouchStone provides fine-grained image annotations by human labeling. These detailed annotations, along with the questions and the model's output, are then presented to GPT4 for scoring.
    - The benchmark includes both English and Chinese versions.
+  
+3. **Other Multimodal Benchmark**: We also evaluated our model's capabilities in other multimodal benchmarks:
+
+   - [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. Qwen-VL-Chat achieves SOTAs on both perception and cognition tracks.
+   - [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs. Qwen series achieves SOTAs on this benchmark.
 
 The results of the evaluation are as follows:
 
