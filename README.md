@@ -11,7 +11,7 @@
 <p align="center">
         Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ Qwen-VL-Chat-Int4 <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
 <br>
-<a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Paper</a>
+<a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Paper</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://github.com/camenduru/Qwen-VL-Chat-colab">Colab</a>
 </p>
 <br><br>
 
@@ -36,6 +36,7 @@ We release two models of the Qwen-VL series:
   <br>
 
 ## News and Updates
+* ```2023.9.8``` 👍👍👍 Thanks to [camenduru](https://github.com/camenduru) for contributing the wonderful [Colab](https://github.com/camenduru/Qwen-VL-Chat-colab). Everyone can use it as a local or online Qwen-VL-Chat-Int4 Demo tutorial on one 12G GPU.
 * ```2023.9.5``` 👏👏👏 Qwen-VL-Chat achieves SOTAs on [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. It measures both perception and cognition abilities on a total of 14 subtasks.
 * ```2023.9.4``` ⭐⭐⭐ Qwen-VL series achieve SOTAs on [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs including both image and video understanding.
 * ```2023.9.1``` 🔥🔥🔥 We release the [TouchStone](https://github.com/OFA-Sys/TouchStone) Evaluation, which is a comprehensive assessment of multimodal language models, encompassing not only basic recognition and comprehension but also extending to literary creation. By using strong LLMs as judges and converting multimodal information into text.

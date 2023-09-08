@@ -11,7 +11,7 @@
 <p align="center">
         Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ Qwen-VL-Chat-Int4 <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
 <br>
-<a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Paper</a>
+<a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Paper</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://github.com/camenduru/Qwen-VL-Chat-colab">Colab</a>
 </p>
 <br><br>
 
@@ -37,6 +37,7 @@
 
 ## 新闻
 
+* 2023年9月8日 感谢[camenduru](https://github.com/camenduru)贡献了[Colab](https://github.com/camenduru/Qwen-VL-Chat-colab)示例，每个人都可以以此为教程，在12G的GPU上做本地或在线的Demo。
 * 2023年9月5日 在社区多模态通用模型榜单 [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) 上取得了感知和认知双赛道的当前最好结果。
 * 2023年9月4日 在社区多模态通用模型榜单 [SEED-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard) 上取得了图像理解和视频理解的当前最好结果。
 * 2023年9月1日 发布[TouchStone](https://github.com/OFA-Sys/TouchStone) 测评, 这是一个综合评估LVLM能力的测评,它不仅考察模型的视觉描述和推理能力，还包括根据视觉内容的文学创作能力。同时它是将多模态信息用文本表述并用LLMs进行评估的方法。
