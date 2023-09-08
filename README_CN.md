@@ -37,7 +37,8 @@
 
 ## 新闻
 
-* 2023年9月4日 在社区多模态通用模型榜单 [SEED-Bench](eval_mm/seed_bench/EVAL_SEED.md) 上取得了图像理解和视频理解的当前最好结果。
+* 2023年9月5日 在社区多模态通用模型榜单 [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) 上取得了感知和认知双赛道的当前最好结果。
+* 2023年9月4日 在社区多模态通用模型榜单 [SEED-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard) 上取得了图像理解和视频理解的当前最好结果。
 * 2023年9月1日 发布[TouchStone](https://github.com/OFA-Sys/TouchStone) 测评, 这是一个综合评估LVLM能力的测评,它不仅考察模型的视觉描述和推理能力，还包括根据视觉内容的文学创作能力。同时它是将多模态信息用文本表述并用LLMs进行评估的方法。
 * 2023年8月31日 发布Qwen-VL-Chat量化模型，**Qwen-VL-Chat-Int4**,该模型显存占用低，推理速度相比半精度模型显著提升，在基准评测上效果损失较小。
 * 2023年8月22日 在魔搭社区（ModelScope）和Hugging Face同步推出Qwen-VL和Qwen-VL-Chat模型。同时，我们提供一个[论文](https://arxiv.org/abs/2308.12966)介绍了相关的模型结构、训练细节和模型表现。
@@ -45,7 +46,7 @@
 
 ## 评测
 
-我们从两个角度评测了两个模型的能力：
+我们从三个角度评测了模型的能力：
 
 1. 在**英文标准 Benchmark** 上评测模型的基础任务能力。目前评测了四大类多模态任务：
    
@@ -58,6 +59,11 @@
    - 评测基准总计涵盖 300+张图片、800+道题目、27个类别。包括基础属性问答、人物地标问答、影视作品问答、视觉推理、反事实推理、诗歌创作、故事写作，商品比较、图片解题等**尽可能广泛的类别**。
    - 为了弥补目前 GPT4 无法直接读取图片的缺陷，我们给所有的带评测图片提供了**人工标注的充分详细描述**，并且将图片的详细描述、问题和模型的输出结果一起交给 GPT4 打分。
    - 评测同时包含英文版本和中文版本。
+
+3. **其它多模态通用模型榜单**：我们也在其它多模态通用模型榜单中评测了模型的能力：
+   
+   - MME Benchmark: 是一个多模态大型语言模型的综合评价基准。它在总共14个子任务上评测**感知和认知**能力，Qwen-VL-Chat在这两个总维度上都实现了当前最好结果。
+   - SEED-Bench: 是一个包含1.9万选择题的多模态基准测评，通过人工注释的结果评估多模态大模型，涵盖12个评估维度，包括**图像和视频理解**，Qwen-VL和Qwen-VL-chat在这个基准上实现了当前最好结果。
 
 评测结果如下：
 
@@ -464,7 +470,7 @@ Qwen-VL在多个VL任务上相比目前SOTA的Generalist Models都有明显优�
 
 我们提供了以上**所有**评测脚本以供复现我们的实验结果。请阅读 [eval_mm/EVALUATION.md](eval_mm/EVALUATION.md) 了解更多信息。
 
-### 闲聊能力测评
+### 对话能力测评
 
 TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力和人类对齐水平的基准。它涵盖了 300+张图片、800+道题目、27个类别，包括基础属性、人物地标、视觉推理、诗歌创作、故事写作、商品比较、图片解题等**尽可能广泛的类别**。关于 TouchStone 的详细介绍，请参考[touchstone/README_CN.md](touchstone/README_CN.md)了解更多信息。
 
@@ -492,9 +498,20 @@ Qwen-VL-Chat 模型在中英文的对齐评测中均取得当前 LVLM 模型下�
 
 ### 其它榜单测评
 
+#### MME Benchmark
+
+MME是多模态大型语言模型的综合评价基准。它在总共14个子任务上评测**感知和认知**能力。Qwen-VL-Chat在这个基准上实现了SOTAs。完整复现[见此](eval_mm/mme/EVAL_MME.md).
+
+<p align="center">
+    <img src="eval_mm/mme/perception.jpg" width="600"/>
+<p>
+<p align="center">
+    <img src="eval_mm/mme/cognition.jpg" width="600"/>
+<p>
+
 #### SEED-Bench
 
-SEED-Bench是一个包含1.9万选择题的多模态基准测评，通过人工注释的结果评估多模态大模型，涵盖12个评估维度，包括**图像和视频理解**。Qwen-VL和Qwen-VL- chat在这个基准上实现了SOTAs。完整复现[见此](eval_mm/seed_bench/EVAL_SEED.md)。
+SEED-Bench是一个包含1.9万选择题的多模态基准测评，通过人工注释的结果评估多模态大模型，涵盖12个评估维度，包括**图像和视频理解**。Qwen-VL和Qwen-VL-chat在这个基准上实现了SOTAs。完整复现[见此](eval_mm/seed_bench/EVAL_SEED.md)。
 
 <p align="center">
     <img src="eval_mm/seed_bench/leaderboard.jpg"/>
