@@ -306,6 +306,50 @@ python -m torch.distributed.launch --use-env \
 
 </details>
 
+### [DocVQA](https://www.docvqa.org/datasets)
+
+<details>
+<summary>Data Preparation</summary>
+
+```bash
+mkdir -p data/docvqa && cd data/docvqa
+
+# download images and annotations from https://www.docvqa.org/datasets
+
+# download converted files
+# train
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/docvqa/train.jsonl
+# val
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/docvqa/val.jsonl
+# test
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/docvqa/test.jsonl
+cd ../..
+```
+
+</details>
+
+<details>
+<summary>Evaluation</summary>
+
+```bash
+# evaluate vqa score on docvqa val split
+ds="docvqa_val"
+checkpoint=/PATH/TO/CHECKPOINT
+python -m torch.distributed.launch --use-env \
+    --nproc_per_node ${NPROC_PER_NODE:-8} \
+    --nnodes ${WORLD_SIZE:-1} \
+    --node_rank ${RANK:-0} \
+    --master_addr ${MASTER_ADDR:-127.0.0.1} \
+    --master_port ${MASTER_PORT:-12345} \
+    evaluate_vqa.py \
+    --checkpoint $checkpoint \
+    --dataset $ds \
+    --batch-size 8 \
+    --num-workers 2
+```
+
+</details>
+
 ### [ChartQA](https://aclanthology.org/2022.findings-acl.177/)
 
 <details>
