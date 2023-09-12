@@ -40,6 +40,8 @@ Qwen-VL シリーズの 2 つのモデルを公開します:
   <br>
 
 ## ニュースとアップデート
+* 2023.9.12 フルパラメータ微調整、LoRA、Q-LoRA を含む、Qwen-VL モデルの微調整をサポートするようになりました。
+* 2023.9.8 [Colab](https://github.com/camenduru/Qwen-VL-Chat-c​​olab) のサンプルを提供してくれた [camenduru](https://github.com/camenduru) に感謝します。これをチュートリアルとして使用して、12G GPU でローカルまたはオンラインのデモを行うことができます。
 * 2023.9.4 Qwen-VL シリーズは、画像とビデオの両方の理解を含むマルチモーダル LLM を評価するための、正確な人による注釈を備えた 19,000 個の多肢選択質問のマルチモーダル ベンチマークである [Seed-Bench](eval_mm/seed_bench/EVAL_SEED.md) で SOTA を達成します。
 * 2023.9.1 基本的な認識と理解だけでなく、文学創作までを含むマルチモーダル言語モデルの包括的な評価である [TouchStone](https://github.com/OFA-Sys/TouchStone) 評価をリリースします 。 強力な LLM を判定者として使用し、マルチモーダルな情報をテキストに変換します。
 * 2023.8.31 低メモリコストでありながら推論速度の向上を実現する Qwen-VL-Chat 用の Int4 量子化モデル **Qwen-VL-Chat-Int4** をリリースしました。 また、ベンチマーク評価においても大きなパフォーマンスの低下はありません。
@@ -733,6 +735,127 @@ BF16精度とInt4量子化の下で、画像（258トークンを要する）の
 
 上記のスピードとメモリーのプロファイリングは、[このスクリプト](https://qianwen-res.oss-cn-beijing.aliyuncs.com/profile_mm.py)を使用しています。
 <br>
+
+## ファインチューニング
+
+現在、公式のトレーニングスクリプト `finetune.py` を提供しています。さらに、finetune.pyのシェルスクリプトを提供し、finetune.pyを実行することで、finetune.pyを起動することができる。さらに、安心してファインチューニングを開始するためのシェルスクリプトも提供しています。このスクリプトは、[DeepSpeed](https://github.com/microsoft/DeepSpeed) および [FSDP](https://engineering.fb.com/2021/07/15/open-source/fsdp/) を使用したトレーニングをサポートします。弊社が提供するシェル・スクリプトは DeepSpeed を使用するため、事前に DeepSpeed をインストールすることをお勧めします：
+
+学習データを準備するには、すべてのサンプルをリストにまとめ、jsonファイルに保存する必要があります。各サンプルはidと会話リストで構成される辞書です。以下は1つのサンプルを含む単純なリストの例です：
+
+```json
+[
+  {
+    "id": "identity_0",
+    "conversations": [
+      {
+        "from": "user",
+        "value": "你好",
+      },
+      {
+        "from": "assistant",
+        "value": "我是Qwen-VL,一个支持视觉输入的大模型。"
+      }
+    ]
+  },
+  {
+    "id": "identity_1",
+    "conversations": [
+      {
+        "from": "user",
+        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？",
+      },
+      {
+        "from": "assistant",
+        "value": "图中是一只拉布拉多犬。。"
+      }
+      {
+        "from": "user",
+        "value": "框出图中的格子衬衫",
+      },
+      {
+        "from": "assistant",
+        "value": "<ref>格子衬衫</ref><box>(588,499),(725,789)</box>"
+      }
+    ]
+  },
+  { 
+    "id": "identity_2",
+    "conversations": [
+      {
+        "from": "user",
+        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪",
+      },
+      {
+        "from": "assistant",
+        "value": "第一张图片是重庆的城市天际线，第二张图片是北京的天际线。"
+      }
+    ]
+  },
+]
+```
+
+VL タスクの場合、`<img> </img> <ref> </ref> <box> </box>` などの特別なトークンが使用されます。
+
+画像は「画像 ID: `<img>img_path</img>\n{your prompt}`」として表されます。ここで、「id」は会話内の画像の位置を 1 から示します。「img_path」は ローカル ファイル パスまたは Web リンク。
+
+座標ボックスは `<box>(x1,y1),(x2,y2)</box>`・として表されます。ここで、`(x1, y1)` と `(x2, y2)` は範囲内の正規化された値です。 `[0, 1000)`。 対応するテキスト説明は `<ref>text_caption</ref>` によって識別できます。
+
+
+データ準備の後、提供されているシェルスクリプトを使って微調整を実行することができる。データファイルのパス `$DATA` を忘れずに指定してください。
+
+ファインチューニングのスクリプトを使用することで、以下のことが可能になる：
+- フルパラメーター・ファインチューニング
+- LoRA
+- Q-LoRA
+
+### フルパラメーター・ファインチューニング
+フルパラメータパラメータのファインチューニングを行うには、トレーニングプロセス全体ですべてのパラメータを更新する必要があります。トレーニングを開始するには、以下のスクリプトを実行します：
+
+```bash
+# 分散トレーニング。GPUメモリが不足するとトレーニングが破綻するため、シングルGPUのトレーニングスクリプトは提供していません。
+sh finetune/finetune_ds.sh
+```
+
+シェルスクリプトでは、正しいモデル名またはパス、データパス、出力ディレクトリを指定することを忘れないでください。変更したい場合は、引数 `--deepspeed` を削除するか、要件に基づいて DeepSpeed 設定 json ファイルを変更してください。さらに、このスクリプトは混合精度のトレーニングに対応しており、`--bf16 True` または `--fp16 True` を使用することができます。経験的に、あなたのマシンがbf16をサポートしている場合、私たちのプリトレーニングとアライメントを整合させるためにbf16を使用することをお勧めします。
+
+### LoRA
+同様に、LoRAを実行するには、以下のように別のスクリプトを使って実行する。始める前に、`peft`がインストールされていることを確認してください。また、モデル、データ、出力へのパスを指定する必要があります。学習済みモデルには絶対パスを使用することをお勧めします。なぜなら、LoRAはアダプタのみを保存し、アダプタ設定jsonファイルの絶対パスは、ロードする事前学習済みモデルを見つけるために使用されるからです。また、このスクリプトはbf16とfp16の両方をサポートしている。
+
+```bash
+# シングルGPUトレーニング
+sh finetune/finetune_lora_single_gpu.sh
+# 分散トレーニング
+sh finetune/finetune_lora_ds.sh
+```
+
+LoRA ([論文](https://arxiv.org/abs/2106.09685)) は、フルパラメーターによるファインチューニングと比較して、adapterのパラメーターを更新するだけで、元の大きな言語モデル層は凍結されたままである。そのため、メモリコストが大幅に削減でき、計算コストも削減できる。
+
+### Q-LoRA
+しかし、それでもメモリ不足に悩む場合は、Q-LoRA（[論文](https://arxiv.org/abs/2305.14314)）を検討することができます。これは、量子化されたラージ言語モデルと、ページド・アテンションなどの他のテクニックを使用し、さらに少ないメモリコストで実行することができます。Q-LoRAを実行するには、以下のスクリプトを直接実行してください：
+
+```bash
+# シングルGPUトレーニング
+sh finetune/finetune_qlora_single_gpu.sh
+# 分散トレーニング
+sh finetune/finetune_qlora_ds.sh
+```
+
+Q-LoRAについては、弊社が提供する量子化モデル、例えばQwen-7B-Chat-Int4をロードすることをお勧めします。ただし、フルパラメータ・ファインチューニングやLoRAとは異なり、Q-LoRAではfp16のみがサポートされる。
+
+LoRAとQ-LoRAの学習は、フルパラメータによるファインチューニングとは異なり、アダプターパラメータのみを保存する。仮にQwen-7Bから学習を開始したとすると、以下のようにファインチューニングされたモデルを読み込んで推論を行うことができる：
+
+```python
+from peft import AutoPeftModelForCausalLM
+
+model = AutoPeftModelForCausalLM.from_pretrained(
+    path_to_adapter, # path to the output directory
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+```
+
+シェルスクリプトは`torchrun`を使用してシングルGPUまたはマルチGPUトレーニングを実行します。そのため、分散トレーニングのための適切なハイパーパラメータをマシンに応じて指定する必要があります。
+<br><br>
 
 ## デモ
 

@@ -36,6 +36,7 @@ We release two models of the Qwen-VL series:
   <br>
 
 ## News and Updates
+* ```2023.9.12``` 😃😃😃 We now support finetuning on the Qwen-VL models, including full-parameter finetuning, LoRA and Q-LoRA.
 * ```2023.9.8``` 👍👍👍 Thanks to [camenduru](https://github.com/camenduru) for contributing the wonderful [Colab](https://github.com/camenduru/Qwen-VL-Chat-colab). Everyone can use it as a local or online Qwen-VL-Chat-Int4 Demo tutorial on one 12G GPU.
 * ```2023.9.5``` 👏👏👏 Qwen-VL-Chat achieves SOTAs on [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. It measures both perception and cognition abilities on a total of 14 subtasks.
 * ```2023.9.4``` ⭐⭐⭐ Qwen-VL series achieve SOTAs on [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs including both image and video understanding.
@@ -749,6 +750,130 @@ We also profile the peak GPU memory usage for encoding 1792 (2048-258) tokens (i
 
 The above speed and memory profiling are conducted using [this script](https://qianwen-res.oss-cn-beijing.aliyuncs.com/profile_mm.py).
 <br>
+
+## Finetuning
+
+Now we provide the official training script, `finetune.py`, for users to finetune the pretrained model for downstream applications in a simple fashion. Additionally, we provide shell scripts to launch finetuning with no worries. This script supports the training with DeepSpeed and FSDP. The shell scripts that we provide use DeepSpeed, and thus we advise you to install DeepSpeed before you start:
+
+```bash
+pip install deepspeed
+```
+
+### Data preparation
+To prepare your training data, you need to put all the samples into a list and save it to a json file. Each sample is a dictionary consisting of an id and a list for conversation. Below is a simple example list with 1 sample:
+```json
+[
+  {
+    "id": "identity_0",
+    "conversations": [
+      {
+        "from": "user",
+        "value": "你好",
+      },
+      {
+        "from": "assistant",
+        "value": "我是Qwen-VL,一个支持视觉输入的大模型。"
+      }
+    ]
+  },
+  {
+    "id": "identity_1",
+    "conversations": [
+      {
+        "from": "user",
+        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？",
+      },
+      {
+        "from": "assistant",
+        "value": "图中是一只拉布拉多犬。。"
+      }
+      {
+        "from": "user",
+        "value": "框出图中的格子衬衫",
+      },
+      {
+        "from": "assistant",
+        "value": "<ref>格子衬衫</ref><box>(588,499),(725,789)</box>"
+      }
+    ]
+  },
+  { 
+    "id": "identity_2",
+    "conversations": [
+      {
+        "from": "user",
+        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪",
+      },
+      {
+        "from": "assistant",
+        "value": "第一张图片是重庆的城市天际线，第二张图片是北京的天际线。"
+      }
+    ]
+  },
+]
+```
+For the VL tasks, there are special tokens that are used, including `<img> </img> <ref> </ref> <box> </box>`.
+
+The picture is represented as `Picture id: <img>img_path</img>\n{your prompt}`, where `id` indicates the position of the image in the conversation, starting from 1. The "img_path" can be a local file path or a web link. 
+
+The coordinate box is expressed as `<box>(x1,y1),(x2,y2)</box>`·, where `(x1, y1)` and `(x2, y2)` are normalized values in the range `[0, 1000)`. Its corresponding text description can be identified by `<ref>text_caption</ref>`. 
+
+
+After data preparation, you can use the provided shell scripts to run finetuning. Remember to specify the path to the data file, `$DATA`.
+
+The finetuning scripts allow you to perform:
+- Full-parameter finetuning
+- LoRA
+- Q-LoRA
+
+### Full-parameter finetuning
+Full-parameter parameter finetuning requires updating all parameters of LLM in the whole training process. In our experiments, frozening the parameters of ViT during the fine-tuning phase achieves better performance. To launch your training, run the following script:
+
+```bash
+sh finetune/finetune.sh
+```
+
+Remember to specify the correct model name or path, the data path, as well as the output directory in the shell scripts. If you want to make changes, just remove the argument `--deepspeed` or make changes in the DeepSpeed configuration json file based on your requirements.
+
+### LoRA
+Similarly, to run LoRA, use another script to run as shown below. Before you start, make sure that you have installed `peft`. Also, you need to specify your paths to your model, data, and output. We advise you to use absolute path for your pretrained model. This is because LoRA only saves the adapter and the absolute path in the adapter configuration json file is used for finding out the pretrained model to load.
+
+```bash
+# Single GPU training
+sh finetune/finetune_lora_single_gpu.sh
+# Distributed training
+sh finetune/finetune_lora_ds.sh
+```
+
+In comparison with full-parameter finetuning, LoRA ([paper](https://arxiv.org/abs/2106.09685)) only updates the parameters of adapter layers but keeps the original large language model layers frozen. This allows much fewer memory costs and thus fewer computation costs. 
+
+### Q-LoRA
+However, if you still suffer from insufficient memory, you can consider Q-LoRA ([paper](https://arxiv.org/abs/2305.14314)), which uses the quantized large language model and other techniques such as paged attention to allow even fewer memory costs. To run Q-LoRA, directly run the following script:
+
+```bash
+# Single GPU training
+sh finetune/finetune_qlora_single_gpu.sh
+# Distributed training
+sh finetune/finetune_qlora_ds.sh
+```
+
+For Q-LoRA, we advise you to load our provided quantized model, e.g., Qwen-VL-Chat-Int4. 
+
+Different from full-parameter finetuning, the training of both LoRA and Q-LoRA only saves the adapter parameters. You can load the finetuned model for inference as shown below:
+
+
+```python
+from peft import AutoPeftModelForCausalLM
+
+model = AutoPeftModelForCausalLM.from_pretrained(
+    path_to_adapter, # path to the output directory
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+```
+
+The shell scripts uses torchrun to run single-GPU or multi-GPU training. Therefore, you need to specify the proper hyperparameters for distributed training based on your machine. 
+
 
 ## Demo
 
