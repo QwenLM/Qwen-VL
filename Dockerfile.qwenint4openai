@@ -36,10 +36,8 @@ RUN useradd -r -m appuser -u 20001 -g 0
 
 WORKDIR ${workdir}
 # copy model
-# RUN git clone https://huggingface.co/Qwen/Qwen-VL-Chat
-# COPY --chown=20001:20001 Qwen-VL-Chat ./Qwen-VL-Chat
-# RUN git clone https://huggingface.co/Qwen/Qwen-VL-Chat-Int4
-COPY --chown=20001:20001 Qwen-VL-Chat-Int4 ./Qwen-VL-Chat-Int4
+RUN git clone https://huggingface.co/Qwen/Qwen-VL-Chat-Int4
+# COPY --chown=20001:20001 Qwen-VL-Chat-Int4 ./Qwen-VL-Chat-Int4
 
 # Install AutoGPTQ
 RUN pip install optimum
@@ -53,7 +51,8 @@ WORKDIR ${workdir}
 COPY requirements_openai_api.txt ./
 RUN pip install -r requirements_openai_api.txt
 # copy fonts
-COPY --chown=20001:20001 SimSun.ttf ./
+ADD --chown=20001:20001 https://github.com/StellarCN/scp_zh/raw/master/fonts/SimSun.ttf ./
+# COPY --chown=20001:20001 SimSun.ttf ./
 # copy main app
 COPY --chown=20001:20001 openai_api.py ./
 

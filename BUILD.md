@@ -9,7 +9,7 @@ docker build -t qwen-vl-chat:webdemo --platform linux/amd64 -f Dockerfile.qwende
 ### run
 
 ```
-docker run -it --gpus all -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name qwen-vl-chat -p 8000:8000 --user=20001:20001 --platform linux/amd64 qwen-vl-chat:webdemo
+docker run -it --gpus device=0 -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name qwen-vl-chat -p 8000:8000 --user=20001:20001 --platform linux/amd64 qwen-vl-chat:webdemo
 ```
 
 ## qwen openai api
@@ -23,7 +23,7 @@ docker build -t qwen-vl-chat:openai --platform linux/amd64 -f Dockerfile.qwenope
 ### run
 
 ```
-docker run -it --gpus all -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name qwen-vl-chat -p 8080:8080 --user=20001:20001 --platform linux/amd64 qwen-vl-chat:openai
+docker run -it --gpus device=0 -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name qwen-vl-chat -p 8080:8080 --user=20001:20001 --platform linux/amd64 qwen-vl-chat:openai
 ```
 
 ## qwen-int4 openai api
@@ -37,33 +37,5 @@ docker build -t qwen-vl-chat:int4-openai --platform linux/amd64 -f Dockerfile.qw
 ### run
 
 ```
-docker run -it --gpus all -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name qwen-vl-chat-int4 -p 8080:8080 --user=20001:20001 --platform linux/amd64 qwen-vl-chat:int4-openai
-```
-
-## whisper openai api
-
-### build
-
-```
-todo
-```
-
-### run
-
-```
-docker run -it --gpus all -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name whisper -p 8080:8080 --user=20001:20001 --platform linux/amd64 whisper:openai
-```
-
-## dall-e openai api
-
-### build
-
-```
-todo
-```
-
-### run
-
-```
-docker run -it --gpus all -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name dall-e -p 8080:8080 --user=20001:20001 --platform linux/amd64 dall-e:openai
+docker run -it --gpus device=0 -d --restart always -v /var/run/docker.sock:/var/run/docker.sock --name qwen-vl-chat-int4 -p 8080:8080 --user=20001:20001 --platform linux/amd64 qwen-vl-chat:int4-openai
 ```
