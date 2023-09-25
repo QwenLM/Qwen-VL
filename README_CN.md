@@ -478,22 +478,24 @@ TouchStone 是一个基于 GPT4 打分来评测 LVLM 模型的图文对话能力
 
 #### 英语
 
-| Model           | Score |
-| --------------- | ----- |
-| PandaGPT        | 488.5 |
-| MiniGPT4        | 531.7 |
-| InstructBLIP    | 552.4 |
-| LLaMA-AdapterV2 | 590.1 |
-| LLaVA           | 602.7 |
-| mPLUG-Owl       | 605.4 |
-| Qwen-VL-Chat    | 645.2 |
+| Model            | Score |
+| ---------------- | ----- |
+| PandaGPT         | 488.5 |
+| MiniGPT4         | 531.7 |
+| InstructBLIP     | 552.4 |
+| LLaMA-AdapterV2  | 590.1 |
+| LLaVA            | 602.7 |
+| mPLUG-Owl        | 605.4 |
+| Qwen-VL-Chat     | 645.2 |
+| Qwen-VL-Chat-1.1 | 711.6 |
 
 #### 中文
 
-| Model        | Score |
-| ------------ | ----- |
-| VisualGLM    | 247.1 |
-| Qwen-VL-Chat | 401.2 |
+| Model            | Score |
+| ---------------- | ----- |
+| VisualGLM        | 247.1 |
+| Qwen-VL-Chat     | 401.2 |
+| Qwen-VL-Chat-1.1 | 481.7 |
 
 Qwen-VL-Chat 模型在中英文的对齐评测中均取得当前 LVLM 模型下的最好结果。
 <br>
