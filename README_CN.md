@@ -36,6 +36,7 @@
   <br>
 
 ## 新闻
+* 2023年9月12日 更新Qwen-VL-Chat模型，该模型有更鲁棒的中文指令跟随，更好的网页和表格图片理解和问答能力以及更好的对话表现(Touchstone: 中文: 401.2->481.7, 英文: 645.2->711.6)。
 * 2023年9月12日 支持Qwen-VL和Qwen-VL-Chat的微调，其中包括全参数微调、LoRA以及Q-LoRA
 * 2023年9月8日 感谢[camenduru](https://github.com/camenduru)贡献了[Colab](https://github.com/camenduru/Qwen-VL-Chat-colab)示例，每个人都可以以此为教程，在12G的GPU上做本地或在线的Demo。
 * 2023年9月5日 在社区多模态通用模型榜单 [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) 上取得了感知和认知双赛道的当前最好结果。
