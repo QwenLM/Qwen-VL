@@ -481,22 +481,24 @@ TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities o
 
 #### English evaluation
 
-| Model           | Score |
-| --------------- | ----- |
-| PandaGPT        | 488.5 |
-| MiniGPT4        | 531.7 |
-| InstructBLIP    | 552.4 |
-| LLaMA-AdapterV2 | 590.1 |
-| LLaVA           | 602.7 |
-| mPLUG-Owl       | 605.4 |
-| Qwen-VL-Chat    | 645.2 |
+| Model            | Score |
+| ---------------- | ----- |
+| PandaGPT         | 488.5 |
+| MiniGPT4         | 531.7 |
+| InstructBLIP     | 552.4 |
+| LLaMA-AdapterV2  | 590.1 |
+| LLaVA            | 602.7 |
+| mPLUG-Owl        | 605.4 |
+| Qwen-VL-Chat     | 645.2 |
+| Qwen-VL-Chat-1.1 | 711.6 |
 
 #### Chinese evaluation
 
-| Model        | Score |
-| ------------ | ----- |
-| VisualGLM    | 247.1 |
-| Qwen-VL-Chat | 401.2 |
+| Model            | Score |
+| ---------------- | ----- |
+| VisualGLM        | 247.1 |
+| Qwen-VL-Chat     | 401.2 |
+| Qwen-VL-Chat-1.1 | 481.7 |
 
 Qwen-VL-Chat has achieved the best results in both Chinese and English alignment evaluation.
 
