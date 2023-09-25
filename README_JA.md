@@ -474,22 +474,24 @@ TouchStone は GPT4 によるスコアリングに基づくベンチマークで
 
 #### 英語
 
-| Model           | Score |
-| --------------- | ----- |
-| PandaGPT        | 488.5 |
-| MiniGPT4        | 531.7 |
-| InstructBLIP    | 552.4 |
-| LLaMA-AdapterV2 | 590.1 |
-| LLaVA           | 602.7 |
-| mPLUG-Owl       | 605.4 |
-| Qwen-VL-Chat    | 645.2 |
+| Model            | Score |
+| ---------------- | ----- |
+| PandaGPT         | 488.5 |
+| MiniGPT4         | 531.7 |
+| InstructBLIP     | 552.4 |
+| LLaMA-AdapterV2  | 590.1 |
+| LLaVA            | 602.7 |
+| mPLUG-Owl        | 605.4 |
+| Qwen-VL-Chat     | 645.2 |
+| Qwen-VL-Chat-1.1 | 711.6 |
 
 #### 中国語
 
-| Model        | Score |
-| ------------ | ----- |
-| VisualGLM    | 247.1 |
-| Qwen-VL-Chat | 401.2 |
+| Model            | Score |
+| ---------------- | ----- |
+| VisualGLM        | 247.1 |
+| Qwen-VL-Chat     | 401.2 |
+| Qwen-VL-Chat-1.1 | 481.7 |
 
 Qwen-VL-Chat は中国語と英語のアライメント評価で最高の結果を得ました。
 <br>
