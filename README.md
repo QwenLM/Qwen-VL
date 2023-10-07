@@ -880,6 +880,27 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 The shell scripts uses torchrun to run single-GPU or multi-GPU training. Therefore, you need to specify the proper hyperparameters for distributed training based on your machine. 
 
 
+### Profiling of Memory and Speed
+We profile the GPU memory and training speed of both LoRA and Q-LoRA in the setup of single-GPU training. In this test, we experiment on a single A100-SXM4-80G GPU, and we use CUDA 11.8 and Pytorch 2.0. We uniformly use a batch size of 1 and gradient accumulation of 8. Each sample contains an image. We profile the memory (GB) and speed (s/iter) of inputs of different lengths, namely 384, 512, 1024, and 2048. The statistics are listed below:
+
+<table>
+    <tr>
+ <th rowspan="2">Method</th><th colspan="4" align="center">Sequence Length</th>
+    </tr>
+    <tr>
+        <th align="center">384</th><th align="center">512</th><th align="center">1024</th><th align="center">2048</th>
+    </tr>
+    <tr>
+      <td>LoRA</td><td align="center">23.3G / 2.2s/it</td><td align="center">23.6G / 2.3s/it</td><td align="center">25.1G / 3.5s/it</td><td align="center">27.3G / 5.9s/it</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td align="center">17.0G / 4.2s/it</td><td align="center">17.2G / 4.5s/it</td><td align="center">18.2G / 5.5s/it</td><td align="center">19.3G / 7.9s/it</td>
+    </tr>
+
+</table>
+
+<br>
+
 ## Demo
 
 ### Web UI
