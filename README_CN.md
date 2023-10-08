@@ -838,6 +838,8 @@ sh finetune/finetune_lora_ds.sh
 
 与全参数微调不同，LoRA ([论文](https://arxiv.org/abs/2106.09685)) 只更新adapter层的参数而无需更新原有语言模型的参数。这种方法允许用户用更低的显存开销来训练模型，也意味着更小的计算开销。
 
+注意，如果你使用预训练模型进行LoRA微调，而非chat模型，模型的embedding和输出层的参数将被设为可训练的参数。这是因为预训练模型没有学习过ChatML格式中的特殊token，因此需要将这部分参数设为可训练才能让模型学会理解和预测这些token。这也意味着，假如你的训练引入新的特殊token，你需要通过代码中的`modules_to_save`将这些参数设为可训练的参数。如果你想节省显存占用，可以考虑使用chat模型进行LoRA微调，显存占用将大幅度降低。下文的显存占用和训练速度的记录将详细介绍这部分细节。
+
 ### Q-LoRA
 如果你依然遇到显存不足的问题，可以考虑使用Q-LoRA ([论文](https://arxiv.org/abs/2305.14314))。该方法使用4比特量化模型以及paged attention等技术实现更小的显存开销。运行Q-LoRA你只需运行如下脚本：
 
@@ -848,7 +850,7 @@ sh finetune/finetune_qlora_single_gpu.sh
 sh finetune/finetune_qlora_ds.sh
 ```
 
-我们建议你使用我们提供的Int4量化模型进行训练，即Qwen-VL-Chat-Int4。然而，与全参数微调以及LoRA不同，Q-LoRA仅支持fp16。
+我们建议你使用我们提供的Int4量化模型进行训练，即Qwen-VL-Chat-Int4。请**不要使用**非量化模型！与全参数微调以及LoRA不同，Q-LoRA仅支持fp16。此外，上述LoRA关于特殊token的问题在Q-LoRA依然存在。并且，Int4模型的参数无法被设为可训练的参数。所幸的是，我们只提供了Chat模型的Int4模型，因此你不用担心这个问题。但是，如果你执意要在Q-LoRA中引入新的特殊token，很抱歉，我们无法保证你能成功训练。
 
 与全参数微调不同，LoRA和Q-LoRA的训练只需存储adapter部分的参数。假如你需要使用LoRA训练后的模型，你需要使用如下方法。你可以用如下代码读取模型：
 
@@ -862,7 +864,47 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 ).eval()
 ```
 
-上述shell脚本使用`torchrun`来运行单GPU和多GPU训练。分布式训练需要根据你的需求和机器指定正确的分布式训练超参数。
+如果你觉得这样一步到位的方式让你很不安心或者影响你接入下游应用，你可以选择先合并并存储模型（LoRA支持合并，Q-LoRA不支持），再用常规方式读取你的新模型，示例如下：
+
+```python
+from peft import AutoPeftModelForCausalLM
+
+model = AutoPeftModelForCausalLM.from_pretrained(
+    path_to_adapter, # path to the output directory
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+
+merged_model = model.merge_and_unload()
+# max_shard_size and safe serialization are not necessary. 
+# They respectively work for sharding checkpoint and save the model to safetensors
+merged_model.save_pretrained(new_model_directory, max_shard_size="2048MB", safe_serialization=True)
+```
+
+注意：分布式训练需要根据你的需求和机器指定正确的分布式训练超参数。此外，你需要根据你的数据、显存情况和训练速度预期，使用`--model_max_length`设定你的数据长度。
+
+### 显存占用及训练速度
+下面记录Qwen_VL模型在单GPU使用LoRA（LoRA (Base)指的是embedding和输出层参与训练，而LoRA (Chat)则不优化这部分参数）和QLoRA时处理不同长度输入的显存占用和训练速度的情况。本次评测运行于单张A100-SXM4-80G GPU，使用CUDA 11.8和Pytorch 2.0。我们统一使用batch size为1，gradient accumulation为8的训练配置，每个样本包含一张图，分别记录输入长度分别为384、512、1024和2048的显存占用（GB）和训练速度（s/iter）。具体数值如下所示：
+
+<table>
+    <tr>
+ <th rowspan="2">Method</th><th colspan="4" align="center">Sequence Length</th>
+    </tr>
+    <tr>
+        <th align="center">384</th><th align="center">512</th><th align="center">1024</th><th align="center">2048</th>
+    </tr>
+    <tr>
+      <td>LoRA (Base)</td><td align="center">37.1G / 2.3s/it</td><td align="center">37.3G / 2.4s/it</td><td align="center">38.7G / 3.6s/it</td><td align="center">38.7G / 6.1s/it</td>
+    </tr>
+    <tr>
+      <td>LoRA (Chat)</td><td align="center">23.3G / 2.2s/it</td><td align="center">23.6G / 2.3s/it</td><td align="center">25.1G / 3.5s/it</td><td align="center">27.3G / 5.9s/it</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td align="center">17.0G / 4.2s/it</td><td align="center">17.2G / 4.5s/it</td><td align="center">18.2G / 5.5s/it</td><td align="center">19.3G / 7.9s/it</td>
+    </tr>
+
+</table>
+
 <br><br>
 ## Demo
 
@@ -898,7 +940,7 @@ python web_demo_mm.py
 
 ```BibTeX
 @article{Qwen-VL,
-  title={Qwen-VL: A Frontier Large Vision-Language Model with Versatile Abilities},
+  title={Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond},
   author={Bai, Jinze and Bai, Shuai and Yang, Shusheng and Wang, Shijie and Tan, Sinan and Wang, Peng and Lin, Junyang and Zhou, Chang and Zhou, Jingren},
   journal={arXiv preprint arXiv:2308.12966},
   year={2023}
