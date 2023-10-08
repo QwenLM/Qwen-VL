@@ -833,8 +833,11 @@ sh finetune/finetune_lora_ds.sh
 
 LoRA ([論文](https://arxiv.org/abs/2106.09685)) は、フルパラメーターによるファインチューニングと比較して、adapter のパラメーターを更新するだけで、元の大きな言語モデル層は凍結されたままである。そのため、メモリコストが大幅に削減でき、計算コストも削減できる。
 
+なお、チャットモデル（Qwen-VL-Chatなど）ではなく、ベース言語モデル（Qwen-VLなど）の微調整にLoRAを使用した場合、スクリプトは自動的に学習可能なパラメータとして埋め込み層と出力層を切り替えます。これは、ベースとなる言語モデルには、ChatMLフォーマットによってもたらされる特殊なトークンに関する知識がないためです。したがって、これらのレイヤーは、モデルがトークンを理解し予測するために更新される必要があります。別の言い方をすれば、もしLoRAで特殊なトークンを学習するのであれば、コード内で `modules_to_save` を設定することで、レイヤーを学習可能なパラメータに設定する必要があります。さらに、LoRAのメモリフットプリントは、このような学習可能なパラメータがある場合とない場合で、大きな開きがあることがわかります。そのため、メモリに問題がある場合は、LoRAのChatモデルを微調整することをお勧めします。詳細は以下のプロファイルを参照してください。
+
 ### Q-LoRA
 しかし、それでもメモリ不足に悩む場合は、Q-LoRA（[論文](https://arxiv.org/abs/2305.14314)）を検討することができます。これは、量子化されたラージ言語モデルと、ページド・アテンションなどの他のテクニックを使用し、さらに少ないメモリコストで実行することができます。Q-LoRA を実行するには、以下のスクリプトを直接実行してください：
+
 
 ```bash
 # シングルGPUトレーニング
@@ -856,6 +859,46 @@ model = AutoPeftModelForCausalLM.from_pretrained(
     trust_remote_code=True
 ).eval()
 ```
+アダプターをマージし、微調整したモデルをスタンドアロンモデルとして保存したい場合は（これは LoRA でのみ可能で、Q-LoRA からパラメータをマージすることはできません）、以下のコードを実行します：
+
+```python
+from peft import AutoPeftModelForCausalLM
+
+model = AutoPeftModelForCausalLM.from_pretrained(
+    path_to_adapter, # path to the output directory
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+
+merged_model = model.merge_and_unload()
+# max_shard_size and safe serialization are not necessary. 
+# They respectively work for sharding checkpoint and save the model to safetensors
+merged_model.save_pretrained(new_model_directory, max_shard_size="2048MB", safe_serialization=True)
+```
+
+注意：マルチGPUトレーニングの場合、分散トレーニング用の適切なハイパーパラメータをマシンに応じて指定する必要があります。また、データ、メモリフットプリント、トレーニング速度を考慮して、引数 `--model_max_length` で最大シーケンス長を指定することをお勧めします。
+
+
+### メモリと速度のプロファイリング
+シングルGPUトレーニングのセットアップにおいて、LoRA (LoRA (Base)はembeddingと出力層を学習させるが、LoRA (Chat)はembeddingと出力層を学習させない) とQ-LoRAのGPUメモリとトレーニング速度をプロファイリングする。このテストでは、シングルA100-SXM4-80G GPUで実験し、CUDA 11.8とPytorch 2.0を使用します。各サンプルには写真が含まれています。384、512、1024、2048という異なる長さの入力のメモリ（GB）と速度（s/iter）をプロファイリングします。統計量を以下に示す：
+<table>
+    <tr>
+ <th rowspan="2">Method</th><th colspan="4" align="center">Sequence Length</th>
+    </tr>
+    <tr>
+        <th align="center">384</th><th align="center">512</th><th align="center">1024</th><th align="center">2048</th>
+    </tr>
+    <tr>
+      <td>LoRA (Base)</td><td align="center">37.1G / 2.3s/it</td><td align="center">37.3G / 2.4s/it</td><td align="center">38.7G / 3.6s/it</td><td align="center">38.7G / 6.1s/it</td>
+    </tr>
+    <tr>
+      <td>LoRA (Chat)</td><td align="center">23.3G / 2.2s/it</td><td align="center">23.6G / 2.3s/it</td><td align="center">25.1G / 3.5s/it</td><td align="center">27.3G / 5.9s/it</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td align="center">17.0G / 4.2s/it</td><td align="center">17.2G / 4.5s/it</td><td align="center">18.2G / 5.5s/it</td><td align="center">19.3G / 7.9s/it</td>
+    </tr>
+
+</table>
 
 シェルスクリプトは `torchrun` を使用してシングル GPU またはマルチGPUトレーニングを実行します。そのため、分散トレーニングのための適切なハイパーパラメータをマシンに応じて指定する必要があります。
 <br><br>
@@ -894,7 +937,7 @@ python web_demo_mm.py
 
 ```BibTeX
 @article{Qwen-VL,
-  title={Qwen-VL: A Frontier Large Vision-Language Model with Versatile Abilities},
+  title={Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond},
   author={Bai, Jinze and Bai, Shuai and Yang, Shusheng and Wang, Shijie and Tan, Sinan and Wang, Peng and Lin, Junyang and Zhou, Chang and Zhou, Jingren},
   journal={arXiv preprint arXiv:2308.12966},
   year={2023}
