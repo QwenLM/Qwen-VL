@@ -773,7 +773,7 @@ To prepare your training data, you need to put all the samples into a list and s
     "conversations": [
       {
         "from": "user",
-        "value": "你好",
+        "value": "你好"
       },
       {
         "from": "assistant",
@@ -786,7 +786,7 @@ To prepare your training data, you need to put all the samples into a list and s
     "conversations": [
       {
         "from": "user",
-        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？",
+        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？"
       },
       {
         "from": "assistant",
@@ -794,7 +794,7 @@ To prepare your training data, you need to put all the samples into a list and s
       }
       {
         "from": "user",
-        "value": "框出图中的格子衬衫",
+        "value": "框出图中的格子衬衫"
       },
       {
         "from": "assistant",
@@ -807,7 +807,7 @@ To prepare your training data, you need to put all the samples into a list and s
     "conversations": [
       {
         "from": "user",
-        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪",
+        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪"
       },
       {
         "from": "assistant",
