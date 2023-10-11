@@ -775,8 +775,8 @@ print(response)
       },
       {
         "from": "assistant",
-        "value": "图中是一只拉布拉多犬。。"
-      }
+        "value": "图中是一只拉布拉多犬。"
+      },
       {
         "from": "user",
         "value": "框出图中的格子衬衫"
