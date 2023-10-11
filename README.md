@@ -790,8 +790,8 @@ To prepare your training data, you need to put all the samples into a list and s
       },
       {
         "from": "assistant",
-        "value": "图中是一只拉布拉多犬。。"
-      }
+        "value": "图中是一只拉布拉多犬。"
+      },
       {
         "from": "user",
         "value": "框出图中的格子衬衫"
