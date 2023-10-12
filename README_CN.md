@@ -799,7 +799,7 @@ print(response)
         "value": "第一张图片是重庆的城市天际线，第二张图片是北京的天际线。"
       }
     ]
-  },
+  }
 ]
 ```
 为针对多样的VL任务，我们增加了一下的特殊tokens： `<img> </img> <ref> </ref> <box> </box>`.
