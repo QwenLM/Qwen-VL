@@ -814,7 +814,7 @@ To prepare your training data, you need to put all the samples into a list and s
         "value": "第一张图片是重庆的城市天际线，第二张图片是北京的天际线。"
       }
     ]
-  },
+  }
 ]
 ```
 For the VL tasks, there are special tokens that are used, including `<img> </img> <ref> </ref> <box> </box>`.
