@@ -641,6 +641,28 @@ else:
 
 </details>
 
+
+In the event of a network issue while attempting to download model checkpoints and codes from HuggingFace, an alternative approach is to initially fetch the checkpoint from ModelScope and then load it from the local directory as outlined below:
+
+```python
+from modelscope import snapshot_download
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# Downloading model checkpoint to a local dir model_dir
+# model_dir = snapshot_download('qwen/Qwen-VL')
+model_dir = snapshot_download('qwen/Qwen-VL-Chat')
+
+
+# Loading local checkpoints
+# trust_remote_code is still set as True since we still load codes from local dir instead of transformers
+tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(
+    model_dir,
+    device_map="cuda",
+    trust_remote_code=True
+).eval()
+```
+
 #### 🤖 ModelScope
 
 ModelScope is an opensource platform for Model-as-a-Service (MaaS), which provides flexible and cost-effective model service to AI developers. Similarly, you can run the models with ModelScope as shown below:
