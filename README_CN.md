@@ -634,6 +634,27 @@ else:
     <img src="assets/demo_spotting_caption.jpg" width="500"/>
 <p>
 
+若在使用上述代码时由于各种原因无法从 HuggingFace 拉取模型和代码，可以先从 ModelScope 下载模型及代码至本地，再从本地加载模型：
+
+```python
+from modelscope import snapshot_download
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# Downloading model checkpoint to a local dir model_dir
+# model_dir = snapshot_download('qwen/Qwen-VL')
+model_dir = snapshot_download('qwen/Qwen-VL-Chat')
+
+
+# Loading local checkpoints
+# trust_remote_code is still set as True since we still load codes from local dir instead of transformers
+tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(
+    model_dir,
+    device_map="cuda",
+    trust_remote_code=True
+).eval()
+```
+
 #### 🤖 ModelScope
 
 魔搭（ModelScope）是开源的模型即服务共享平台，为泛AI开发者提供灵活、易用、低成本的一站式模型服务产品。使用ModelScope同样非常简单，代码如下所示：
