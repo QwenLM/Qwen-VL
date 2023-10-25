@@ -9,7 +9,7 @@ from transformers.generation import GenerationConfig
 
 # Function to check for unwanted elements in the caption
 def has_unwanted_elements(caption):
-    patterns = [r'<ref>.*?</ref>', r'<box>.*?</box>', r'\[\d+\]', r'\(\[\d+\]\)']
+    patterns = [r'<ref>.*?</ref>', r'<box>.*?</box>']
     return any(re.search(pattern, caption) for pattern in patterns)
 
 # Function to clean up the caption
