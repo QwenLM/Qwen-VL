@@ -1,38 +1,35 @@
 import os
 import re
-import shutil
 import torch
 import time
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.generation import GenerationConfig
+import argparse
 
-# Function to check for unwanted elements in the caption
 def has_unwanted_elements(caption):
     patterns = [r'<ref>.*?</ref>', r'<box>.*?</box>']
     return any(re.search(pattern, caption) for pattern in patterns)
 
-# Function to clean up the caption
 def clean_caption(caption):
     caption = re.sub(r'<ref>(.*?)</ref>', r'\1', caption)
     caption = re.sub(r'<box>.*?</box>', '', caption)
     return caption.strip()
 
-# Directory containing the images
-image_directory = '/path/to/img_dir/here'
+# Argument parsing
+parser = argparse.ArgumentParser(description='Image Captioning Script')
+parser.add_argument('--imgdir', type=str, default='img/dir/here', help='Path to image directory')
+parser.add_argument('--exist', type=str, choices=['skip', 'add', 'replace'], default='replace', help='Handling of existing txt files')
+args = parser.parse_args()
 
-# Supported image types
+image_directory = args.imgdir
 image_types = ['.png', '.jpg', '.jpeg', '.bmp', '.gif']
 
-# Initialize the model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL", device_map="cuda", trust_remote_code=True).eval()
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL-Chat-Int4", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat-Int4", device_map="cuda", trust_remote_code=True, use_flash_attn=True).eval()
 
-# First pass with initial seed
-torch.manual_seed(1234)
 files = [f for f in os.listdir(image_directory) if os.path.splitext(f)[1].lower() in image_types]
 
-# Initialize tqdm with custom settings
 pbar = tqdm(total=len(files), desc="Captioning", dynamic_ncols=True, position=0, leave=True)
 start_time = time.time()
 
@@ -40,23 +37,32 @@ print("Captioning phase:")
 for i in range(len(files)):
     filename = files[i]
     image_path = os.path.join(image_directory, filename)
+
+    # Check for existing txt file and handle based on the argument
+    txt_filename = os.path.splitext(filename)[0] + '.txt'
+    txt_path = os.path.join(image_directory, txt_filename)
     
+    if args.exist == 'skip' and os.path.exists(txt_path):
+        pbar.update(1)
+        continue
+    elif args.exist == 'add' and os.path.exists(txt_path):
+        with open(txt_path, 'r', encoding='utf-8') as f:
+            existing_content = f.read()
+
     query = tokenizer.from_list_format([
         {'image': image_path},
-        {'text': 'describe this image'},
+        {'text': 'describe this image in detail, as if you are an art critic in less than 35 words'},
     ])
-    
     response, _ = model.chat(tokenizer, query=query, history=None)
     
-    # If the caption has unwanted elements, clean it up
     if has_unwanted_elements(response):
         response = clean_caption(response)
     
-    # Save the cleaned caption to a text file in the main directory
-    txt_filename = os.path.splitext(filename)[0] + '.txt'
-    txt_path = os.path.join(image_directory, txt_filename)
     with open(txt_path, 'w', encoding='utf-8') as f:
-        f.write(response)
+        if args.exist == 'add' and os.path.exists(txt_path):
+            f.write(existing_content + "\n" + response)
+        else:
+            f.write(response)
 
     elapsed_time = time.time() - start_time
     images_per_sec = (i + 1) / elapsed_time
