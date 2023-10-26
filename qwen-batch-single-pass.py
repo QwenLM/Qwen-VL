@@ -43,7 +43,7 @@ for i in range(len(files)):
     
     query = tokenizer.from_list_format([
         {'image': image_path},
-        {'text': 'describe this image in detail, as if you are an art critic.'},
+        {'text': 'describe this image'},
     ])
     
     response, _ = model.chat(tokenizer, query=query, history=None)
