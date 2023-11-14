@@ -966,6 +966,65 @@ python web_demo_mm.py
 
 <br>
 
+### flask api
+
+We also provide a flask api for users to use our model. Before you start, make sure you install the following packages:
+
+
+
+```
+pip install flask
+```
+
+Then run the command below and you can use the API:
+
+```
+python flaskapi.py
+```
+#### python api request demo
+
+The following is a python demo for the API:
+
+
+
+```
+import json
+import requests
+
+data = {
+    "text": "这是什么",
+    "image_context": {
+        "image": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"
+    }
+}
+
+
+
+response = requests.post("http://127.0.0.1:5000/chat", json=data)
+response_json = response.json()
+chat_response = response_json.get("response", "")
+print(chat_response)
+
+```
+
+
+#### curl api request demo
+
+```
+curl -X POST \
+ -H "Content-Type: application/json" \
+ -d '{
+       "text": "这是什么", 
+       "image_context": {
+           "image": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"
+       }
+   }' \
+ http://127.0.0.1:5000/chat
+
+```
+
+<br>
+
 ## FAQ
 
 If you meet problems, please refer to [FAQ](FAQ.md) and the issues first to search a solution before you launch a new issue.
