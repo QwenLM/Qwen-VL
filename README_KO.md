@@ -1,5 +1,5 @@
 <p align="left">
-        <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp&nbsp ｜ &nbsp<a href="README_JA.md">日本語</a>&nbsp｜ &nbsp<a href="README_KO.md">한국어</a>&nbsp
+        <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp&nbsp ｜ &nbsp<a href="README_JA.md">日本語</a>&nbsp ｜ &nbsp<a href="README_KO.md">한국어</a>&nbsp
 </p>
 <br><br>
 
@@ -17,13 +17,14 @@
 
 ---
 
-**Qwen-VL** (Qwen Large Vision Language Model) is the multimodal version of the large model series, Qwen (abbr. Tongyi Qianwen), proposed by Alibaba Cloud. Qwen-VL accepts image, text, and bounding box as inputs, outputs text and bounding box. The features of Qwen-VL include:
 
-- **Strong performance**: It significantly surpasses existing open-sourced Large Vision Language Models (LVLM) under similar model scale on multiple English evaluation benchmarks (including Zero-shot Captioning, VQA, DocVQA, and Grounding).
-- **Multi-lingual LVLM supporting text recognition**: Qwen-VL naturally supports English, Chinese, and multi-lingual conversation, and it promotes end-to-end recognition of Chinese and English bi-lingual text in images.
-- **Multi-image interleaved conversations**: This feature allows for the input and comparison of multiple images, as well as the ability to specify questions related to the images and engage in multi-image storytelling.
-- **First generalist model supporting grounding in Chinese**: Detecting bounding boxes through open-domain language expression in both Chinese and English.
-- **Fine-grained recognition and understanding**: Compared to the 224\*224 resolution currently used by other open-sourced LVLM, the 448\*448 resolution promotes fine-grained text recognition, document QA, and bounding box annotation.
+**Qwen-VL**(Qwen Large Vision Language Model)은 알리바바 클라우드가 제안한 큰 모델 시리즈인 Qwen(약칭, Tongyi Qianwen)의 멀티모달 버전입니다. Qwen-VL은 이미지, 텍스트, 그리고 바운딩 박스를 입력으로 받아 텍스트와 바운딩 박스를 출력합니다. Qwen-VL의 특징은 다음과 같습니다.
+
+- **강력한 성능**: 동일한 모델 규모의 기존 공개된 대규모 시각 언어 모델(Large Vision Language Models, ㄴLVLM)보다 영어 평가 벤치마크(Zero-shot Captioning, VQA, DocVQA, Grounding 포함)에서 현저히 우수합니다.
+- **텍스트 인식을 지원하는 다국어 LVLM**: Qwen-VL은 자연스러운 영어, 중국어 및 다국어 대화를 지원하며, 이미지 내 중국어-영어 간 이중 언어 텍스트의 종단 간 인식을 개선했습니다.
+- **다중 이미지 교차 대화**: 이 기능은 여러 이미지의 입력과 비교뿐만 아니라 이미지와 관련된 질문을 지정하고 다중 이미지 스토리텔링에 참여할 수 있는 기능을 제공합니다.
+- **중국어에서 지상화를 지원하는 첫 번째 일반 모델**: 중국어와 영어의 개방형 언어 표현을 통해 바운딩 박스를 인식합니다.
+- **세밀한 인식 및 이해**: 다른 공개된 LVLM이 현재 사용하는 224\*224 해상도와 비교하여 448\*448 해상도는 세밀한 텍스트 인식, 문서 QA 및 바운딩 어노테이션을 개선했습니다.
 
 <br>
 <p align="center">
@@ -31,47 +32,49 @@
 <p>
 <br>
 
-We release two models of the Qwen-VL series:
+Qwen-VL 시리즈의 두 모델을 출시합니다.
 
-- Qwen-VL: The pre-trained LVLM model uses Qwen-7B as the initialization of the LLM, and [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) as the initialization of the visual encoder. And connects them with a randomly initialized cross-attention layer.
-- Qwen-VL-Chat: A multimodal LLM-based AI assistant, which is trained with alignment techniques. Qwen-VL-Chat supports more flexible interaction, such as multiple image inputs, multi-round question answering, and creative capabilities.
-  <br>
+- Qwen-VL: 사전 훈련된 LVLM 모델로, Qwen-7B를 LLM의 초기화에 사용하며, 시각 인코더의 초기화로는 [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip)를 사용하여, 무작위로 초기화된 교차 어텐션 레이어(randomly initialized cross-attention layer)에 연결합니다.
+- Qwen-VL-Chat: 정렬 기술로 훈련된 멀티모달 LLM 기반 AI 어시스턴트입니다. Qwen-VL-Chat은 여러 이미지 입력, 다중 라운드 질문 응답, 창의적 능력과 같은 더 유연한 상호작용을 지원합니다.
 
-## News and Updates
-* ```2023.9.25``` 🚀🚀🚀 We update Qwen-VL-Chat with more robust Chinese instruction-following ability, improved understanding of web pages and table images, and better dialogue performance (Touchstone: CN: 401.2->481.7, EN: 645.2->711.6).
-* ```2023.9.12``` 😃😃😃 We now support finetuning on the Qwen-VL models, including full-parameter finetuning, LoRA and Q-LoRA.
-* ```2023.9.8``` 👍👍👍 Thanks to [camenduru](https://github.com/camenduru) for contributing the wonderful [Colab](https://github.com/camenduru/Qwen-VL-Chat-colab). Everyone can use it as a local or online Qwen-VL-Chat-Int4 Demo tutorial on one 12G GPU.
-* ```2023.9.5``` 👏👏👏 Qwen-VL-Chat achieves SOTAs on [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. It measures both perception and cognition abilities on a total of 14 subtasks.
-* ```2023.9.4``` ⭐⭐⭐ Qwen-VL series achieve SOTAs on [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs including both image and video understanding.
-* ```2023.9.1``` 🔥🔥🔥 We release the [TouchStone](https://github.com/OFA-Sys/TouchStone) Evaluation, which is a comprehensive assessment of multimodal language models, encompassing not only basic recognition and comprehension but also extending to literary creation. By using strong LLMs as judges and converting multimodal information into text.
-* ```2023.8.31``` 🌟🌟🌟 We release the Int4 quantized model for Qwen-VL-Chat, **Qwen-VL-Chat-Int4**, which requires low memory costs but achieves improved inference speed. Besides, there is no significant performance degradation on the benchmark evaluation.
-* ```2023.8.22``` 🎉🎉🎉 We release both **Qwen-VL** and **Qwen-VL-Chat** on ModelScope and Hugging Face. We also provide a [paper](https://arxiv.org/abs/2308.12966) for more details about the model, including training details and model performance.
 <br>
+
+## 뉴스 및 업데이트
+* ```2023.9.25``` 🚀🚀🚀 Qwen-VL-Chat을 더욱 강력한 중국어 지시 수행 능력, 웹페이지 및 표 이미지에 대한 개선된 이해력, 더 나은 대화 성능(TouchStone: CN: 401.2->481.7, EN: 645.2->711.6)으로 업데이트 되었습니다.
+* ```2023.9.12``` 😃😃😃 이제 Qwen-VL 모델에 대한 파인튜닝을 지원합니다. 이에는 전체 파라미터 파인튜닝, LoRA 및 Q-LoRA가 포함됩니다.
+* ```2023.9.8``` 👍👍👍 camenduru가 멋진 Colab을 기여해 주셔서 감사합니다. 모두가 12G GPU에서 로컬 또는 온라인 Qwen-VL-Chat-Int4 데모 튜토리얼로 사용할 수 있습니다.
+* ```2023.9.5``` 👏👏👏 Qwen-VL-Chat은 MME Benchmark, 멀티모달 대형 언어 모델을 위한 종합적인 평가 벤치마크에서 SOTAs를 달성했습니다. 이는 총 14개의 하위 과제에서 인식과 인지 능력을 모두 측정합니다.
+* ```2023.9.4``` ⭐⭐⭐ Qwen-VL 시리즈는 Seed-Bench, 이미지 및 비디오 이해를 평가하는 19K 다중 선택 질문의 멀티모달 벤치마크에서 SOTAs를 달성했습니다. 이는 정확한 인간 주석을 갖추고 있습니다.
+* ```2023.9.1``` 🔥🔥🔥 기본적인 인식과 이해력뿐만 아니라 문학 창작까지 아우르는 복합 언어 모델에 대한 종합적인 평가인 [TouchStone](https://github.com/OFA-Sys/TouchStone) 평가를 출시합니다. 강력한 LLM을 심사위원으로 활용하고, 멀티모달 정보를 텍스트로 변환하여 평가합니다.
+* ```2023.8.31``` 🌟🌟🌟 Qwen-VL-Chat용 Int4 양자화 모델인 **Qwen-VL-Chat-Int4**를 출시하여 메모리 비용은 낮추고 추론 속도는 향상시켰습니다. 또한 벤치마크 평가에서도 성능 저하가 크지 않습니다.
+* ```2023.8.22``` 🎉🎉🎉 모델스코프와 허깅페이스에 **Qwen-VL**과 **Qwen-VL-Chat**을 모두 출시합니다. 학습 내용 및 모델 성능 등 모델에 대한 자세한 내용은 [논문](https://arxiv.org/abs/2308.12966)을 통해 확인할 수 있습니다.
+
 
 ## Evaluation
 
-We evaluated the model's abilities from three perspectives:
+세 가지 관점에서 모델의 기능을 평가했습니다:
 
-1. **Standard Benchmarks**: We evaluate the model's basic task capabilities on four major categories of multimodal tasks:
+1. **표준 벤치마크**: 멀티모달 작업의 네 가지 주요 범주에 대한 모델의 기본 작업 기능을 평가합니다:
    
-   - Zero-shot Captioning: Evaluate model's zero-shot image captioning ability on unseen datasets;
-   - General VQA: Evaluate the general question-answering ability of pictures, such as the judgment, color, number, category, etc;
-   - Text-based VQA: Evaluate the model's ability to recognize text in pictures, such as document QA, chart QA, etc;
-   - Referring Expression Comprehension: Evaluate the ability to localize a target object in an image described by a referring expression.
-2. **TouchStone**: To evaluate the overall text-image dialogue capability and alignment level with humans, we have constructed a benchmark called [TouchStone](https://github.com/OFA-Sys/TouchStone), which is based on scoring with GPT4 to evaluate the LVLM model.
-   
-   - The TouchStone benchmark covers a total of 300+ images, 800+ questions, and 27 categories. Such as attribute-based Q&A, celebrity recognition, writing poetry, summarizing multiple images, product comparison, math problem solving, etc;
-   - In order to break the current limitation of GPT4 in terms of direct image input, TouchStone provides fine-grained image annotations by human labeling. These detailed annotations, along with the questions and the model's output, are then presented to GPT4 for scoring.
-   - The benchmark includes both English and Chinese versions.
+   - 제로 샷 캡션: 보이지 않는 데이터 세트에 대한 모델의 제로샷 이미지 캡션 능력을 평가합니다.
+   - 일반 VQA: 판단, 색상, 숫자, 카테고리 등과 같은 사진의 일반적인 질문에 대한 답변 능력을 평가합니다.
+   - 텍스트 기반 VQA: 문서 QA, 차트 QA 등과 같이 사진 속 텍스트를 인식하는 모델의 능력을 평가합니다.
+   - 참조 표현 이해: 참조 표현식으로 설명된 이미지에서 대상 객체를 찾아내는 능력을 평가합니다.
   
-3. **Other Multimodal Benchmarks**: We also evaluated our model's capabilities in other multimodal benchmarks:
+2. **터치스톤**: 전반적인 텍스트-이미지 대화 능력과 사람과의 일치도를 평가하기 위해 [TouchStone](https://github.com/OFA-Sys/TouchStone)이라는 벤치마크를 구축했으며, 이 벤치마크는 GPT4로 채점하여 LVLM 모델을 평가합니다.
+   
+   - 터치스톤 벤치마크는 총 300개 이상의 이미지, 800개 이상의 질문, 27개 카테고리를 다룹니다. 속성 기반 Q&A, 유명인 인식, 시 쓰기, 여러 이미지 요약, 제품 비교, 수학 문제 풀이 등이 포함됩니다.
+   - 직접 이미지 입력이라는 현재 GPT4의 한계를 극복하기 위해 TouchStone은 사람이 직접 라벨을 지정하여 세분화된 이미지 주석을 제공합니다. 이러한 세부 주석은 문제 및 모델의 출력과 함께 채점을 위해 GPT4에 제공됩니다.
+   - 벤치마크에는 영어와 중국어 버전이 모두 포함되어 있습니다.
+  
+3. **기타 멀티모달 벤치마크**: 다른 멀티모달 벤치마크에서도 모델의 성능을 평가했습니다:
 
-   - [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. Qwen-VL-Chat achieves SOTAs on both perception and cognition tracks.
-   - [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs. Qwen series achieves SOTAs on this benchmark.
+   - 멀티모달 대규모 언어 모델에 대한 종합적인 평가 벤치마크인 [MME 벤치마크](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation). Qwen-VL-Chat은 지각과 인지 트랙 모두에서 SOTA를 달성했습니다.
+   - [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard)는 멀티모달 LLM을 평가하기 위한 정확한 인간 주석이 포함된 19K 객관식 질문으로 구성된 멀티모달 벤치마크입니다. 큐원 시리즈는 이 벤치마크에서 SOTA를 달성했습니다.
 
-The results of the evaluation are as follows:
+평가 결과는 다음과 같습니다.
 
-Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has a more comprehensive coverage in terms of capability range.
+Qwen-VL은 여러 VL 작업에서 현재 SOTA 제너럴리스트 모델보다 성능이 뛰어나며, 기능 범위 측면에서 더 포괄적인 기능을 지원합니다.
 
 <p align="center">
     <img src="assets/radar.png" width="600"/>
@@ -233,8 +236,9 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
 </tbody>
 </table>
 
-- For zero-shot image captioning, Qwen-VL achieves the **SOTA** on Flickr30K and competitive results on Nocaps with InstructBlip.
-- For general VQA, Qwen-VL achieves the **SOTA** under the same generalist LVLM scale settings.
+- 제로 샷 이미지 캡션의 경우, Qwen-VL은 Flickr30K에서 **SOTA**를 달성했고 InstructBlip을 사용하여 노캡스에서 경쟁력 있는 결과를 얻었습니다.
+- 일반 VQA의 경우, Qwen-VL은 동일한 일반 LVLM 스케일 설정에서 **SOTA**를 달성했습니다.
+
 
 ### Text-oriented VQA (Focused on text understanding capabilities in images)
 
@@ -304,8 +308,8 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
 </tbody>
 </table>
 
-- In text-related recognition/QA evaluation, Qwen-VL achieves the SOTA under the generalist LVLM scale settings.
-- Resolution is important for several above evaluations. While most open-sourced LVLM models with 224 resolution are incapable of these evaluations or can only solve these by cutting images, Qwen-VL scales the resolution to 448 so that it can be evaluated end-to-end. Qwen-VL even outperforms Pix2Struct-Large models of 1024 resolution on some tasks.
+- 텍스트 관련 인식/QA 평가에서 Qwen-VL은 일반적인 LVLM 스케일 설정에서 SOTA를 달성합니다.
+- 해상도는 위의 여러 평가에서 중요합니다. 224 해상도의 대부분의 오픈 소스 LVLM 모델은 이러한 평가를 수행할 수 없거나 이미지를 잘라내야만 해결할 수 있지만, Qwen-VL은 해상도를 448로 확장하여 엔드투엔드 평가가 가능합니다. Qwen-VL은 일부 작업에서 1024 해상도의 Pix2Struct-Large 모델보다 더 뛰어난 성능을 발휘합니다.
 
 ### Referring Expression Comprehension
 
@@ -468,14 +472,15 @@ Qwen-VL outperforms current SOTA generalist models on multiple VL tasks and has 
 </tbody>
 </table>
 
-- Qwen-VL achieves the **SOTA** in all above referring expression comprehension benchmarks.
-- Qwen-VL has not been trained on any Chinese grounding data, but it can still generalize to the Chinese Grounding tasks in a zero-shot way by training Chinese Caption data and English Grounding data.
+- Qwen-VL은 위의 모든 참조 표현 이해도 벤치마크에서 **SOTA**를 달성했습니다.
+- Qwen-VL은 중국어 자막 데이터에 대해 학습되지 않았지만, 중국어 자막 데이터와 영어 자막 데이터를 학습하여 제로 샷 방식으로 중국어 자막 작업에 일반화할 수 있습니다.
 
-We provide all of the above evaluation scripts for reproducing our experimental results. Please read [eval_mm/EVALUATION.md](eval_mm/EVALUATION.md) for more information.
+
+실험 결과를 재현하기 위해 위의 모든 평가 스크립트를 제공합니다. 자세한 내용은 [eval_mm/EVALUATION.md](eval_mm/EVALUATION.md)를 참조하세요.
 
 ### Chat evaluation
 
-TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities of the LVLM model on text-image dialogue and alignment levels with humans. It covers a total of 300+ images, 800+ questions, and 27 categories, such as attribute-based Q&A, celebrity recognition, writing poetry, summarizing multiple images, product comparison, math problem solving, etc. Please read [touchstone/README.md](touchstone/README.md) for more information.
+TouchStone은 텍스트-이미지 대화 및 사람과의 일치 수준에 대한 LVLM 모델의 능력을 평가하기 위해 GPT4로 점수를 매기는 벤치마크입니다. 총 300개 이상의 이미지, 800개 이상의 질문, 속성 기반 Q&A, 유명인 인식, 시 쓰기, 여러 이미지 요약, 제품 비교, 수학 문제 풀이 등 27개 카테고리로 구성되어 있습니다. 자세한 내용은 [터치스톤/README.md](터치스톤/README.md)를 참조하세요.
 
 #### English evaluation
 
@@ -498,15 +503,15 @@ TouchStone is a benchmark based on scoring with GPT4 to evaluate the abilities o
 | Qwen-VL-Chat     | 401.2 |
 | Qwen-VL-Chat-1.1 | 481.7 |
 
-Qwen-VL-Chat has achieved the best results in both Chinese and English alignment evaluation.
+Qwen-VL-Chat은 중국어와 영어 정렬 평가에서 모두 최고의 결과를 얻었습니다.
 
 ### Other Benchmarks
 
 #### MME Benchmark
 
-[MME](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) is a comprehensive evaluation benchmark for multimodal large language models. It measures both perception and cognition abilities on a total of 14 subtasks, including existence, count, position, color, poster, celebrity, scene, landmark, artwork, OCR, commonsense reasoning, numerical calculation, text translation, and code reasoning.
+[MME](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation)는 멀티모달 대규모 언어 모델에 대한 종합적인 평가 벤치마크입니다. 존재, 수, 위치, 색상, 포스터, 유명인, 장면, 랜드마크, 예술품, OCR, 상식 추론, 숫자 계산, 텍스트 번역, 코드 추론 등 총 14개의 하위 과제에 대한 지각과 인지 능력을 모두 측정합니다.
 
-Qwen-VL-Chat achieves SOTAs on both perception and cognition evaluation. See more details on [HERE](eval_mm/mme/EVAL_MME.md).
+Qwen-VL-Chat은 지각과 인지 평가 모두에서 SOTA를 달성했습니다. 자세한 내용은 [여기](eval_mm/mme/EVAL_MME.md)에서 확인하세요.
 
 <p align="center">
     <img src="eval_mm/mme/perception.jpg" width="600"/>
@@ -517,9 +522,9 @@ Qwen-VL-Chat achieves SOTAs on both perception and cognition evaluation. See mor
 
 #### SEED-Bench
 
-[SEED-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard) is a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs, covering 12 evaluation dimensions including both **image** and **video** understanding. See more details on [HERE](eval_mm/seed_bench/EVAL_SEED.md).
+[SEED-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard)는 **이미지** 및 **동영상** 이해도를 포함한 12가지 평가 차원을 포괄하는 멀티모달 LLM을 평가하기 위한 정확한 사람의 주석이 포함된 19K 개의 객관식 문항으로 구성된 멀티모달 벤치마크입니다. 자세한 내용은 [여기](eval_mm/seed_bench/EVAL_SEED.md)에서 확인할 수 있습니다.
 
-Qwen-VL and Qwen-VL-Chat achieve SOTAs on this benchmark.
+이 벤치마크에서 Qwen-VL과 Qwen-VL-Chat은 SOTA를 달성했습니다.
 
 <p align="center">
     <img src="eval_mm/seed_bench/leaderboard.jpg"/>
@@ -534,19 +539,18 @@ Qwen-VL and Qwen-VL-Chat achieve SOTAs on this benchmark.
 
 ## Quickstart
 
-Below, we provide simple examples to show how to use Qwen-VL and Qwen-VL-Chat with 🤖 ModelScope and 🤗 Transformers.
+아래에서는 🤖 모델스코프 및 🤗 트랜스포머와 함께 Qwen-VL 및 Qwen-VL-Chat을 사용하는 방법을 보여주는 간단한 예제를 제공합니다.
 
-Before running the code, make sure you have setup the environment and installed the required packages. Make sure you meet the above requirements, and then install the dependent libraries.
-
+코드를 실행하기 전에 환경을 설정하고 필요한 패키지를 설치했는지 확인하세요. 위의 요구 사항을 충족하는지 확인한 다음 종속 라이브러리를 설치하세요.
 ```bash
 pip install -r requirements.txt
 ```
 
-Now you can start with ModelScope or Transformers. More usage aboue vision encoder, please refer to the [tutorial](TUTORIAL.md).
+이제 모델스코프 또는 트랜스포머로 시작할 수 있습니다. 비전 인코더에 대한 자세한 사용법은 [튜토리얼](TUTORIAL.md)을 참조하세요.
 
 #### 🤗 Transformers
 
-To use Qwen-VL-Chat for the inference, all you need to do is to input a few lines of codes as demonstrated below. However, **please make sure that you are using the latest code.**
+추론에 Qwen-VL-Chat을 사용하려면 아래에 설명된 대로 몇 줄의 코드를 입력하기만 하면 됩니다. 단, **최신 코드를 사용하고 있는지 확인하세요**.
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -596,7 +600,7 @@ else:
 <details>
   <summary>Running Qwen-VL</summary>
 
-Running Qwen-VL pretrained base model is also simple.
+Qwen-VL pretrained base model을 실행하는 것도 매우 간단합니다.
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -642,7 +646,7 @@ else:
 </details>
 
 
-In the event of a network issue while attempting to download model checkpoints and codes from HuggingFace, an alternative approach is to initially fetch the checkpoint from ModelScope and then load it from the local directory as outlined below:
+HuggingFace에서 모델 체크포인트와 코드를 다운로드하는 동안 네트워크 문제가 발생하는 경우, 아래에 설명된 대로 모델스코프에서 체크포인트를 먼저 가져온 다음 로컬 디렉터리에서 로드하는 방법을 사용할 수 있습니다.
 
 ```python
 from modelscope import snapshot_download
@@ -665,7 +669,7 @@ model = AutoModelForCausalLM.from_pretrained(
 
 #### 🤖 ModelScope
 
-ModelScope is an opensource platform for Model-as-a-Service (MaaS), which provides flexible and cost-effective model service to AI developers. Similarly, you can run the models with ModelScope as shown below:
+ModelScope는 서비스형 모델(MaaS)을 위한 오픈소스 플랫폼으로, AI 개발자에게 유연하고 비용 효율적인 모델 서비스를 제공합니다. 마찬가지로 아래와 같이 ModelScope로 모델을 실행할 수 있습니다.
 
 ```python
 from modelscope import (
@@ -719,10 +723,9 @@ else:
 ## Quantization
 
 ### Usage
+[AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ)를 기반으로 하는 새로운 솔루션을 제공하고, 거의 무손실 모델 효과를 달성하면서도 메모리 비용과 추론 속도 모두에서 성능이 향상된 Qwen-VL-Chat용 Int4 양자화 모델인 [Qwen-VL-Chat-Int4](https://huggingface.co/Qwen/Qwen-VL-Chat-Int4)를 출시했습니다.
 
-We provide a new solution based on [AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ), and release an Int4 quantized model for Qwen-VL-Chat, Qwen-VL-Chat-Int4 [Click here](https://huggingface.co/Qwen/Qwen-VL-Chat-Int4), which achieves nearly lossless model effects but improved performance on both memory costs and inference speed.
-
-Here we demonstrate how to use our provided quantized models for inference. Before you start, make sure you meet the requirements (e.g., torch 2.0 and above, transformers 4.32.0 and above, etc.) and install the required packages:
+여기에서는 제공된 양자화된 모델을 추론에 사용하는 방법을 보여줍니다. 시작하기 전에 요구 사항(예: torch 2.0 이상, transformers 4.32.0 이상 등) 및 필요한 패키지를 제대로 설치했는지 확인하세요.
 
 ```bash
 pip install optimum
@@ -730,9 +733,9 @@ git clone https://github.com/JustinLin610/AutoGPTQ.git & cd AutoGPTQ
 pip install -v .
 ```
 
-If you meet problems installing `auto-gptq`, we advise you to check out the official [repo](https://github.com/PanQiWei/AutoGPTQ) to find a wheel.
+만약 'auto-gptq' 설치에 문제가 있다면, 공식 [repo](https://github.com/PanQiWei/AutoGPTQ)에서 휠을 찾아보시길 권장합니다.
 
-Then you can load the quantized model easily and run inference as same as usual:
+그러면 정량화된 모델을 쉽게 로드하고 평소와 동일하게 추론을 실행할 수 있습니다.
 
 ```python
 model = AutoModelForCausalLM.from_pretrained(
@@ -748,7 +751,7 @@ print(response)
 
 ### Performance
 
-We illustrate the model performance of both BF16 and Int4 models on the benchmark **[TouchStone](https://github.com/OFA-Sys/TouchStone)**, and we find that the quantized model does not suffer from significant performance degradation. Results are shown below:
+ [TouchStone](https://github.com/OFA-Sys/TouchStone)벤치마크에서 BF16 및 Int4 모델의 모델 성능을 살펴본 결과, 양자화된 모델에서 성능 저하가 크지 않은 것으로 나타났습니다. 결과는 아래와 같습니다.
 
 | Quantization | ZH         | EN            |
 | ------------ | :--------: | :-----------: | 
@@ -757,37 +760,37 @@ We illustrate the model performance of both BF16 and Int4 models on the benchmar
 
 ### Inference Speed
 
-We measured the average inference speed (tokens/s) of generating 1792 (2048-258) and 7934 (8192-258) tokens with the context of an image (which takes 258 tokens) under BF16 precision and Int4 quantization, respectively.
+이미지의 컨텍스트(258개의 토큰이 필요한)를 가지고 각각 1792개(2048-258개), 7934개(8192-258개)의 토큰을 생성하는 평균 추론 속도(토큰/초)를 BF16 정밀도와 Int4 양자화 하에서 측정했습니다.
 
 | Quantization | Speed (2048 tokens) | Speed (8192 tokens) |
 | ------------ | :-----------------: | :-----------------: |
 | BF16         |        28.87        |        24.32        |
 | Int4         |        37.79        |        34.34        |
 
-The profiling runs on a single A100-SXM4-80G GPU with PyTorch 2.0.1 and CUDA 11.4.
+프로파일링은 PyTorch 2.0.1 및 CUDA 11.4가 탑재된 단일 A100-SXM4-80G GPU에서 실행됩니다.
 
 ### GPU Memory Usage
 
-We also profile the peak GPU memory usage for encoding 1792 (2048-258) tokens (including an image) as context (and generating single token) and generating 7934 (8192-258) tokens (with an image as context) under BF16 or Int4 quantization level, respectively. The results are shown below.
+또한 1792개(2048-258개)의 토큰(이미지 포함)을 컨텍스트로 인코딩하고 단일 토큰을 생성할 때와 7934개(8192-258개)의 토큰(이미지가 컨텍스트로 포함)을 생성할 때 각각 BF16 또는 Int4 양자화 수준에서 최대 GPU 메모리 사용량을 프로파일링했습니다. 결과는 아래와 같습니다.
 
 | Quantization | Peak Usage for Encoding 2048 Tokens | Peak Usage for Generating 8192 Tokens |
 | ------------ | :---------------------------------: | :-----------------------------------: |
 | BF16         |               22.60GB               |                28.01GB                |
 | Int4         |               11.82GB               |                17.23GB                |
 
-The above speed and memory profiling are conducted using [this script](https://qianwen-res.oss-cn-beijing.aliyuncs.com/profile_mm.py).
+위의 속도 및 메모리 프로파일링은 [이 스크립트](https://qianwen-res.oss-cn-beijing.aliyuncs.com/profile_mm.py)를 사용하여 수행되었습니다.
 <br>
 
 ## Finetuning
 
-Now we provide the official training script, `finetune.py`, for users to finetune the pretrained model for downstream applications in a simple fashion. Additionally, we provide shell scripts to launch finetuning with no worries. This script supports the training with DeepSpeed and FSDP. The shell scripts that we provide use DeepSpeed, and thus we advise you to install DeepSpeed before you start:
+이제 사용자가 다운스트림 애플리케이션을 위해 사전 학습된 모델을 간단한 방식으로 미세 조정할 수 있도록 공식 학습 스크립트인 `finetune.py`를 제공합니다. 또한, 걱정 없이 미세 조정을 시작할 수 있는 셸 스크립트도 제공합니다. 이 스크립트는 딥스피드와 FSDP를 통한 학습을 지원합니다. 제공되는 셸 스크립트는 DeepSpeed를 사용하므로 시작하기 전에 DeepSpeed를 설치하는 것이 좋습니다.
 
 ```bash
 pip install deepspeed
 ```
 
 ### Data preparation
-To prepare your training data, you need to put all the samples into a list and save it to a json file. Each sample is a dictionary consisting of an id and a list for conversation. Below is a simple example list with 1 sample:
+학습 데이터를 준비하려면 모든 샘플을 목록에 넣고 json 파일에 저장해야 합니다. 각 샘플은 ID와 대화 목록으로 구성된 사전입니다. 아래는 샘플 1개가 포함된 간단한 예제 목록입니다.
 ```json
 [
   {
@@ -839,31 +842,30 @@ To prepare your training data, you need to put all the samples into a list and s
   }
 ]
 ```
-For the VL tasks, there are special tokens that are used, including `<img> </img> <ref> </ref> <box> </box>`.
+VL 작업에서는 `<img> </img> <ref> </ref> <box> </box>`등과 같은 특수 토큰이 사용됩니다. 
 
-The picture is represented as `Picture id: <img>img_path</img>\n{your prompt}`, where `id` indicates the position of the image in the conversation, starting from 1. The "img_path" can be a local file path or a web link. 
+이미지는 `Picture id: <img>img_path</img>\n{your prompt}`로 표시되며, 여기서 `id`는 대화에서 이미지의 위치(1부터 시작)를 나타냅니다. `img_path`는 로컬 파일 경로 또는 웹 링크일 수 있습니다.
 
-The coordinate box is expressed as `<box>(x1,y1),(x2,y2)</box>`·, where `(x1, y1)` and `(x2, y2)` are normalized values in the range `[0, 1000)`. Its corresponding text description can be identified by `<ref>text_caption</ref>`. 
+박스의 좌표는 `<box>(x1,y1),(x2,y2)</box>`로 표시되는데, 여기에서 `(x1, y1)`과 `(x2, y2)`의 좌표는 `[0, 1000)`으로 정규화되게 됩니다. 해당 텍스트 설명은 `<ref>text_caption</ref>`과 같은 방법으로 식별할 수 있습니다.
 
+데이터 준비 후 제공된 셸 스크립트를 사용하여 미세 조정을 실행할 수 있습니다. 데이터 파일 경로인 `$DATA`를 지정하는 것을 잊지 마세요.
 
-After data preparation, you can use the provided shell scripts to run finetuning. Remember to specify the path to the data file, `$DATA`.
-
-The finetuning scripts allow you to perform:
+미세 조정 스크립트를 통해 다음을 수행할 수 있습니다.
 - Full-parameter finetuning
 - LoRA
 - Q-LoRA
 
 ### Full-parameter finetuning
-Full-parameter parameter finetuning requires updating all parameters of LLM in the whole training process. In our experiments, frozening the parameters of ViT during the fine-tuning phase achieves better performance. To launch your training, run the following script:
+전체 파라미터를 미세 조정하려면 전체 훈련 과정에서 LLM의 모든 파라미터를 업데이트해야 합니다. 실험 결과, 미세 조정 단계에서 **ViT의 파라미터를 동결(frozening)하면 더 나은 성능을 얻을 수 있었습니다.** 훈련을 시작하려면 다음 스크립트를 실행합니다.
 
 ```bash
 sh finetune/finetune_ds.sh
 ```
 
-Remember to specify the correct model name or path, the data path, as well as the output directory in the shell scripts. If you want to make changes, just remove the argument `--deepspeed` or make changes in the DeepSpeed configuration json file based on your requirements. Additionally, this script supports mixed-precision training, and thus you can use `--bf16 True` or `--fp16 True`. Empirically we advise you to use bf16 to make your training consistent with our pretraining and alignment if your machine supports bf16, and thus we use it by default.
+셸 스크립트에서 올바른 모델 이름 또는 경로, 데이터 경로, 출력 디렉터리를 지정하는 것을 잊지 마세요. 변경하려면 `--deepspeed` 인수를 제거하거나 요구 사항에 따라 DeepSpeed 구성 json 파일을 변경하면 됩니다. 또한, 이 스크립트는 혼합 정밀도 훈련을 지원하므로 `--bf16 True` 또는 `--fp16 True`를 사용할 수 있습니다. 경험적으로 머신이 bf16을 지원하는 경우 사전 훈련 및 정렬과 일관된 훈련을 위해 bf16을 사용하는 것이 좋으며, 따라서 기본값으로 사용됩니다.
 
 ### LoRA
-Similarly, to run LoRA, use another script to run as shown below. Before you start, make sure that you have installed `peft`. Also, you need to specify your paths to your model, data, and output. We advise you to use absolute path for your pretrained model. This is because LoRA only saves the adapter and the absolute path in the adapter configuration json file is used for finding out the pretrained model to load.
+마찬가지로 LoRA를 실행하려면 아래와 같이 다른 스크립트를 사용하여 실행합니다. 시작하기 전에 `peft`를 설치했는지 확인하세요. 또한 모델, 데이터, 출력에 대한 경로를 지정해야 합니다. 사전 학습된 모델에는 절대 경로를 사용하는 것이 좋습니다. LoRA는 어댑터만 저장하고 어댑터 구성 json 파일의 절대 경로는 로드할 사전 학습된 모델을 찾는 데 사용되기 때문입니다.
 
 ```bash
 # Single GPU training
@@ -872,12 +874,12 @@ sh finetune/finetune_lora_single_gpu.sh
 sh finetune/finetune_lora_ds.sh
 ```
 
-In comparison with full-parameter finetuning, LoRA ([paper](https://arxiv.org/abs/2106.09685)) only updates the parameters of adapter layers but keeps the original large language model layers frozen. This allows much fewer memory costs and thus fewer computation costs. 
+전체 매개변수 미세 조정과 비교할 때 LoRA([paper](https://arxiv.org/abs/2106.09685))는 어댑터 레이어의 매개변수만 업데이트하고 원래의 대규모 언어 모델 레이어는 고정된 상태로 유지합니다. 따라서 메모리 비용이 훨씬 적게 들고 계산 비용도 적게 듭니다. 
 
-Note that if you use LoRA to finetune the base language model, e.g., Qwen-VL, instead of chat models, e.g., Qwen-VL-Chat, the script automatically switches the embedding and output layer as trainable parameters. This is because the base language model has no knowledge of special tokens brought by ChatML format. Thus these layers should be updated for the model to understand and predict the tokens. Or in another word, if your training brings in special tokens in LoRA, you should set the layers to trainable parameters by setting `modules_to_save` inside the code. Additionally, we find that there is a significant gap between the memory footprint of LoRA with and without these trainable parameters. Therefore, if you have trouble with memory, we advise you to LoRA finetune the chat models. Check the profile below for more information.
+LoRA를 사용하여 채팅 모델 대신 기본 언어 모델(예: Qwen-VL)을 미세 조정하는 경우, 스크립트는 임베딩 및 출력 레이어를 학습 가능한 파라미터로 자동 전환합니다. 이는 기본 언어 모델에 ChatML 형식에서 가져온 특수 토큰에 대한 지식이 없기 때문입니다. 따라서 모델이 토큰을 이해하고 예측하려면 이러한 레이어를 업데이트해야 합니다. 다시 말해, 학습이 LoRA에서 특수 토큰을 가져오는 경우 코드 내에서 `modules_to_save`를 설정하여 레이어를 학습 가능한 파라미터로 설정해야 합니다. 또한 이러한 트레이닝 가능한 파라미터가 있는 경우와 없는 경우 LoRA의 메모리 사용량에는 상당한 차이가 있음을 발견했습니다. 따라서 메모리에 문제가 있는 경우 LoRA에서 채팅 모델을 미세 조정하는 것이 좋습니다. 자세한 내용은 아래 프로필을 확인하세요.
 
 ### Q-LoRA
-However, if you still suffer from insufficient memory, you can consider Q-LoRA ([paper](https://arxiv.org/abs/2305.14314)), which uses the quantized large language model and other techniques such as paged attention to allow even fewer memory costs. To run Q-LoRA, directly run the following script:
+그러나 여전히 메모리가 부족하다면 양자화된 대규모 언어 모델과 페이징 주의와 같은 기타 기술을 사용하여 메모리 비용을 훨씬 더 적게 사용할 수 있는 Q-LoRA([paper](https://arxiv.org/abs/2305.14314))를 고려해 볼 수 있습니다. Q-LoRA를 실행하려면 다음 스크립트를 직접 실행하세요.
 
 ```bash
 # Single GPU training
@@ -886,12 +888,10 @@ sh finetune/finetune_qlora_single_gpu.sh
 sh finetune/finetune_qlora_ds.sh
 ```
 
-For Q-LoRA, we advise you to load our provided quantized model, e.g., Qwen-VL-Chat-Int4. 
-You **SHOULD NOT** use the bf16 models. Different from full-parameter finetuning and LoRA, only fp16 is supported for Q-LoRA. Besides, for Q-LoRA, the troubles with the special tokens in LoRA still exist. However, as we only provide the Int4 models for chat models, which means the language model has learned the special tokens of ChatML format, you have no worry about the layers. Note that the layers of the Int4 model should not be trainable, and thus if you introduce special tokens in your training, Q-LoRA might not work.
+Q-LoRA의 경우, 당사에서 제공하는 정량화된 모델(예: Qwen-VL-Chat-Int4)을 로드하는 것이 좋습니다. 
+bf16 모델을 사용해서는 안 됩니다. 전체 파라미터 미세 조정 및 LoRA와 달리 Q-LoRA에는 fp16만 지원됩니다. 또한 Q-LoRA의 경우 LoRA의 특수 토큰에 대한 문제가 여전히 존재합니다. 하지만 저희는 채팅 모델에 Int4 모델만 제공하기 때문에 언어 모델이 ChatML 형식의 특수 토큰을 학습했기 때문에 레이어에 대한 걱정은 하지 않으셔도 됩니다. 단, Int4 모델의 레이어는 학습할 수 없어야 하므로 학습에 특수 토큰을 도입하면 Q-LoRA가 작동하지 않을 수 있습니다.
 
-
-
-Different from full-parameter finetuning, the training of both LoRA and Q-LoRA only saves the adapter parameters. You can load the finetuned model for inference as shown below:
+전체 매개변수 미세 조정과 달리 LoRA 및 Q-LoRA의 훈련은 어댑터 매개변수만 저장합니다. 아래와 같이 추론을 위해 미세 조정된 모델을 로드할 수 있습니다:
 
 ```python
 from peft import AutoPeftModelForCausalLM
@@ -903,7 +903,7 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 ).eval()
 ```
 
-If you want to merge the adapters and save the finetuned model as a standalone model (you can only do this with LoRA, and you CANNOT merge the parameters from Q-LoRA), you can run the following codes:
+어댑터를 병합하고 미세 조정된 모델을 독립형 모델로 저장하려면(이 작업은 LoRA에서만 가능하며 Q-LoRA에서 파라미터를 병합할 수 없음) 다음 코드를 실행하면 됩니다.
 
 ```python
 from peft import AutoPeftModelForCausalLM
@@ -915,16 +915,18 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 ).eval()
 
 merged_model = model.merge_and_unload()
-# max_shard_size and safe serialization are not necessary. 
-# They respectively work for sharding checkpoint and save the model to safetensors
+# max_shard_size와 안전한 직렬화는 필요하지 않습니다. 
+# 이들은 각각 샤딩 체크포인트에 대해 작동하고 모델을 세이프텐서에 저장합니다.
 merged_model.save_pretrained(new_model_directory, max_shard_size="2048MB", safe_serialization=True)
+
+
 ```
 
-Note: For multi-GPU training, you need to specify the proper hyperparameters for distributed training based on your machine. Besides, we advise you to specify your maximum sequence length with the argument --model_max_length, based on your consideration of data, memory footprint, and training speed.
+참고: 멀티 GPU 트레이닝의 경우, 머신에 따라 분산 트레이닝에 적합한 하이퍼파라미터를 지정해야 합니다. 또한 데이터, 메모리 사용량, 훈련 속도 등을 고려하여 --model_max_length 인수를 사용하여 최대 시퀀스 길이를 지정하는 것이 좋습니다.
 
 
 ### Profiling of Memory and Speed
-We profile the GPU memory and training speed of both LoRA (Base) refers to training the embedding and output layer, while LoRA (Chat) has no trainable embedding and output layer) and Q-LoRA in the setup of single-GPU training. In this test, we experiment on a single A100-SXM4-80G GPU, and we use CUDA 11.8 and Pytorch 2.0. We uniformly use a batch size of 1 and gradient accumulation of 8. Each sample contains an image. We profile the memory (GB) and speed (s/iter) of inputs of different lengths, namely 384, 512, 1024, and 2048. The statistics are listed below:
+단일 GPU 트레이닝 설정에서 임베딩 및 출력 레이어를 트레이닝하는 LoRA(Base)와 임베딩 및 출력 레이어를 트레이닝할 수 없는 LoRA(Chat)의 GPU 메모리 및 트레이닝 속도를 프로파일링합니다. 이 테스트에서는 단일 A100-SXM4-80G GPU에서 실험했으며, CUDA 11.8과 Python 2.0을 사용했습니다. 배치 크기는 1, 그라데이션 누적은 8을 균일하게 사용합니다. 각 샘플에는 이미지가 포함됩니다. 384, 512, 1024, 2048 등 다양한 길이의 입력에 대한 메모리(GB)와 속도(s/iter)를 프로파일링합니다. 통계는 아래와 같습니다.
 
 
 <table>
@@ -952,7 +954,7 @@ We profile the GPU memory and training speed of both LoRA (Base) refers to train
 
 ### Web UI
 
-We provide code for users to build a web UI demo. Before you start, make sure you install the following packages:
+사용자가 웹 UI 데모를 빌드할 수 있는 코드를 제공합니다. 시작하기 전에 다음 패키지를 설치해야 합니다.
 
 ```
 pip install -r requirements_web_demo.txt
@@ -968,17 +970,17 @@ python web_demo_mm.py
 
 ## FAQ
 
-If you meet problems, please refer to [FAQ](FAQ.md) and the issues first to search a solution before you launch a new issue.
+문제가 발생하면 새 이슈를 시작하기 전에 먼저 [자주 묻는 질문](FAQ.md)과 이슈를 참조하여 해결 방법을 찾아보시기 바랍니다.
 <br>
 
 ## License Agreement
 
-Researchers and developers are free to use the codes and model weights of both Qwen-VL and Qwen-VL-Chat. We also allow their commercial use. Check our license at [LICENSE](LICENSE) for more details.
+연구자와 개발자는 Qwen-VL과 Qwen-VL-Chat의 코드와 모델 가중치를 자유롭게 사용할 수 있습니다. 또한 상업적 사용도 허용됩니다. 자세한 내용은 [LICENSE](라이센스)에서 라이센스를 확인하세요.
 <br>
 
 ## Citation
 
-If you find our paper and code useful in your research, please consider giving a star :star: and citation :pencil: :)
+저희 논문과 코드가 여러분의 연구에 도움이 되었다면 star:star: 와 인용:pencil: 해주시면 감사드리겠습니다. :)
 
 ```BibTeX
 @article{Qwen-VL,
@@ -993,5 +995,4 @@ If you find our paper and code useful in your research, please consider giving a
 
 ## Contact Us
 
-If you are interested to leave a message to either our research team or product team, feel free to send an email to qianwen_opensource@alibabacloud.com.
-
+연구팀이나 제품팀에 메시지를 남기고 싶으시면 언제든지 이메일(qianwen_opensource@alibabacloud.com)을 보내주세요.
