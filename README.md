@@ -38,7 +38,7 @@ We release two models of the Qwen-VL series:
   <br>
 
 ## News and Updates
-* ```2023.11.28``` 🏆🏆🏆 Qwen-VL achieved the best performance in [DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1) by using a single model, surpassing GPT4V and PALI-X, without using model ensemble or OCR-pipeline. Meanwhile, it is also a general model that can help you analyze and understand various tasks by directly inputting images. You can enjoy the new model by directly visiting https://qianwen.aliyun.com multi-modal tab.
+* ```2023.11.28``` 🏆🏆🏆 Qwen-VL-Plus achieved the best performance in [DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1) by using a single model, surpassing GPT4V and PALI-X, without using model ensemble or OCR-pipeline. Meanwhile, it is also a general model that can help you analyze and understand various tasks by directly inputting images. You can enjoy the new model by directly visiting the multi-modal tab of [web pages](https://qianwen.aliyun.com).
 * ```2023.9.25``` 🚀🚀🚀 We update Qwen-VL-Chat with more robust Chinese instruction-following ability, improved understanding of web pages and table images, and better dialogue performance (Touchstone: CN: 401.2->481.7, EN: 645.2->711.6).
 * ```2023.9.12``` 😃😃😃 We now support finetuning on the Qwen-VL models, including full-parameter finetuning, LoRA and Q-LoRA.
 * ```2023.9.8``` 👍👍👍 Thanks to [camenduru](https://github.com/camenduru) for contributing the wonderful [Colab](https://github.com/camenduru/Qwen-VL-Chat-colab). Everyone can use it as a local or online Qwen-VL-Chat-Int4 Demo tutorial on one 12G GPU.
@@ -47,7 +47,15 @@ We release two models of the Qwen-VL series:
 * ```2023.9.1``` 🔥🔥🔥 We release the [TouchStone](https://github.com/OFA-Sys/TouchStone) Evaluation, which is a comprehensive assessment of multimodal language models, encompassing not only basic recognition and comprehension but also extending to literary creation. By using strong LLMs as judges and converting multimodal information into text.
 * ```2023.8.31``` 🌟🌟🌟 We release the Int4 quantized model for Qwen-VL-Chat, **Qwen-VL-Chat-Int4**, which requires low memory costs but achieves improved inference speed. Besides, there is no significant performance degradation on the benchmark evaluation.
 * ```2023.8.22``` 🎉🎉🎉 We release both **Qwen-VL** and **Qwen-VL-Chat** on ModelScope and Hugging Face. We also provide a [paper](https://arxiv.org/abs/2308.12966) for more details about the model, including training details and model performance.
-<br>
+
+## Qwen-VL-Plus
+
+Qwen-VL-Plus is the upgraded version of Qwen-VL, currently supporting access through [Web pages](https://qianwen.aliyun.com) and [APIs](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start/).
+Key features of Qwen-VL-Plus include:
+
+- Significantly improved ability to process text within images: Making it a helpful tool for productivity tasks such as extracting, organizing, and summarizing text information.
+- Expanded range of supported image resolutions: Allowing the model to handle images of different aspect ratios and sizes, including larger and longer images.
+- Enhanced visual reasoning and decision-making abilities: Users can take a picture of a math problem and send it to Qwen-VL, which will help them solve it step-by-step.
 
 ## Evaluation
 
