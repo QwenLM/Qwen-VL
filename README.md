@@ -53,7 +53,7 @@ We release two models of the Qwen-VL series:
 Qwen-VL-Plus is the upgraded version of Qwen-VL, currently supporting access through [Web pages](https://qianwen.aliyun.com) and [APIs](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start/).
 Key features of Qwen-VL-Plus include:
 
-- Significantly improved ability to process text within images: Making it a helpful tool for productivity tasks such as extracting, organizing, and summarizing text information.
+- Significantly improved ability to process text within images: Making it a helpful tool for tasks such as extracting, organizing, and summarizing text information from images.
 - Expanded range of supported image resolutions: Allowing the model to handle images of different aspect ratios and sizes, including larger and longer images.
 - Enhanced visual reasoning and decision-making abilities: Users can take a picture of a math problem and send it to Qwen-VL, which will help them solve it step-by-step.
 
