@@ -36,7 +36,7 @@
   <br>
 
 ## 新闻
-* 2023年11月28日 Qwen-VL单模型在[DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1)达到了最强水平，超越了GPT4V,PALI-X，与此同时它还是一个通用模型，直接输入图片就能帮你分析理解各种任务。直接访问[多模态tab就能体验新模型](https://qianwen.aliyun.com)。
+* 2023年11月28日 Qwen-VL单模型在[DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1)达到了最强水平，超越了GPT4V,PALI-X，与此同时它还是一个通用模型，直接输入图片就能帮你分析理解各种任务。直接访问[多模态tab](https://qianwen.aliyun.com)就能体验新模型。
 * 2023年9月12日 更新Qwen-VL-Chat模型，该模型有更鲁棒的中文指令跟随，更好的网页和表格图片理解和问答能力以及更好的对话表现(Touchstone: 中文: 401.2->481.7, 英文: 645.2->711.6)。
 * 2023年9月12日 支持Qwen-VL和Qwen-VL-Chat的微调，其中包括全参数微调、LoRA以及Q-LoRA
 * 2023年9月8日 感谢[camenduru](https://github.com/camenduru)贡献了[Colab](https://github.com/camenduru/Qwen-VL-Chat-colab)示例，每个人都可以以此为教程，在12G的GPU上做本地或在线的Demo。
@@ -45,7 +45,14 @@
 * 2023年9月1日 发布[TouchStone](https://github.com/OFA-Sys/TouchStone) 测评, 这是一个综合评估LVLM能力的测评,它不仅考察模型的视觉描述和推理能力，还包括根据视觉内容的文学创作能力。同时它是将多模态信息用文本表述并用LLMs进行评估的方法。
 * 2023年8月31日 发布Qwen-VL-Chat量化模型，**Qwen-VL-Chat-Int4**,该模型显存占用低，推理速度相比半精度模型显著提升，在基准评测上效果损失较小。
 * 2023年8月22日 在魔搭社区（ModelScope）和Hugging Face同步推出Qwen-VL和Qwen-VL-Chat模型。同时，我们提供一个[论文](https://arxiv.org/abs/2308.12966)介绍了相关的模型结构、训练细节和模型表现。
-<br>
+
+## Qwen-VL-Plus
+
+Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianwen.aliyun.com)和[API](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start)免费访问。Qwen-VL-Plus的核心特性包括：
+
+- 显著提高处理图像中的文本的能力：使其成为从图像中提取、组织和总结文本信息等任务的有用工具。
+- 支持的图像分辨率范围扩大：允许模型处理不同宽高比和和更高分辨率的图像，包括更大和更长的图像。
+- 增强视觉推理和决策能力：用户可以拍摄一个数学问题的照片并发送给Qwen-VL-Plus，它将帮助用户逐步解决它。
 
 ## 评测
 
