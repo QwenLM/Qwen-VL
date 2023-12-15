@@ -16,6 +16,88 @@
 <br><br>
 
 ---
+## Qwen-VL-Plus
+
+Qwen-VL-Plus is the upgraded version of Qwen-VL, currently supporting access for free through [Web pages](https://qianwen.aliyun.com), [🤖](https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary)and [APIs](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start/).
+Key features of Qwen-VL-Plus include:
+
+- Significantly enhanced capabilities for text processing within images have been achieved, particularly excelling in the recognition of Chinese characters compared to GPT-4V. These advancements make it an efficient tool for tasks like extracting, organizing, and summarizing textual information from images.
+- Expanded range of supported image resolutions: Allowing the model to handle images of different aspect ratios and sizes, including larger and longer images.
+- Enhanced visual reasoning and decision-making abilities: Users can take a picture of a math problem and send it to Qwen-VL-Plus, which will help them solve it step-by-step.
+
+<p align="center">
+    <img src="assets/radar_qwenvlplus.jpg" width="600"/>
+<p>
+
+<table>
+<thead>
+  <tr>
+    <th>Model</th>
+    <th>DocVQA</th>
+    <th>TextVQA(val)</th>
+    <th>ChartQA</th>
+    <th>AI2D</th>
+    <th>MMMU(val)</th>
+    <th>MathVista</th>
+    <th>SEEDBenchv1(img)</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td>QwenVL-Plus</td>
+    <td><b>91.41%</b></td>
+    <td>78.88%</td>
+    <td>78.08%</td>
+    <td>75.87%</td>
+    <td>46.5%</td>
+    <td>41.0%</td>
+    <td><b>72.9%</b></td>
+  </tr>
+  <tr>
+    <td>QwenVL</td>
+    <td>65.1%</td>
+    <td>63.8%</td>
+    <td>65.7%</td>
+    <td>62.3%</td>
+    <td>35.9%</td>
+    <td>-</td>
+    <td>62.3%</td>
+  </tr>
+  <tr>
+    <td>GPT-4V</td>
+    <td>88.4%</td>
+    <td>78.0%</td>
+    <td>78.5%</td>
+    <td>78.2%</td>
+    <td>56.8%</td>
+    <td>49.9%</td>
+    <td>69.2%</td>
+  </tr>
+  <tr>
+    <td>Gemini Ultra</td>
+    <td>90.9%</td>
+    <td><b>82.3%</b></td>
+    <td><b>80.8%</b></td>
+    <td><b>79.5%</b></td>
+    <td><b>59.4%</b></td>
+    <td><b>53.0%</b></td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>Gemini Pro</td>
+    <td>88.1%</td>
+    <td>74.6%</td>
+    <td>74.1%</td>
+    <td>73.9%</td>
+    <td>47.9%</td>
+    <td>45.2%</td>
+    <td>-</td>
+  </tr>
+</tbody>
+</table>
+
+---
+## Qwen-VL
 
 **Qwen-VL** (Qwen Large Vision Language Model) is the multimodal version of the large model series, Qwen (abbr. Tongyi Qianwen), proposed by Alibaba Cloud. Qwen-VL accepts image, text, and bounding box as inputs, outputs text and bounding box. The features of Qwen-VL include:
 
@@ -48,14 +130,6 @@ We release two models of the Qwen-VL series:
 * ```2023.8.31``` 🌟🌟🌟 We release the Int4 quantized model for Qwen-VL-Chat, **Qwen-VL-Chat-Int4**, which requires low memory costs but achieves improved inference speed. Besides, there is no significant performance degradation on the benchmark evaluation.
 * ```2023.8.22``` 🎉🎉🎉 We release both **Qwen-VL** and **Qwen-VL-Chat** on ModelScope and Hugging Face. We also provide a [paper](https://arxiv.org/abs/2308.12966) for more details about the model, including training details and model performance.
 
-## Qwen-VL-Plus
-
-Qwen-VL-Plus is the upgraded version of Qwen-VL, currently supporting access for free through [Web pages](https://qianwen.aliyun.com) and [APIs](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start/).
-Key features of Qwen-VL-Plus include:
-
-- Significantly improved ability to process text within images: Making it a helpful tool for tasks such as extracting, organizing, and summarizing text information from images.
-- Expanded range of supported image resolutions: Allowing the model to handle images of different aspect ratios and sizes, including larger and longer images.
-- Enhanced visual reasoning and decision-making abilities: Users can take a picture of a math problem and send it to Qwen-VL-Plus, which will help them solve it step-by-step.
 
 ## Evaluation
 
