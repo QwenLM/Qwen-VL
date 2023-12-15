@@ -15,6 +15,87 @@
 </p>
 <br><br>
 
+## Qwen-VL-Plus
+
+Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianwen.aliyun.com), [🤖](https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary)和[API](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start)免费访问。Qwen-VL-Plus的核心特性包括：
+
+- 显著提高处理图像中的文本的能力，特别是在图像中中文的识别能力优于GPT-4V：使其成为从图像中提取、组织和总结文本信息等任务的有用工具。
+- 支持的图像分辨率范围扩大：允许模型处理不同宽高比和和更高分辨率的图像，包括更大和更长的图像。
+- 增强视觉推理和决策能力：用户可以拍摄一个数学问题的照片并发送给Qwen-VL-Plus，它将帮助用户逐步解决它。
+
+  <p align="center">
+    <img src="assets/radar_qwenvlplus.jpg" width="600"/>
+<p>
+
+<table>
+<thead>
+  <tr>
+    <th>Model</th>
+    <th>DocVQA</th>
+    <th>TextVQA(val)</th>
+    <th>ChartQA</th>
+    <th>AI2D</th>
+    <th>MMMU(val)</th>
+    <th>MathVista</th>
+    <th>SEEDBenchv1(img)</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td>QwenVL-Plus</td>
+    <td><b>91.41%</b></td>
+    <td>78.88%</td>
+    <td>78.08%</td>
+    <td>75.87%</td>
+    <td>46.5%</td>
+    <td>41.0%</td>
+    <td><b>72.9%</b></td>
+  </tr>
+  <tr>
+    <td>QwenVL</td>
+    <td>65.1%</td>
+    <td>63.8%</td>
+    <td>65.7%</td>
+    <td>62.3%</td>
+    <td>35.9%</td>
+    <td>-</td>
+    <td>62.3%</td>
+  </tr>
+  <tr>
+    <td>GPT4-V</td>
+    <td>88.4%</td>
+    <td>78.0%</td>
+    <td>78.5%</td>
+    <td>78.2%</td>
+    <td>56.8%</td>
+    <td>49.9%</td>
+    <td>69.2%</td>
+  </tr>
+  <tr>
+    <td>Gemini Ultra</td>
+    <td>90.9%</td>
+    <td><b>82.3%</b></td>
+    <td><b>80.8%</b></td>
+    <td><b>79.5%</b></td>
+    <td><b>59.4%</b></td>
+    <td><b>53.0%</b></td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>Gemini Pro</td>
+    <td>88.1%</td>
+    <td>74.6%</td>
+    <td>74.1%</td>
+    <td>73.9%</td>
+    <td>47.9%</td>
+    <td>45.2%</td>
+    <td>-</td>
+  </tr>
+</tbody>
+</table>
+
+## Qwen-VL
+
 **Qwen-VL** 是阿里云研发的大规模视觉语言模型（Large Vision Language Model, LVLM）。Qwen-VL 可以以图像、文本、检测框作为输入，并以文本和检测框作为输出。Qwen-VL 系列模型的特点包括：
 
 - **强大的性能**：在四大类多模态任务的标准英文测评中（Zero-shot Captioning/VQA/DocVQA/Grounding）上，均取得同等通用模型大小下最好效果；
@@ -46,13 +127,6 @@
 * 2023年8月31日 发布Qwen-VL-Chat量化模型，**Qwen-VL-Chat-Int4**,该模型显存占用低，推理速度相比半精度模型显著提升，在基准评测上效果损失较小。
 * 2023年8月22日 在魔搭社区（ModelScope）和Hugging Face同步推出Qwen-VL和Qwen-VL-Chat模型。同时，我们提供一个[论文](https://arxiv.org/abs/2308.12966)介绍了相关的模型结构、训练细节和模型表现。
 
-## Qwen-VL-Plus
-
-Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianwen.aliyun.com)和[API](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start)免费访问。Qwen-VL-Plus的核心特性包括：
-
-- 显著提高处理图像中的文本的能力：使其成为从图像中提取、组织和总结文本信息等任务的有用工具。
-- 支持的图像分辨率范围扩大：允许模型处理不同宽高比和和更高分辨率的图像，包括更大和更长的图像。
-- 增强视觉推理和决策能力：用户可以拍摄一个数学问题的照片并发送给Qwen-VL-Plus，它将帮助用户逐步解决它。
 
 ## 评测
 
