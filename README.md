@@ -86,6 +86,8 @@ Key features of Qwen-VL-Plus include:
 </tbody>
 </table>
 
+All numbers are obtained without any use of external OCR tools ('pixel only'). Besides, Qwen-VL-Plus achieves SOTA on [MM-Bench](https://mmbench.opencompass.org.cn/leaderboard), [MME](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) and [Seed-Bench-v1](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard).
+
 ---
 ## Qwen-VL
 
