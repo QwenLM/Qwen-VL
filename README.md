@@ -25,73 +25,63 @@ Key features of Qwen-VL-Plus include:
 - Expanded range of supported image resolutions: Allowing the model to handle images of different aspect ratios and sizes, including larger and longer images.
 - Enhanced visual reasoning and decision-making abilities: Users can take a picture of a math problem and send it to Qwen-VL-Plus, which will help them solve it step-by-step.
 
-<p align="center">
-    <img src="assets/radar_qwenvlplus.jpg" width="600"/>
-<p>
-
 <table>
 <thead>
   <tr>
     <th>Model</th>
-    <th>DocVQA</th>
-    <th>TextVQA(val)</th>
-    <th>ChartQA</th>
-    <th>AI2D</th>
-    <th>MMMU(val)</th>
-    <th>MathVista</th>
-    <th>SEEDBenchv1(img)</th>
+    <th>DocVQA<sup>(test)</sup></th>
+    <th>ChartQA<sup>(test)</sup></th>
+    <th>AI2D<sup>(test)</sup></th>
+    <th>TextVQA<sup>(val)</sup></th>
+    <th>MMMU<sup>(val)</sup></th>
+    <th>MathVista<sup>(testmini)</sup></th>
   </tr>
 </thead>
 <tbody align="center">
   <tr>
-    <td>QwenVL-Plus</td>
-    <td><b>91.41%</b></td>
-    <td>78.88%</td>
-    <td>78.08%</td>
-    <td>75.87%</td>
-    <td>46.5%</td>
-    <td>41.0%</td>
-    <td><b>72.9%</b></td>
-  </tr>
-  <tr>
-    <td>QwenVL</td>
-    <td>65.1%</td>
-    <td>63.8%</td>
-    <td>65.7%</td>
-    <td>62.3%</td>
-    <td>35.9%</td>
-    <td>-</td>
-    <td>62.3%</td>
-  </tr>
-  <tr>
-    <td>GPT-4V</td>
-    <td>88.4%</td>
-    <td>78.0%</td>
-    <td>78.5%</td>
-    <td>78.2%</td>
-    <td>56.8%</td>
-    <td>49.9%</td>
-    <td>69.2%</td>
-  </tr>
-  <tr>
-    <td>Gemini Ultra</td>
-    <td>90.9%</td>
-    <td><b>82.3%</b></td>
-    <td><b>80.8%</b></td>
-    <td><b>79.5%</b></td>
-    <td><b>59.4%</b></td>
-    <td><b>53.0%</b></td>
-    <td>-</td>
+    <td>Other Best Generalist LVLM</td>
+    <td>81.6%<br><sub>(CogAgent)</sub></td>
+    <td>68.4%<br><sub>(CogAgent)</sub></td>
+    <td>73.7%<br><sub>(Fuyu-Medium)</sub></td>
+    <td>76.1%<br><sub>(CogAgent)</sub></td>
+    <td>36.4%<br><sub>(LLaVA-1.5)</sub></td>
+    <td>36.7%<br><sub>(SPHINX-V2)</sub></td>
   </tr>
   <tr>
     <td>Gemini Pro</td>
     <td>88.1%</td>
-    <td>74.6%</td>
     <td>74.1%</td>
     <td>73.9%</td>
+    <td>74.6%</td>
     <td>47.9%</td>
     <td>45.2%</td>
-    <td>-</td>
+  </tr>
+  <tr>
+    <td>Gemini Ultra</td>
+    <td>90.9%</td>
+    <td><b>80.8%</b></td>
+    <td><b>79.5%</b></td>
+    <td><b>82.3%</b></td>
+    <td><b>59.4%</b></td>
+    <td><b>53.0%</b></td>
+  </tr>
+  <tr>
+    <td>GPT-4V</td>
+    <td>88.4%</td>
+    <td>78.5%</td>
+    <td>78.2%</td>
+    <td>78.0%</td>
+    <td>56.8%</td>
+    <td>49.9%</td>
+  </tr>
+  <tr>
+    <td><b>QwenVL-Plus</b></td>
+    <td><b>91.4% <sup>1</sup></b></td>
+    <td>78.1% <sup>3</sup></td>
+    <td>75.9% <sup>3</sup></td>
+    <td>78.9% <sup>2</sup></td>
+    <td>46.5% <sup>4</sup></td>
+    <td>41.0% <sup>4</sup></td>
   </tr>
 </tbody>
 </table>
