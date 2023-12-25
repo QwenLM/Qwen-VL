@@ -21,9 +21,9 @@
 Qwen-VL-Plus is the upgraded version of Qwen-VL, currently supporting access for free through [Web pages](https://qianwen.aliyun.com), [🤖](https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary)and [APIs](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start/).
 Key features of Qwen-VL-Plus include:
 
-- Significantly enhanced capabilities for text processing within images have been achieved, particularly excelling in the recognition of Chinese characters compared to GPT-4V. These advancements make it an efficient tool for tasks like extracting, organizing, and summarizing textual information from images.
-- Expanded range of supported image resolutions: Allowing the model to handle images of different aspect ratios and sizes, including larger and longer images.
-- Enhanced visual reasoning and decision-making abilities: Users can take a picture of a math problem and send it to Qwen-VL-Plus, which will help them solve it step-by-step.
+- Significantly enhanced capabilities for **generalist end-to-end OCR**: particularly excelling in the recognition of Chinese characters compared to GPT-4V. These advancements make it an efficient tool for tasks like extracting, organizing, and summarizing textual information from images.
+- Support **higher image resolutions**: Allowing the model to handle images of different sizes and aspect ratios, including larger and longer images.
+- Enhanced **visual reasoning and decision-making abilities**: Users can take a picture of a math problem and send it to Qwen-VL-Plus, which will help them solve it step-by-step.
 
 <table>
 <thead>
@@ -81,12 +81,12 @@ Key features of Qwen-VL-Plus include:
     <td>75.9% <sup>3</sup></td>
     <td>78.9% <sup>2</sup></td>
     <td>46.5% <sup>4</sup></td>
-    <td>41.0% <sup>4</sup></td>
+    <td>43.3% <sup>4</sup></td>
   </tr>
 </tbody>
 </table>
 
-All numbers are obtained without any use of external OCR tools ('pixel only'). Besides, Qwen-VL-Plus achieves SOTA on [MM-Bench](https://mmbench.opencompass.org.cn/leaderboard), [MME](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) and [Seed-Bench-v1](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard).
+All numbers are obtained without any use of external OCR tools ('pixel only'). Besides, Qwen-VL-Plus achieves SOTA on [MM-Bench](https://mmbench.opencompass.org.cn/leaderboard), [MME](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) and [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard).
 
 ---
 ## Qwen-VL
