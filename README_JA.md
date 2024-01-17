@@ -40,6 +40,7 @@ Qwen-VL シリーズの 2 つのモデルを公開します:
   <br>
 
 ## ニュースとアップデート
+* 2023.11.28 Qwen-VL は、GPT4V、PALI-X を凌駕する最高レベルの [DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1) をシングルモデルで達成し、直接画像を入力するだけで様々なタスクを分析理解できる汎用モデルであり。 https://qianwen.aliyun.com のマルチモーダルタブで直接新しいモデルを体験できます。
 * 2023.9.25 Qwen-VL-Chat モデルが更新され、中国語コマンドのフォローがより堅牢になり、Web ページと表の画像の理解と質問と回答の機能が向上し、対話のパフォーマンスが向上しました (タッチストーン: 中国語: 401.2->481.7、英語: 645.2->711.6)。
 * 2023.9.12 フルパラメータ微調整、LoRA、Q-LoRA を含む、Qwen-VL モデルの微調整をサポートするようになりました。
 * 2023.9.8 [Colab](https://github.com/camenduru/Qwen-VL-Chat-c​​olab) のサンプルを提供してくれた [camenduru](https://github.com/camenduru) に感謝します。これをチュートリアルとして使用して、12G GPU でローカルまたはオンラインのデモを行うことができます。
@@ -624,6 +625,27 @@ else:
 
 </details>
 
+HuggingFaceからモデルのチェックポイントとコードをダウンロードする際にネットワークの問題が発生した場合、ModelScopeからチェックポイントをダウンロードする方法はこちらでございます。
+
+```python
+from modelscope import snapshot_download
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# Downloading model checkpoint to a local dir model_dir
+# model_dir = snapshot_download('qwen/Qwen-VL')
+model_dir = snapshot_download('qwen/Qwen-VL-Chat')
+
+
+# Loading local checkpoints
+# trust_remote_code is still set as True since we still load codes from local dir instead of transformers
+tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(
+    model_dir,
+    device_map="cuda",
+    trust_remote_code=True
+).eval()
+```
+
 #### 🤖 ModelScope
 
 ModelScope は、MaaS（Model-as-a-Service）のためのオープンソースプラットフォームであり、AI 開発者に柔軟で費用対効果の高いモデルサービスを提供します。同様に、以下のように ModelScope でモデルを実行することができます:
@@ -752,7 +774,7 @@ BF16 精度と Int4 量子化の下で、画像（258 トークンを要する�
     "conversations": [
       {
         "from": "user",
-        "value": "你好",
+        "value": "你好"
       },
       {
         "from": "assistant",
@@ -765,15 +787,15 @@ BF16 精度と Int4 量子化の下で、画像（258 トークンを要する�
     "conversations": [
       {
         "from": "user",
-        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？",
+        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？"
       },
       {
         "from": "assistant",
-        "value": "图中是一只拉布拉多犬。。"
-      }
+        "value": "图中是一只拉布拉多犬。"
+      },
       {
         "from": "user",
-        "value": "框出图中的格子衬衫",
+        "value": "框出图中的格子衬衫"
       },
       {
         "from": "assistant",
@@ -786,14 +808,14 @@ BF16 精度と Int4 量子化の下で、画像（258 トークンを要する�
     "conversations": [
       {
         "from": "user",
-        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪",
+        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪"
       },
       {
         "from": "assistant",
         "value": "第一张图片是重庆的城市天际线，第二张图片是北京的天际线。"
       }
     ]
-  },
+  }
 ]
 ```
 
@@ -833,8 +855,11 @@ sh finetune/finetune_lora_ds.sh
 
 LoRA ([論文](https://arxiv.org/abs/2106.09685)) は、フルパラメーターによるファインチューニングと比較して、adapter のパラメーターを更新するだけで、元の大きな言語モデル層は凍結されたままである。そのため、メモリコストが大幅に削減でき、計算コストも削減できる。
 
+なお、チャットモデル（Qwen-VL-Chatなど）ではなく、ベース言語モデル（Qwen-VLなど）の微調整にLoRAを使用した場合、スクリプトは自動的に学習可能なパラメータとして埋め込み層と出力層を切り替えます。これは、ベースとなる言語モデルには、ChatMLフォーマットによってもたらされる特殊なトークンに関する知識がないためです。したがって、これらのレイヤーは、モデルがトークンを理解し予測するために更新される必要があります。別の言い方をすれば、もしLoRAで特殊なトークンを学習するのであれば、コード内で `modules_to_save` を設定することで、レイヤーを学習可能なパラメータに設定する必要があります。さらに、LoRAのメモリフットプリントは、このような学習可能なパラメータがある場合とない場合で、大きな開きがあることがわかります。そのため、メモリに問題がある場合は、LoRAのChatモデルを微調整することをお勧めします。詳細は以下のプロファイルを参照してください。
+
 ### Q-LoRA
 しかし、それでもメモリ不足に悩む場合は、Q-LoRA（[論文](https://arxiv.org/abs/2305.14314)）を検討することができます。これは、量子化されたラージ言語モデルと、ページド・アテンションなどの他のテクニックを使用し、さらに少ないメモリコストで実行することができます。Q-LoRA を実行するには、以下のスクリプトを直接実行してください：
+
 
 ```bash
 # シングルGPUトレーニング
@@ -856,6 +881,46 @@ model = AutoPeftModelForCausalLM.from_pretrained(
     trust_remote_code=True
 ).eval()
 ```
+アダプターをマージし、微調整したモデルをスタンドアロンモデルとして保存したい場合は（これは LoRA でのみ可能で、Q-LoRA からパラメータをマージすることはできません）、以下のコードを実行します：
+
+```python
+from peft import AutoPeftModelForCausalLM
+
+model = AutoPeftModelForCausalLM.from_pretrained(
+    path_to_adapter, # path to the output directory
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+
+merged_model = model.merge_and_unload()
+# max_shard_size and safe serialization are not necessary. 
+# They respectively work for sharding checkpoint and save the model to safetensors
+merged_model.save_pretrained(new_model_directory, max_shard_size="2048MB", safe_serialization=True)
+```
+
+注意：マルチGPUトレーニングの場合、分散トレーニング用の適切なハイパーパラメータをマシンに応じて指定する必要があります。また、データ、メモリフットプリント、トレーニング速度を考慮して、引数 `--model_max_length` で最大シーケンス長を指定することをお勧めします。
+
+
+### メモリと速度のプロファイリング
+シングルGPUトレーニングのセットアップにおいて、LoRA (LoRA (Base)はembeddingと出力層を学習させるが、LoRA (Chat)はembeddingと出力層を学習させない) とQ-LoRAのGPUメモリとトレーニング速度をプロファイリングする。このテストでは、シングルA100-SXM4-80G GPUで実験し、CUDA 11.8とPytorch 2.0を使用します。各サンプルには写真が含まれています。384、512、1024、2048という異なる長さの入力のメモリ（GB）と速度（s/iter）をプロファイリングします。統計量を以下に示す：
+<table>
+    <tr>
+ <th rowspan="2">Method</th><th colspan="4" align="center">Sequence Length</th>
+    </tr>
+    <tr>
+        <th align="center">384</th><th align="center">512</th><th align="center">1024</th><th align="center">2048</th>
+    </tr>
+    <tr>
+      <td>LoRA (Base)</td><td align="center">37.1G / 2.3s/it</td><td align="center">37.3G / 2.4s/it</td><td align="center">38.7G / 3.6s/it</td><td align="center">38.7G / 6.1s/it</td>
+    </tr>
+    <tr>
+      <td>LoRA (Chat)</td><td align="center">23.3G / 2.2s/it</td><td align="center">23.6G / 2.3s/it</td><td align="center">25.1G / 3.5s/it</td><td align="center">27.3G / 5.9s/it</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td align="center">17.0G / 4.2s/it</td><td align="center">17.2G / 4.5s/it</td><td align="center">18.2G / 5.5s/it</td><td align="center">19.3G / 7.9s/it</td>
+    </tr>
+
+</table>
 
 シェルスクリプトは `torchrun` を使用してシングル GPU またはマルチGPUトレーニングを実行します。そのため、分散トレーニングのための適切なハイパーパラメータをマシンに応じて指定する必要があります。
 <br><br>
@@ -894,7 +959,7 @@ python web_demo_mm.py
 
 ```BibTeX
 @article{Qwen-VL,
-  title={Qwen-VL: A Frontier Large Vision-Language Model with Versatile Abilities},
+  title={Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond},
   author={Bai, Jinze and Bai, Shuai and Yang, Shusheng and Wang, Shijie and Tan, Sinan and Wang, Peng and Lin, Junyang and Zhou, Chang and Zhou, Jingren},
   journal={arXiv preprint arXiv:2308.12966},
   year={2023}

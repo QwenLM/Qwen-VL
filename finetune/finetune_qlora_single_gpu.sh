@@ -35,4 +35,5 @@ python finetune.py \
     --lazy_preprocess True \
     --gradient_checkpointing \
     --use_lora \
-    --q_lora
+    --q_lora \
+    --deepspeed finetune/ds_config_zero2.json

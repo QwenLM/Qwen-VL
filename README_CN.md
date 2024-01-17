@@ -15,6 +15,79 @@
 </p>
 <br><br>
 
+## Qwen-VL-Plus
+
+Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianwen.aliyun.com), [🤖](https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary)和[API](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start)免费访问。Qwen-VL-Plus的核心特性包括：
+
+- 显著提高处理图像中的文本的能力，特别是在图像中中文的识别能力优于GPT-4V：使其成为从图像中提取、组织和总结文本信息等任务的有用工具。
+- 支持的图像分辨率范围扩大：允许模型处理不同宽高比和和更高分辨率的图像，包括更大和更长的图像。
+- 增强视觉推理和决策能力：用户可以拍摄一个数学问题的照片并发送给Qwen-VL-Plus，它将帮助用户逐步解决它。
+
+<table>
+<thead>
+  <tr>
+    <th>Model</th>
+    <th>DocVQA<sup>(test)</sup></th>
+    <th>ChartQA<sup>(test)</sup></th>
+    <th>AI2D<sup>(test)</sup></th>
+    <th>TextVQA<sup>(val)</sup></th>
+    <th>MMMU<sup>(val)</sup></th>
+    <th>MathVista<sup>(testmini)</sup></th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td>Other Best Generalist LVLM</td>
+    <td>81.6%<br><sub>(CogAgent)</sub></td>
+    <td>68.4%<br><sub>(CogAgent)</sub></td>
+    <td>73.7%<br><sub>(Fuyu-Medium)</sub></td>
+    <td>76.1%<br><sub>(CogAgent)</sub></td>
+    <td>36.4%<br><sub>(LLaVA-1.5)</sub></td>
+    <td>36.7%<br><sub>(SPHINX-V2)</sub></td>
+  </tr>
+  <tr>
+    <td>Gemini Pro</td>
+    <td>88.1%</td>
+    <td>74.1%</td>
+    <td>73.9%</td>
+    <td>74.6%</td>
+    <td>47.9%</td>
+    <td>45.2%</td>
+  </tr>
+  <tr>
+    <td>Gemini Ultra</td>
+    <td>90.9%</td>
+    <td><b>80.8%</b></td>
+    <td><b>79.5%</b></td>
+    <td><b>82.3%</b></td>
+    <td><b>59.4%</b></td>
+    <td><b>53.0%</b></td>
+  </tr>
+  <tr>
+    <td>GPT-4V</td>
+    <td>88.4%</td>
+    <td>78.5%</td>
+    <td>78.2%</td>
+    <td>78.0%</td>
+    <td>56.8%</td>
+    <td>49.9%</td>
+  </tr>
+  <tr>
+    <td><b>Qwen-VL-Plus</b></td>
+    <td><b>91.4% <sup>1</sup></b></td>
+    <td>78.1% <sup>3</sup></td>
+    <td>75.9% <sup>3</sup></td>
+    <td>78.9% <sup>2</sup></td>
+    <td>46.5% <sup>4</sup></td>
+    <td>41.0% <sup>4</sup></td>
+  </tr>
+</tbody>
+</table>
+
+所有评测都是在不使用任何外部OCR工具(“only pixel”)的情况下获得的。此外，Qwen-VL-Plus也以下榜单中实现了SOTA：[MM-Bench](https://mmbench.opencompass.org.cn/leaderboard), [MME](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), [Seed-Bench-v1](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard).
+
+## Qwen-VL
+
 **Qwen-VL** 是阿里云研发的大规模视觉语言模型（Large Vision Language Model, LVLM）。Qwen-VL 可以以图像、文本、检测框作为输入，并以文本和检测框作为输出。Qwen-VL 系列模型的特点包括：
 
 - **强大的性能**：在四大类多模态任务的标准英文测评中（Zero-shot Captioning/VQA/DocVQA/Grounding）上，均取得同等通用模型大小下最好效果；
@@ -36,6 +109,7 @@
   <br>
 
 ## 新闻
+* 2023年11月28日 Qwen-VL单模型在[DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1)达到了最强水平，超越了GPT4V,PALI-X，与此同时它还是一个通用模型，直接输入图片就能帮你分析理解各种任务。直接访问[多模态tab](https://qianwen.aliyun.com)就能体验新模型。
 * 2023年9月12日 更新Qwen-VL-Chat模型，该模型有更鲁棒的中文指令跟随，更好的网页和表格图片理解和问答能力以及更好的对话表现(Touchstone: 中文: 401.2->481.7, 英文: 645.2->711.6)。
 * 2023年9月12日 支持Qwen-VL和Qwen-VL-Chat的微调，其中包括全参数微调、LoRA以及Q-LoRA
 * 2023年9月8日 感谢[camenduru](https://github.com/camenduru)贡献了[Colab](https://github.com/camenduru/Qwen-VL-Chat-colab)示例，每个人都可以以此为教程，在12G的GPU上做本地或在线的Demo。
@@ -44,7 +118,7 @@
 * 2023年9月1日 发布[TouchStone](https://github.com/OFA-Sys/TouchStone) 测评, 这是一个综合评估LVLM能力的测评,它不仅考察模型的视觉描述和推理能力，还包括根据视觉内容的文学创作能力。同时它是将多模态信息用文本表述并用LLMs进行评估的方法。
 * 2023年8月31日 发布Qwen-VL-Chat量化模型，**Qwen-VL-Chat-Int4**,该模型显存占用低，推理速度相比半精度模型显著提升，在基准评测上效果损失较小。
 * 2023年8月22日 在魔搭社区（ModelScope）和Hugging Face同步推出Qwen-VL和Qwen-VL-Chat模型。同时，我们提供一个[论文](https://arxiv.org/abs/2308.12966)介绍了相关的模型结构、训练细节和模型表现。
-<br>
+
 
 ## 评测
 
@@ -634,6 +708,27 @@ else:
     <img src="assets/demo_spotting_caption.jpg" width="500"/>
 <p>
 
+若在使用上述代码时由于各种原因无法从 HuggingFace 拉取模型和代码，可以先从 ModelScope 下载模型及代码至本地，再从本地加载模型：
+
+```python
+from modelscope import snapshot_download
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# Downloading model checkpoint to a local dir model_dir
+# model_dir = snapshot_download('qwen/Qwen-VL')
+model_dir = snapshot_download('qwen/Qwen-VL-Chat')
+
+
+# Loading local checkpoints
+# trust_remote_code is still set as True since we still load codes from local dir instead of transformers
+tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(
+    model_dir,
+    device_map="cuda",
+    trust_remote_code=True
+).eval()
+```
+
 #### 🤖 ModelScope
 
 魔搭（ModelScope）是开源的模型即服务共享平台，为泛AI开发者提供灵活、易用、低成本的一站式模型服务产品。使用ModelScope同样非常简单，代码如下所示：
@@ -758,7 +853,7 @@ print(response)
     "conversations": [
       {
         "from": "user",
-        "value": "你好",
+        "value": "你好"
       },
       {
         "from": "assistant",
@@ -771,15 +866,15 @@ print(response)
     "conversations": [
       {
         "from": "user",
-        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？",
+        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？"
       },
       {
         "from": "assistant",
-        "value": "图中是一只拉布拉多犬。。"
-      }
+        "value": "图中是一只拉布拉多犬。"
+      },
       {
         "from": "user",
-        "value": "框出图中的格子衬衫",
+        "value": "框出图中的格子衬衫"
       },
       {
         "from": "assistant",
@@ -792,14 +887,14 @@ print(response)
     "conversations": [
       {
         "from": "user",
-        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪",
+        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪"
       },
       {
         "from": "assistant",
         "value": "第一张图片是重庆的城市天际线，第二张图片是北京的天际线。"
       }
     ]
-  },
+  }
 ]
 ```
 为针对多样的VL任务，我们增加了一下的特殊tokens： `<img> </img> <ref> </ref> <box> </box>`.
@@ -838,6 +933,8 @@ sh finetune/finetune_lora_ds.sh
 
 与全参数微调不同，LoRA ([论文](https://arxiv.org/abs/2106.09685)) 只更新adapter层的参数而无需更新原有语言模型的参数。这种方法允许用户用更低的显存开销来训练模型，也意味着更小的计算开销。
 
+注意，如果你使用预训练模型进行LoRA微调，而非chat模型，模型的embedding和输出层的参数将被设为可训练的参数。这是因为预训练模型没有学习过ChatML格式中的特殊token，因此需要将这部分参数设为可训练才能让模型学会理解和预测这些token。这也意味着，假如你的训练引入新的特殊token，你需要通过代码中的`modules_to_save`将这些参数设为可训练的参数。如果你想节省显存占用，可以考虑使用chat模型进行LoRA微调，显存占用将大幅度降低。下文的显存占用和训练速度的记录将详细介绍这部分细节。
+
 ### Q-LoRA
 如果你依然遇到显存不足的问题，可以考虑使用Q-LoRA ([论文](https://arxiv.org/abs/2305.14314))。该方法使用4比特量化模型以及paged attention等技术实现更小的显存开销。运行Q-LoRA你只需运行如下脚本：
 
@@ -848,7 +945,7 @@ sh finetune/finetune_qlora_single_gpu.sh
 sh finetune/finetune_qlora_ds.sh
 ```
 
-我们建议你使用我们提供的Int4量化模型进行训练，即Qwen-VL-Chat-Int4。然而，与全参数微调以及LoRA不同，Q-LoRA仅支持fp16。
+我们建议你使用我们提供的Int4量化模型进行训练，即Qwen-VL-Chat-Int4。请**不要使用**非量化模型！与全参数微调以及LoRA不同，Q-LoRA仅支持fp16。此外，上述LoRA关于特殊token的问题在Q-LoRA依然存在。并且，Int4模型的参数无法被设为可训练的参数。所幸的是，我们只提供了Chat模型的Int4模型，因此你不用担心这个问题。但是，如果你执意要在Q-LoRA中引入新的特殊token，很抱歉，我们无法保证你能成功训练。
 
 与全参数微调不同，LoRA和Q-LoRA的训练只需存储adapter部分的参数。假如你需要使用LoRA训练后的模型，你需要使用如下方法。你可以用如下代码读取模型：
 
@@ -862,7 +959,47 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 ).eval()
 ```
 
-上述shell脚本使用`torchrun`来运行单GPU和多GPU训练。分布式训练需要根据你的需求和机器指定正确的分布式训练超参数。
+如果你觉得这样一步到位的方式让你很不安心或者影响你接入下游应用，你可以选择先合并并存储模型（LoRA支持合并，Q-LoRA不支持），再用常规方式读取你的新模型，示例如下：
+
+```python
+from peft import AutoPeftModelForCausalLM
+
+model = AutoPeftModelForCausalLM.from_pretrained(
+    path_to_adapter, # path to the output directory
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+
+merged_model = model.merge_and_unload()
+# max_shard_size and safe serialization are not necessary. 
+# They respectively work for sharding checkpoint and save the model to safetensors
+merged_model.save_pretrained(new_model_directory, max_shard_size="2048MB", safe_serialization=True)
+```
+
+注意：分布式训练需要根据你的需求和机器指定正确的分布式训练超参数。此外，你需要根据你的数据、显存情况和训练速度预期，使用`--model_max_length`设定你的数据长度。
+
+### 显存占用及训练速度
+下面记录Qwen_VL模型在单GPU使用LoRA（LoRA (Base)指的是embedding和输出层参与训练，而LoRA (Chat)则不优化这部分参数）和QLoRA时处理不同长度输入的显存占用和训练速度的情况。本次评测运行于单张A100-SXM4-80G GPU，使用CUDA 11.8和Pytorch 2.0。我们统一使用batch size为1，gradient accumulation为8的训练配置，每个样本包含一张图，分别记录输入长度分别为384、512、1024和2048的显存占用（GB）和训练速度（s/iter）。具体数值如下所示：
+
+<table>
+    <tr>
+ <th rowspan="2">Method</th><th colspan="4" align="center">Sequence Length</th>
+    </tr>
+    <tr>
+        <th align="center">384</th><th align="center">512</th><th align="center">1024</th><th align="center">2048</th>
+    </tr>
+    <tr>
+      <td>LoRA (Base)</td><td align="center">37.1G / 2.3s/it</td><td align="center">37.3G / 2.4s/it</td><td align="center">38.7G / 3.6s/it</td><td align="center">38.7G / 6.1s/it</td>
+    </tr>
+    <tr>
+      <td>LoRA (Chat)</td><td align="center">23.3G / 2.2s/it</td><td align="center">23.6G / 2.3s/it</td><td align="center">25.1G / 3.5s/it</td><td align="center">27.3G / 5.9s/it</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td align="center">17.0G / 4.2s/it</td><td align="center">17.2G / 4.5s/it</td><td align="center">18.2G / 5.5s/it</td><td align="center">19.3G / 7.9s/it</td>
+    </tr>
+
+</table>
+
 <br><br>
 ## Demo
 
@@ -898,7 +1035,7 @@ python web_demo_mm.py
 
 ```BibTeX
 @article{Qwen-VL,
-  title={Qwen-VL: A Frontier Large Vision-Language Model with Versatile Abilities},
+  title={Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond},
   author={Bai, Jinze and Bai, Shuai and Yang, Shusheng and Wang, Shijie and Tan, Sinan and Wang, Peng and Lin, Junyang and Zhou, Chang and Zhou, Jingren},
   journal={arXiv preprint arXiv:2308.12966},
   year={2023}

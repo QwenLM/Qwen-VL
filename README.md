@@ -1,5 +1,5 @@
 <p align="left">
-        <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp&nbsp ｜ &nbsp<a href="README_JA.md">日本語</a>&nbsp
+        <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp&nbsp ｜ &nbsp<a href="README_JA.md">日本語</a>&nbsp｜ &nbsp<a href="README_KO.md">한국어</a>&nbsp
 </p>
 <br><br>
 
@@ -9,13 +9,87 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ Qwen-VL-Chat-Int4 <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
+        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ Qwen-VL-Chat-Int4 <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>&nbsp&nbsp | &nbsp Qwen-VL-Plus <a href="https://tongyi.aliyun.com/qianwen">Web</a> | <a href="https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start">API</a>
 <br>
 <a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Paper</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://github.com/camenduru/Qwen-VL-Chat-colab">Colab</a>&nbsp&nbsp | &nbsp <a href="TUTORIAL.md">Tutorial</a>
 </p>
 <br><br>
 
 ---
+## Qwen-VL-Plus
+
+Qwen-VL-Plus is the upgraded version of Qwen-VL, currently supporting access for free through [Web pages](https://qianwen.aliyun.com), [🤖](https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary)and [APIs](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start/).
+Key features of Qwen-VL-Plus include:
+
+- Significantly enhanced capabilities for **generalist end-to-end OCR**: particularly excelling in the recognition of Chinese characters compared to GPT-4V. These advancements make it an efficient tool for tasks like extracting, organizing, and summarizing textual information from images.
+- Support **higher image resolutions**: Allowing the model to handle images of different sizes and aspect ratios, including larger and longer images.
+- Enhanced **visual reasoning and decision-making abilities**: Users can take a picture of a math problem and send it to Qwen-VL-Plus, which will help them solve it step-by-step.
+
+<table>
+<thead>
+  <tr>
+    <th>Model</th>
+    <th>DocVQA<sup>(test)</sup></th>
+    <th>ChartQA<sup>(test)</sup></th>
+    <th>AI2D<sup>(test)</sup></th>
+    <th>TextVQA<sup>(val)</sup></th>
+    <th>MMMU<sup>(val)</sup></th>
+    <th>MathVista<sup>(testmini)</sup></th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td>Other Best Generalist LVLM</td>
+    <td>81.6%<br><sub>(CogAgent)</sub></td>
+    <td>68.4%<br><sub>(CogAgent)</sub></td>
+    <td>73.7%<br><sub>(Fuyu-Medium)</sub></td>
+    <td>76.1%<br><sub>(CogAgent)</sub></td>
+    <td>36.4%<br><sub>(LLaVA-1.5)</sub></td>
+    <td>36.7%<br><sub>(SPHINX-V2)</sub></td>
+  </tr>
+  <tr>
+    <td>Gemini Pro</td>
+    <td>88.1%</td>
+    <td>74.1%</td>
+    <td>73.9%</td>
+    <td>74.6%</td>
+    <td>47.9%</td>
+    <td>45.2%</td>
+  </tr>
+  <tr>
+    <td>Gemini Ultra</td>
+    <td>90.9%</td>
+    <td><b>80.8%</b></td>
+    <td><b>79.5%</b></td>
+    <td><b>82.3%</b></td>
+    <td><b>59.4%</b></td>
+    <td><b>53.0%</b></td>
+  </tr>
+  <tr>
+    <td>GPT-4V</td>
+    <td>88.4%</td>
+    <td>78.5%</td>
+    <td>78.2%</td>
+    <td>78.0%</td>
+    <td>56.8%</td>
+    <td>49.9%</td>
+  </tr>
+  <tr>
+    <td><b>Qwen-VL-Plus</b></td>
+    <td><b>91.4% <sup>1</sup></b></td>
+    <td>78.1% <sup>3</sup></td>
+    <td>75.9% <sup>3</sup></td>
+    <td>78.9% <sup>2</sup></td>
+    <td>46.5% <sup>4</sup></td>
+    <td>43.3% <sup>4</sup></td>
+  </tr>
+</tbody>
+</table>
+
+All numbers are obtained without any use of external OCR tools ('pixel only'). Besides, Qwen-VL-Plus achieves SOTA on [MM-Bench](https://mmbench.opencompass.org.cn/leaderboard), [MME](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) and [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard).
+
+---
+## Qwen-VL
 
 **Qwen-VL** (Qwen Large Vision Language Model) is the multimodal version of the large model series, Qwen (abbr. Tongyi Qianwen), proposed by Alibaba Cloud. Qwen-VL accepts image, text, and bounding box as inputs, outputs text and bounding box. The features of Qwen-VL include:
 
@@ -38,6 +112,7 @@ We release two models of the Qwen-VL series:
   <br>
 
 ## News and Updates
+* ```2023.11.28``` 🏆🏆🏆 Qwen-VL-Plus achieved the best performance in [DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1) by using a single model, surpassing GPT4V and PALI-X, without using model ensemble or OCR-pipeline. Meanwhile, it is also a general model that can help you analyze and understand various tasks by directly inputting images. You can enjoy the new model by directly visiting the multi-modal tab of [web pages](https://qianwen.aliyun.com).
 * ```2023.9.25``` 🚀🚀🚀 We update Qwen-VL-Chat with more robust Chinese instruction-following ability, improved understanding of web pages and table images, and better dialogue performance (Touchstone: CN: 401.2->481.7, EN: 645.2->711.6).
 * ```2023.9.12``` 😃😃😃 We now support finetuning on the Qwen-VL models, including full-parameter finetuning, LoRA and Q-LoRA.
 * ```2023.9.8``` 👍👍👍 Thanks to [camenduru](https://github.com/camenduru) for contributing the wonderful [Colab](https://github.com/camenduru/Qwen-VL-Chat-colab). Everyone can use it as a local or online Qwen-VL-Chat-Int4 Demo tutorial on one 12G GPU.
@@ -46,7 +121,7 @@ We release two models of the Qwen-VL series:
 * ```2023.9.1``` 🔥🔥🔥 We release the [TouchStone](https://github.com/OFA-Sys/TouchStone) Evaluation, which is a comprehensive assessment of multimodal language models, encompassing not only basic recognition and comprehension but also extending to literary creation. By using strong LLMs as judges and converting multimodal information into text.
 * ```2023.8.31``` 🌟🌟🌟 We release the Int4 quantized model for Qwen-VL-Chat, **Qwen-VL-Chat-Int4**, which requires low memory costs but achieves improved inference speed. Besides, there is no significant performance degradation on the benchmark evaluation.
 * ```2023.8.22``` 🎉🎉🎉 We release both **Qwen-VL** and **Qwen-VL-Chat** on ModelScope and Hugging Face. We also provide a [paper](https://arxiv.org/abs/2308.12966) for more details about the model, including training details and model performance.
-<br>
+
 
 ## Evaluation
 
@@ -641,6 +716,28 @@ else:
 
 </details>
 
+
+In the event of a network issue while attempting to download model checkpoints and codes from HuggingFace, an alternative approach is to initially fetch the checkpoint from ModelScope and then load it from the local directory as outlined below:
+
+```python
+from modelscope import snapshot_download
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# Downloading model checkpoint to a local dir model_dir
+# model_dir = snapshot_download('qwen/Qwen-VL')
+model_dir = snapshot_download('qwen/Qwen-VL-Chat')
+
+
+# Loading local checkpoints
+# trust_remote_code is still set as True since we still load codes from local dir instead of transformers
+tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(
+    model_dir,
+    device_map="cuda",
+    trust_remote_code=True
+).eval()
+```
+
 #### 🤖 ModelScope
 
 ModelScope is an opensource platform for Model-as-a-Service (MaaS), which provides flexible and cost-effective model service to AI developers. Similarly, you can run the models with ModelScope as shown below:
@@ -773,7 +870,7 @@ To prepare your training data, you need to put all the samples into a list and s
     "conversations": [
       {
         "from": "user",
-        "value": "你好",
+        "value": "你好"
       },
       {
         "from": "assistant",
@@ -786,15 +883,15 @@ To prepare your training data, you need to put all the samples into a list and s
     "conversations": [
       {
         "from": "user",
-        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？",
+        "value": "Picture 1: <img>https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg</img>\n图中的狗是什么品种？"
       },
       {
         "from": "assistant",
-        "value": "图中是一只拉布拉多犬。。"
-      }
+        "value": "图中是一只拉布拉多犬。"
+      },
       {
         "from": "user",
-        "value": "框出图中的格子衬衫",
+        "value": "框出图中的格子衬衫"
       },
       {
         "from": "assistant",
@@ -807,14 +904,14 @@ To prepare your training data, you need to put all the samples into a list and s
     "conversations": [
       {
         "from": "user",
-        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪",
+        "value": "Picture 1: <img>assets/mm_tutorial/Chongqing.jpeg</img>\nPicture 2: <img>assets/mm_tutorial/Beijing.jpeg</img>\n图中都是哪"
       },
       {
         "from": "assistant",
         "value": "第一张图片是重庆的城市天际线，第二张图片是北京的天际线。"
       }
     ]
-  },
+  }
 ]
 ```
 For the VL tasks, there are special tokens that are used, including `<img> </img> <ref> </ref> <box> </box>`.
@@ -835,10 +932,10 @@ The finetuning scripts allow you to perform:
 Full-parameter parameter finetuning requires updating all parameters of LLM in the whole training process. In our experiments, frozening the parameters of ViT during the fine-tuning phase achieves better performance. To launch your training, run the following script:
 
 ```bash
-sh finetune/finetune.sh
+sh finetune/finetune_ds.sh
 ```
 
-Remember to specify the correct model name or path, the data path, as well as the output directory in the shell scripts. If you want to make changes, just remove the argument `--deepspeed` or make changes in the DeepSpeed configuration json file based on your requirements.
+Remember to specify the correct model name or path, the data path, as well as the output directory in the shell scripts. If you want to make changes, just remove the argument `--deepspeed` or make changes in the DeepSpeed configuration json file based on your requirements. Additionally, this script supports mixed-precision training, and thus you can use `--bf16 True` or `--fp16 True`. Empirically we advise you to use bf16 to make your training consistent with our pretraining and alignment if your machine supports bf16, and thus we use it by default.
 
 ### LoRA
 Similarly, to run LoRA, use another script to run as shown below. Before you start, make sure that you have installed `peft`. Also, you need to specify your paths to your model, data, and output. We advise you to use absolute path for your pretrained model. This is because LoRA only saves the adapter and the absolute path in the adapter configuration json file is used for finding out the pretrained model to load.
@@ -852,6 +949,8 @@ sh finetune/finetune_lora_ds.sh
 
 In comparison with full-parameter finetuning, LoRA ([paper](https://arxiv.org/abs/2106.09685)) only updates the parameters of adapter layers but keeps the original large language model layers frozen. This allows much fewer memory costs and thus fewer computation costs. 
 
+Note that if you use LoRA to finetune the base language model, e.g., Qwen-VL, instead of chat models, e.g., Qwen-VL-Chat, the script automatically switches the embedding and output layer as trainable parameters. This is because the base language model has no knowledge of special tokens brought by ChatML format. Thus these layers should be updated for the model to understand and predict the tokens. Or in another word, if your training brings in special tokens in LoRA, you should set the layers to trainable parameters by setting `modules_to_save` inside the code. Additionally, we find that there is a significant gap between the memory footprint of LoRA with and without these trainable parameters. Therefore, if you have trouble with memory, we advise you to LoRA finetune the chat models. Check the profile below for more information.
+
 ### Q-LoRA
 However, if you still suffer from insufficient memory, you can consider Q-LoRA ([paper](https://arxiv.org/abs/2305.14314)), which uses the quantized large language model and other techniques such as paged attention to allow even fewer memory costs. To run Q-LoRA, directly run the following script:
 
@@ -863,9 +962,11 @@ sh finetune/finetune_qlora_ds.sh
 ```
 
 For Q-LoRA, we advise you to load our provided quantized model, e.g., Qwen-VL-Chat-Int4. 
+You **SHOULD NOT** use the bf16 models. Different from full-parameter finetuning and LoRA, only fp16 is supported for Q-LoRA. Besides, for Q-LoRA, the troubles with the special tokens in LoRA still exist. However, as we only provide the Int4 models for chat models, which means the language model has learned the special tokens of ChatML format, you have no worry about the layers. Note that the layers of the Int4 model should not be trainable, and thus if you introduce special tokens in your training, Q-LoRA might not work.
+
+
 
 Different from full-parameter finetuning, the training of both LoRA and Q-LoRA only saves the adapter parameters. You can load the finetuned model for inference as shown below:
-
 
 ```python
 from peft import AutoPeftModelForCausalLM
@@ -877,8 +978,50 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 ).eval()
 ```
 
-The shell scripts uses torchrun to run single-GPU or multi-GPU training. Therefore, you need to specify the proper hyperparameters for distributed training based on your machine. 
+If you want to merge the adapters and save the finetuned model as a standalone model (you can only do this with LoRA, and you CANNOT merge the parameters from Q-LoRA), you can run the following codes:
 
+```python
+from peft import AutoPeftModelForCausalLM
+
+model = AutoPeftModelForCausalLM.from_pretrained(
+    path_to_adapter, # path to the output directory
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+
+merged_model = model.merge_and_unload()
+# max_shard_size and safe serialization are not necessary. 
+# They respectively work for sharding checkpoint and save the model to safetensors
+merged_model.save_pretrained(new_model_directory, max_shard_size="2048MB", safe_serialization=True)
+```
+
+Note: For multi-GPU training, you need to specify the proper hyperparameters for distributed training based on your machine. Besides, we advise you to specify your maximum sequence length with the argument --model_max_length, based on your consideration of data, memory footprint, and training speed.
+
+
+### Profiling of Memory and Speed
+We profile the GPU memory and training speed of both LoRA (Base) refers to training the embedding and output layer, while LoRA (Chat) has no trainable embedding and output layer) and Q-LoRA in the setup of single-GPU training. In this test, we experiment on a single A100-SXM4-80G GPU, and we use CUDA 11.8 and Pytorch 2.0. We uniformly use a batch size of 1 and gradient accumulation of 8. Each sample contains an image. We profile the memory (GB) and speed (s/iter) of inputs of different lengths, namely 384, 512, 1024, and 2048. The statistics are listed below:
+
+
+<table>
+    <tr>
+ <th rowspan="2">Method</th><th colspan="4" align="center">Sequence Length</th>
+    </tr>
+    <tr>
+        <th align="center">384</th><th align="center">512</th><th align="center">1024</th><th align="center">2048</th>
+    </tr>
+    <tr>
+      <td>LoRA (Base)</td><td align="center">37.1G / 2.3s/it</td><td align="center">37.3G / 2.4s/it</td><td align="center">38.7G / 3.6s/it</td><td align="center">38.7G / 6.1s/it</td>
+    </tr>
+    <tr>
+      <td>LoRA (Chat)</td><td align="center">23.3G / 2.2s/it</td><td align="center">23.6G / 2.3s/it</td><td align="center">25.1G / 3.5s/it</td><td align="center">27.3G / 5.9s/it</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td align="center">17.0G / 4.2s/it</td><td align="center">17.2G / 4.5s/it</td><td align="center">18.2G / 5.5s/it</td><td align="center">19.3G / 7.9s/it</td>
+    </tr>
+
+</table>
+
+<br>
 
 ## Demo
 
@@ -914,7 +1057,7 @@ If you find our paper and code useful in your research, please consider giving a
 
 ```BibTeX
 @article{Qwen-VL,
-  title={Qwen-VL: A Frontier Large Vision-Language Model with Versatile Abilities},
+  title={Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond},
   author={Bai, Jinze and Bai, Shuai and Yang, Shusheng and Wang, Shijie and Tan, Sinan and Wang, Peng and Lin, Junyang and Zhou, Chang and Zhou, Jingren},
   journal={arXiv preprint arXiv:2308.12966},
   year={2023}

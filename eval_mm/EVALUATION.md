@@ -405,7 +405,7 @@ wget https://downloads.cs.stanford.edu/nlp/data/gqa/images.zip
 unzip images.zip
 
 # download converted files
-https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/gqa/test_balanced.jsonl
+wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/gqa/testdev_balanced.jsonl
 wget https://ofasys-wlcb.oss-cn-wulanchabu.aliyuncs.com/Qwen-VL/evaluation/gqa/train_balanced.jsonl
 
 cd ../..

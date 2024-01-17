@@ -15,7 +15,7 @@ import transformers
 from transformers import Trainer, GPTQConfig, deepspeed
 from transformers.trainer_pt_utils import LabelSmoother
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
-
+from accelerate.utils import DistributedType
 
 IGNORE_TOKEN_ID = LabelSmoother.ignore_index
 
@@ -265,6 +265,9 @@ def train():
         lora_args,
     ) = parser.parse_args_into_dataclasses()
 
+    if getattr(training_args, 'deepspeed', None) and getattr(lora_args, 'q_lora', False):
+        training_args.distributed_state.distributed_type = DistributedType.DEEPSPEED
+
     compute_dtype = (
         torch.float16
         if training_args.fp16
@@ -321,6 +324,10 @@ def train():
     tokenizer.pad_token_id = tokenizer.eod_id
 
     if training_args.use_lora:
+        if lora_args.q_lora or "chat" in model_args.model_name_or_path.lower():
+            modules_to_save = None
+        else:
+            modules_to_save = ["wte", "lm_head"]
         lora_config = LoraConfig(
             r=lora_args.lora_r,
             lora_alpha=lora_args.lora_alpha,
@@ -328,7 +335,7 @@ def train():
             lora_dropout=lora_args.lora_dropout,
             bias=lora_args.lora_bias,
             task_type="CAUSAL_LM",
-            modules_to_save=["wte", "lm_head"]  # This argument serves for adding new tokens.
+            modules_to_save=modules_to_save  # This argument serves for adding new tokens.
         )
         if lora_args.q_lora:
             model = prepare_model_for_kbit_training(
