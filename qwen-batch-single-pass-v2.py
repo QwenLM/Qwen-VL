@@ -11,6 +11,7 @@ parser = argparse.ArgumentParser(description='Image Captioning Script')
 parser.add_argument('--imgdir', type=str, default='path/to/img/dir', help='Directory containing images')
 parser.add_argument('--exist', type=str, default='replace', choices=['skip', 'add', 'replace'], help='Handling of existing captions')
 parser.add_argument('--prompt', type=str, default='describe this image in detail, in less than 35 words', help='Prompt to use for image captioning')
+parser.add_argument('--sub', type=lambda x: (str(x).lower() == 'true'), default=False, help='Search for images in subdirectories')
 args = parser.parse_args()
 
 # Function to check for unwanted elements in the caption
@@ -31,8 +32,15 @@ image_types = ['.png', '.jpg', '.jpeg', '.bmp', '.gif']
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen-VL-Chat-Int4", trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen-VL-Chat-Int4", device_map="cuda", trust_remote_code=True, use_flash_attn=True).eval()
 
-# Get the list of image files in the specified directory
-files = [f for f in os.listdir(args.imgdir) if os.path.splitext(f)[1].lower() in image_types]
+# Function to get files recursively from a directory
+def get_files_from_directory(directory, image_types, search_subdirectories=False):
+    if search_subdirectories:
+        return [os.path.join(dp, f) for dp, dn, filenames in os.walk(directory) for f in filenames if os.path.splitext(f)[1].lower() in image_types]
+    else:
+        return [f for f in os.listdir(directory) if os.path.splitext(f)[1].lower() in image_types]
+
+# Get the list of image files in the specified directory, possibly including subdirectories
+files = get_files_from_directory(args.imgdir, image_types, args.sub)
 
 # Initialize the progress bar
 pbar = tqdm(total=len(files), desc="Captioning", dynamic_ncols=True, position=0, leave=True)
