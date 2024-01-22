@@ -40,12 +40,12 @@ Key features of Qwen-VL-Plus include:
 <tbody align="center">
   <tr>
     <td>Other Best Generalist LVLM</td>
-    <td>81.6%<br><sub>(CogAgent)</sub></td>
-    <td>68.4%<br><sub>(CogAgent)</sub></td>
-    <td>73.7%<br><sub>(Fuyu-Medium)</sub></td>
-    <td>76.1%<br><sub>(CogAgent)</sub></td>
-    <td>36.4%<br><sub>(LLaVA-1.5)</sub></td>
-    <td>36.7%<br><sub>(SPHINX-V2)</sub></td>
+    <td>81.6%<br><sub><tiny>(CogAgent)</tiny></sub></td>
+    <td>68.4%<br><sub><tiny>(CogAgent)</tiny></sub></td>
+    <td>73.7%<br><sub><tiny>(Fuyu-Medium)</tiny></sub></td>
+    <td>76.1%<br><sub><tiny>(CogAgent)</tiny></sub></td>
+    <td>36.4%<br><sub><tiny>(LLaVA-1.5)</tiny></sub></td>
+    <td>36.7%<br><sub><tiny>(SPHINX-V2)</tiny></sub></td>
   </tr>
   <tr>
     <td>Gemini Pro</td>
@@ -102,14 +102,91 @@ Key features of Qwen-VL-Plus include:
 </thead>
 <tbody align="center">
   <tr>
-    <td>Other Best Generalist LVLM</td>
+    <td>Other Best<br>Open-source LVLM</td>
+    <td>81.6%<br><sup><tiny>(CogAgent)</tiny></sup></td>
+    <td>68.4%<br><sup><tiny>(CogAgent)</tiny></sup></td>
+    <td>73.7%<br><sup><tiny>(Fuyu-Medium)</tiny></sup></td>
+    <td>76.1%<br><sup><tiny>(CogAgent)</tiny></sup></td>
+    <td>45.9%<br><sup><tiny>(Yi-VL-34B)</tiny></sup></td>
+    <td>36.7%<br><sup><tiny>(SPHINX-V2)</tiny></sup></td>
+    <td>72.4%<br><sup><tiny>(InternLM-XComposer-VL)</tiny></sup></td>
+  </tr>
+  <tr>
+    <td>Gemini Pro</td>
+    <td>88.1%</td>
+    <td>74.1%</td>
+    <td>73.9%</td>
+    <td>74.6%</td>
+    <td>47.9%</td>
+    <td>45.2%</td>
+    <td>74.3%</td>
+  </tr>
+  <tr>
+    <td>Gemini Ultra</td>
+    <td>90.9%</td>
+    <td>80.8% <sup>1</sup></td>
+    <td>79.5% <sup>1</sup></td>
+    <td>82.3% <sup>1</sup></td>
+    <td>59.4% <sup>1</sup></td>
+    <td>53.0% <sup>1</sup></td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>GPT-4V</td>
+    <td>88.4%</td>
+    <td>78.5%</td>
+    <td>78.2%</td>
+    <td>78.0%</td>
+    <td>56.8%</td>
+    <td>49.9%</td>
+    <td>73.9%</td>
+  </tr>
+  <tr>
+    <td><b>Qwen-VL-Plus</b></td>
+    <td>91.4%</td>
+    <td>78.1%</td>
+    <td>75.9%</td>
+    <td>78.9%</td>
+    <td>44.0%</td>
+    <td>43.3%</td>
+    <td>68.0%</td>
+  </tr>
+  <tr>
+    <td><b>Qwen-VL-Max</b></td>
+    <td>92.5% <sup>1</sup></td>
+    <td>79.8% <sup>2</sup></td>
+    <td>79.3% <sup>2</sup></td>
+    <td>79.5% <sup>2</sup></td>
+    <td>50.8% <sup>3</sup></td>
+    <td>50.0% <sup>2</sup></td>
+    <td>75.1% <sup>1</sup></td>
+  </tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+  <tr>
+    <th>Model</th>
+    <th>DocVQA<br><sup>(文档理解)</sup></th>
+    <th>ChartQA<br><sup>(图表理解)</sup></th>
+    <th>AI2D<br><sup>(科学图例)</sup></th>
+    <th>TextVQA<br><sup>(文字阅读)</sup></th>
+    <th>MMMU<br><sup>(多科学问题)</sup></th>
+    <th>MathVista<br><sup>(数学推理)</sup></th>
+    <th>MM-Bench-CN<br><sup>(中文问答)</sup></th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td>Other Best<br>Generalist LVLM</td>
     <td>84.3%<br><sup>(SMoLA-PaLI-3)</sup></td>
     <td>71.3%<br><sup>(SMoLA-PaLI-X)</sup></td>
     <td>81.4% <sup>1</sup><br><sup>(SMoLA-PaLI-X)</sup></td>
     <td>76.1%<br><sup>(CogAgent)</sup></td>
     <td>45.9%<br><sup>(Yi-VL-34B)</sup></td>
     <td>36.7%<br><sup>(SPHINX-V2)</sup></td>
-    <td>72.4%<br><sup>(InternLM-XComposer-VL)</sup></td>
+    <td>72.4%<br><sup>(InternLM-XComposer<br>-VL)</sup></td>
   </tr>
   <tr>
     <td>Gemini Pro</td>
@@ -142,7 +219,7 @@ Key features of Qwen-VL-Plus include:
     <td>73.9%</td>
   </tr>
   <tr>
-    <td><b>Qwen-VL-Turbo</b></td>
+    <td><b>Qwen-VL-Plus</b></td>
     <td>91.4%</td>
     <td>78.1%</td>
     <td>75.9%</td>
@@ -152,13 +229,13 @@ Key features of Qwen-VL-Plus include:
     <td>68.0%</td>
   </tr>
   <tr>
-    <td><b>Qwen-VL-Plus</b></td>
+    <td><b>Qwen-VL-Max</b></td>
     <td>92.5% <sup>1</sup></td>
     <td>79.8% <sup>2</sup></td>
     <td>79.3% <sup>3</sup></td>
     <td>79.5% <sup>2</sup></td>
     <td>50.8% <sup>3</sup></td>
-    <td>49.2% <sup>3</sup></td>
+    <td>50.0% <sup>2</sup></td>
     <td>75.1% <sup>1</sup></td>
   </tr>
 </tbody>
