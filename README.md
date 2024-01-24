@@ -7,7 +7,7 @@
     <th>ChartQA<br><sup>(图表理解)</sup></th>
     <th>AI2D<br><sup>(科学图例)</sup></th>
     <th>TextVQA<br><sup>(文字阅读)</sup></th>
-    <th>MMMU<br><sup>(多科学问题)</sup></th>
+    <th>MMMU<br><sup>(多学科问题)</sup></th>
     <th>MathVista<br><sup>(数学推理)</sup></th>
     <th>MM-Bench-CN<br><sup>(中文问答)</sup></th>
   </tr>
@@ -15,13 +15,13 @@
 <tbody align="center">
   <tr>
     <td>Other Best<br>Open-source LVLM</td>
-    <td>81.6%<br><sup><tiny>(CogAgent)</tiny></sup></td>
-    <td>68.4%<br><sup><tiny>(CogAgent)</tiny></sup></td>
-    <td>73.7%<br><sup><tiny>(Fuyu-Medium)</tiny></sup></td>
-    <td>76.1%<br><sup><tiny>(CogAgent)</tiny></sup></td>
-    <td>45.9%<br><sup><tiny>(Yi-VL-34B)</tiny></sup></td>
-    <td>36.7%<br><sup><tiny>(SPHINX-V2)</tiny></sup></td>
-    <td>72.4%<br><sup><tiny>(InternLM-XComposer-VL)</tiny></sup></td>
+    <td>81.6%<br><sup>(CogAgent)</sup></td>
+    <td>68.4%<br><sup>(CogAgent)</sup></td>
+    <td>73.7%<br><sup>(Fuyu-Medium)</sup></td>
+    <td>76.1%<br><sup>(CogAgent)</sup></td>
+    <td>45.9%<br><sup>(Yi-VL-34B)</sup></td>
+    <td>36.7%<br><sup>(SPHINX-V2)</sup></td>
+    <td>72.4%<br><sup>(InternLM-XComposer-VL)</sup></td>
   </tr>
   <tr>
     <td>Gemini Pro</td>
@@ -76,7 +76,82 @@
 </tbody>
 </table>
 
-
+<table>
+<thead>
+  <tr>
+    <th>Model</th>
+    <th>DocVQA<br><sup><sup>Document understanding</sup></sup></th>
+    <th>ChartQA<br><sup><sup>Chart understanding</sup></sup></th>
+    <th>AI2D<br><sup><sup>Science diagrams</sup></sup></th>
+    <th>TextVQA<br><sup><sup>Text reading on natural images</sup></sup></th>
+    <th>MMMU<br><sup><sup>College-level problems</sup></sup></th>
+    <th>MathVista<br><sup><sup>Mathematical reasoning</sup></sup></th>
+    <th>MM-Bench-CN<br><sup><sup>Natural image understanding in Chinese</sup></sup></th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td>Other Best<br>Open-source LVLM</td>
+    <td>81.6%<br><sup>(CogAgent)</sup></td>
+    <td>68.4%<br><sup>(CogAgent)</sup></td>
+    <td>73.7%<br><sup>(Fuyu-Medium)</sup></td>
+    <td>76.1%<br><sup>(CogAgent)</sup></td>
+    <td>45.9%<br><sup>(Yi-VL-34B)</sup></td>
+    <td>36.7%<br><sup>(SPHINX-V2)</sup></td>
+    <td>72.4%<br><sup>(InternLM-XComposer-VL)</sup></td>
+  </tr>
+  <tr>
+    <td>Gemini Pro</td>
+    <td>88.1%</td>
+    <td>74.1%</td>
+    <td>73.9%</td>
+    <td>74.6%</td>
+    <td>47.9%</td>
+    <td>45.2%</td>
+    <td>74.3%</td>
+  </tr>
+  <tr>
+    <td>Gemini Ultra</td>
+    <td>90.9%</td>
+    <td>80.8% <sup>1</sup></td>
+    <td>79.5% <sup>1</sup></td>
+    <td>82.3% <sup>1</sup></td>
+    <td>59.4% <sup>1</sup></td>
+    <td>53.0% <sup>1</sup></td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>GPT-4V</td>
+    <td>88.4%</td>
+    <td>78.5%</td>
+    <td>78.2%</td>
+    <td>78.0%</td>
+    <td>56.8%</td>
+    <td>49.9%</td>
+    <td>73.9%</td>
+  </tr>
+  <tr>
+    <td><b>Qwen-VL-Plus</b></td>
+    <td>91.4%</td>
+    <td>78.1%</td>
+    <td>75.9%</td>
+    <td>78.9%</td>
+    <td>44.0%</td>
+    <td>43.3%</td>
+    <td>68.0%</td>
+  </tr>
+  <tr>
+    <td><b>Qwen-VL-Max</b></td>
+    <td>92.5% <sup>1</sup></td>
+    <td>79.8% <sup>2</sup></td>
+    <td>79.3% <sup>2</sup></td>
+    <td>79.5% <sup>2</sup></td>
+    <td>50.8% <sup>3</sup></td>
+    <td>50.0% <sup>2</sup></td>
+    <td>75.1% <sup>1</sup></td>
+  </tr>
+</tbody>
+</table>
 
 <p align="left">
         <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp&nbsp ｜ &nbsp<a href="README_JA.md">日本語</a>&nbsp｜ &nbsp<a href="README_KO.md">한국어</a>&nbsp
@@ -96,6 +171,16 @@
 <br><br>
 
 ---
+## Qwen-VL-Max
+
+Qwen-VL-Max is the 
+
+| Model size | Model description |
+| --- | --- |
+| Qwen-VL-Max | Qwen's **Most Capable Large Visual Language Model**. Compared to the enhanced version, further improvements have been made to visual reasoning and instruction-following capabilities, offering a higher level of visual perception and cognitive understanding. It delivers **optimal** performance on an even broader range of complex tasks. |
+| Qwen-VL-Plus | Qwen's **Enhanced Large Visual Language Model**. Significantly upgraded for detailed recognition capabilities and text recognition abilities, supporting ultra-high pixel resolutions up to millions of pixels and arbitrary aspect ratios for image input. It delivers **significant** performance across a broad range of visual tasks. |
+| Qwen-VL-7B | Open-sourced model |
+
 ## Qwen-VL-Plus
 
 Qwen-VL-Plus is the upgraded version of Qwen-VL, currently supporting access for free through [Web pages](https://qianwen.aliyun.com), [🤖](https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary)and [APIs](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start/).
