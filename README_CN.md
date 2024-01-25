@@ -1,5 +1,5 @@
 <p align="left">
-        中文</a>&nbsp ｜ &nbsp<a href="README.md">English</a> ｜ &nbsp<a href="README_JA.md">日本語</a>&nbsp
+        <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp&nbsp ｜ &nbsp<a href="README_JA.md">日本語</a>&nbsp｜ &nbsp<a href="README_KO.md">한국어</a>&nbsp
 </p>
 <br><br>
 
@@ -9,41 +9,72 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ Qwen-VL-Chat-Int4 <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
+  Qwen-VL 
+  <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖</a>&nbsp ｜ 
+  Qwen-VL-Chat 
+  <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖</a>&nbsp 
+  (Int4: 
+  <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a> 
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat-Int4/summary">🤖</a>&nbsp) ｜
+  Qwen-VL-Plus 
+  <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Plus">🤗</a> 
+  <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">🤖</a>&nbsp ｜ 
+  Qwen-VL-Max 
+  <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Max">🤗</a>
+  <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Max/summary">🤖</a>&nbsp
 <br>
-<a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Paper</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://github.com/camenduru/Qwen-VL-Chat-colab">Colab</a>&nbsp&nbsp | &nbsp <a href="TUTORIAL_zh.md">Tutorial</a>
+  <a href="https://tongyi.aliyun.com/qianwen">Web</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start">API</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="https://arxiv.org/abs/2308.12966">Paper</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="TUTORIAL.md">Tutorial</a>
 </p>
 <br><br>
 
-## Qwen-VL-Plus
+---
+## Qwen-VL-Plus & Qwen-VL-Max
 
-Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianwen.aliyun.com), [🤖](https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary)和[API](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start)免费访问。Qwen-VL-Plus的核心特性包括：
+Qwen-VL 系列再次迎来重磅升级，我们推出 Qwen-VL-Plus 和 Qwen-VL-Max 两个升级版的模型。目前支持通过<a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Max">🤗</a>、<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Max/summary">🤖</a>、[网页](https://qianwen.aliyun.com)和[API](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start)免费访问。
 
-- 显著提高处理图像中的文本的能力，特别是在图像中中文的识别能力优于GPT-4V：使其成为从图像中提取、组织和总结文本信息等任务的有用工具。
-- 支持的图像分辨率范围扩大：允许模型处理不同宽高比和和更高分辨率的图像，包括更大和更长的图像。
-- 增强视觉推理和决策能力：用户可以拍摄一个数学问题的照片并发送给Qwen-VL-Plus，它将帮助用户逐步解决它。
+| 模型名 | 模型简介 |
+| --- | --- |
+| Qwen-VL-Plus | 通义千问大规模视觉语言模型增强版。大幅提升细节识别能力和文字识别能力，支持超百万像素分辨率和任意长宽比规格的图像。在广泛的视觉任务上提供**卓越**的性能。 |
+| Qwen-VL-Max | 通义千问超大规模视觉语言模型。相比增强版，再次提升视觉推理能力和指令遵循能力，提供更高的视觉感知和认知水平。在更多复杂任务上提供**最佳**的性能。 |
+
+这两个版本的主要技术升级在于：
+- 大幅提升图像相关的推理能力；
+- 大幅提升对图中细节和文字的识别、提取和分析能力；
+- 支持百万像素以上的高清分辨率图，支持各种长宽比的图像；
+
+这两个模型不仅大幅超越此前开源 LVLM 模型的最佳水平，并且在多项图文多模态标准测试中获得了堪比 Gemini Ultra 和 GPT4-v 的水准。
+甚至，Qwen-VL-Max 在中文问答、中文文字理解相关的任务上超越了 OpenAI的 GPT4-v 和 Google 的 Gemini-Pro。
 
 <table>
 <thead>
   <tr>
     <th>Model</th>
-    <th>DocVQA<sup>(test)</sup></th>
-    <th>ChartQA<sup>(test)</sup></th>
-    <th>AI2D<sup>(test)</sup></th>
-    <th>TextVQA<sup>(val)</sup></th>
-    <th>MMMU<sup>(val)</sup></th>
-    <th>MathVista<sup>(testmini)</sup></th>
+    <th>DocVQA<br><sup>(文档理解)</sup></th>
+    <th>ChartQA<br><sup>(图表理解)</sup></th>
+    <th>AI2D<br><sup>(科学图例)</sup></th>
+    <th>TextVQA<br><sup>(文字阅读)</sup></th>
+    <th>MMMU<br><sup>(多学科问题)</sup></th>
+    <th>MathVista<br><sup>(数学推理)</sup></th>
+    <th>MM-Bench-CN<br><sup>(中文问答)</sup></th>
   </tr>
 </thead>
 <tbody align="center">
   <tr>
-    <td>Other Best Generalist LVLM</td>
-    <td>81.6%<br><sub>(CogAgent)</sub></td>
-    <td>68.4%<br><sub>(CogAgent)</sub></td>
-    <td>73.7%<br><sub>(Fuyu-Medium)</sub></td>
-    <td>76.1%<br><sub>(CogAgent)</sub></td>
-    <td>36.4%<br><sub>(LLaVA-1.5)</sub></td>
-    <td>36.7%<br><sub>(SPHINX-V2)</sub></td>
+    <td>Other Best<br>Open-source LVLM</td>
+    <td>81.6%<br><sup>(CogAgent)</sup></td>
+    <td>68.4%<br><sup>(CogAgent)</sup></td>
+    <td>73.7%<br><sup>(Fuyu-Medium)</sup></td>
+    <td>76.1%<br><sup>(CogAgent)</sup></td>
+    <td>45.9%<br><sup>(Yi-VL-34B)</sup></td>
+    <td>36.7%<br><sup>(SPHINX-V2)</sup></td>
+    <td>72.4%<br><sup>(InternLM-XComposer-VL)</sup></td>
   </tr>
   <tr>
     <td>Gemini Pro</td>
@@ -53,15 +84,17 @@ Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianw
     <td>74.6%</td>
     <td>47.9%</td>
     <td>45.2%</td>
+    <td>74.3%</td>
   </tr>
   <tr>
     <td>Gemini Ultra</td>
     <td>90.9%</td>
-    <td><b>80.8%</b></td>
-    <td><b>79.5%</b></td>
-    <td><b>82.3%</b></td>
-    <td><b>59.4%</b></td>
-    <td><b>53.0%</b></td>
+    <td>80.8% <sup>1</sup></td>
+    <td>79.5% <sup>1</sup></td>
+    <td>82.3% <sup>1</sup></td>
+    <td>59.4% <sup>1</sup></td>
+    <td>53.0% <sup>1</sup></td>
+    <td>-</td>
   </tr>
   <tr>
     <td>GPT-4V</td>
@@ -71,15 +104,27 @@ Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianw
     <td>78.0%</td>
     <td>56.8%</td>
     <td>49.9%</td>
+    <td>73.9%</td>
   </tr>
   <tr>
     <td><b>Qwen-VL-Plus</b></td>
-    <td><b>91.4% <sup>1</sup></b></td>
-    <td>78.1% <sup>3</sup></td>
-    <td>75.9% <sup>3</sup></td>
-    <td>78.9% <sup>2</sup></td>
-    <td>46.5% <sup>4</sup></td>
-    <td>41.0% <sup>4</sup></td>
+    <td>91.4%</td>
+    <td>78.1%</td>
+    <td>75.9%</td>
+    <td>78.9%</td>
+    <td>44.0%</td>
+    <td>43.3%</td>
+    <td>68.0%</td>
+  </tr>
+  <tr>
+    <td><b>Qwen-VL-Max</b></td>
+    <td>92.5% <sup>1</sup></td>
+    <td>79.8% <sup>2</sup></td>
+    <td>79.3% <sup>2</sup></td>
+    <td>79.5% <sup>2</sup></td>
+    <td>50.8% <sup>3</sup></td>
+    <td>50.0% <sup>2</sup></td>
+    <td>75.1% <sup>1</sup></td>
   </tr>
 </tbody>
 </table>
