@@ -126,7 +126,7 @@ The key technical advancements in these versions include:
 - Considerable enhancement in recognizing, extracting, and analyzing **details of images**, especially for text-oriented tasks;
 - Support for **high-definition images** with resolutions above one million pixels and extreme aspect ratios;
 
-These two models not only significantly surpassing all previous best results from open-source LVLM models, but also perform on par with Gemini Ultra and GPT-4V in multiple text-image multimodal tasks.
+These two models not only significantly surpass all previous best results from open-source LVLM models, but also perform on par with Gemini Ultra and GPT-4V in multiple text-image multimodal tasks.
 
 Notably, Qwen-VL-Max outperforms both GPT-4V from OpenAI and Gemini from Google in tasks on Chinese question answering and Chinese text comprehension. This breakthrough underscores the model’s advanced capabilities and its potential to set new standards in the field of multimodal AI research and application.
 
@@ -210,11 +210,25 @@ Notably, Qwen-VL-Max outperforms both GPT-4V from OpenAI and Gemini from Google 
 All numbers are obtained without any use of external OCR tools ('pixel only'). 
 
 ---
+
+## News and Updates
+* ```2024.01.18``` 💥💥💥 We introduce Qwen-VL-Max, our most capable model that significantly surpasses all previous open-source LVLM models, and it performs on par with Gemini Ultra and GPT-4V in multiple text-image multimodal tasks. You can enjoy the new model by directly visiting our [web pages](https://qianwen.aliyun.com), <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Max">🤗</a> and <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Max/summary">🤖</a>.
+* ```2023.11.28``` 🏆🏆🏆 Qwen-VL-Plus achieved the best performance in [DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1) by using a single model, surpassing GPT4V and PALI-X, without using model ensemble or OCR-pipeline. Meanwhile, it is also a general model that can help you analyze and understand various tasks by directly inputting images.
+* ```2023.9.25``` 🚀🚀🚀 We update Qwen-VL-Chat with more robust Chinese instruction-following ability, improved understanding of web pages and table images, and better dialogue performance (Touchstone: CN: 401.2->481.7, EN: 645.2->711.6).
+* ```2023.9.12``` 😃😃😃 We now support finetuning on the Qwen-VL models, including full-parameter finetuning, LoRA and Q-LoRA.
+* ```2023.9.8``` 👍👍👍 Thanks to [camenduru](https://github.com/camenduru) for contributing the wonderful [Colab](https://github.com/camenduru/Qwen-VL-Chat-colab). Everyone can use it as a local or online Qwen-VL-Chat-Int4 Demo tutorial on one 12G GPU.
+* ```2023.9.5``` 👏👏👏 Qwen-VL-Chat achieves SOTAs on [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. It measures both perception and cognition abilities on a total of 14 subtasks.
+* ```2023.9.4``` ⭐⭐⭐ Qwen-VL series achieve SOTAs on [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs including both image and video understanding.
+* ```2023.9.1``` 🔥🔥🔥 We release the [TouchStone](https://github.com/OFA-Sys/TouchStone) Evaluation, which is a comprehensive assessment of multimodal language models, encompassing not only basic recognition and comprehension but also extending to literary creation. By using strong LLMs as judges and converting multimodal information into text.
+* ```2023.8.31``` 🌟🌟🌟 We release the Int4 quantized model for Qwen-VL-Chat, **Qwen-VL-Chat-Int4**, which requires low memory costs but achieves improved inference speed. Besides, there is no significant performance degradation on the benchmark evaluation.
+* ```2023.8.22``` 🎉🎉🎉 We release both **Qwen-VL** and **Qwen-VL-Chat** on ModelScope and Hugging Face. We also provide a [paper](https://arxiv.org/abs/2308.12966) for more details about the model, including training details and model performance.
+
+---
 ## Qwen-VL
 
-**Qwen-VL** (Qwen Large Vision Language Model) is the multimodal version of the large model series, Qwen (abbr. Tongyi Qianwen), proposed by Alibaba Cloud. Qwen-VL accepts image, text, and bounding box as inputs, outputs text and bounding box. The features of Qwen-VL include:
+**Qwen-VL** (Qwen Large Vision Language Model) is the multimodal version of the large model series, Qwen (abbr. Tongyi Qianwen), proposed by Alibaba Cloud. Qwen-VL accepts image, text, and bounding box as inputs, outputs text, and bounding box. The features of Qwen-VL include:
 
-- **Strong performance**: It significantly surpasses existing open-sourced Large Vision Language Models (LVLM) under similar model scale on multiple English evaluation benchmarks (including Zero-shot Captioning, VQA, DocVQA, and Grounding).
+- **Strong performance**: It significantly surpasses existing open-sourced Large Vision Language Models (LVLM) under a similar model scale on multiple English evaluation benchmarks (including Zero-shot Captioning, VQA, DocVQA, and Grounding).
 - **Multi-lingual LVLM supporting text recognition**: Qwen-VL naturally supports English, Chinese, and multi-lingual conversation, and it promotes end-to-end recognition of Chinese and English bi-lingual text in images.
 - **Multi-image interleaved conversations**: This feature allows for the input and comparison of multiple images, as well as the ability to specify questions related to the images and engage in multi-image storytelling.
 - **First generalist model supporting grounding in Chinese**: Detecting bounding boxes through open-domain language expression in both Chinese and English.
@@ -231,18 +245,6 @@ We release two models of the Qwen-VL series:
 - Qwen-VL: The pre-trained LVLM model uses Qwen-7B as the initialization of the LLM, and [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) as the initialization of the visual encoder. And connects them with a randomly initialized cross-attention layer.
 - Qwen-VL-Chat: A multimodal LLM-based AI assistant, which is trained with alignment techniques. Qwen-VL-Chat supports more flexible interaction, such as multiple image inputs, multi-round question answering, and creative capabilities.
   <br>
-
-## News and Updates
-* ```2023.11.28``` 🏆🏆🏆 Qwen-VL-Plus achieved the best performance in [DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1) by using a single model, surpassing GPT4V and PALI-X, without using model ensemble or OCR-pipeline. Meanwhile, it is also a general model that can help you analyze and understand various tasks by directly inputting images. You can enjoy the new model by directly visiting the multi-modal tab of [web pages](https://qianwen.aliyun.com).
-* ```2023.9.25``` 🚀🚀🚀 We update Qwen-VL-Chat with more robust Chinese instruction-following ability, improved understanding of web pages and table images, and better dialogue performance (Touchstone: CN: 401.2->481.7, EN: 645.2->711.6).
-* ```2023.9.12``` 😃😃😃 We now support finetuning on the Qwen-VL models, including full-parameter finetuning, LoRA and Q-LoRA.
-* ```2023.9.8``` 👍👍👍 Thanks to [camenduru](https://github.com/camenduru) for contributing the wonderful [Colab](https://github.com/camenduru/Qwen-VL-Chat-colab). Everyone can use it as a local or online Qwen-VL-Chat-Int4 Demo tutorial on one 12G GPU.
-* ```2023.9.5``` 👏👏👏 Qwen-VL-Chat achieves SOTAs on [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. It measures both perception and cognition abilities on a total of 14 subtasks.
-* ```2023.9.4``` ⭐⭐⭐ Qwen-VL series achieve SOTAs on [Seed-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard), a multimodal benchmark of 19K multiple-choice questions with accurate human annotations for evaluating Multimodal LLMs including both image and video understanding.
-* ```2023.9.1``` 🔥🔥🔥 We release the [TouchStone](https://github.com/OFA-Sys/TouchStone) Evaluation, which is a comprehensive assessment of multimodal language models, encompassing not only basic recognition and comprehension but also extending to literary creation. By using strong LLMs as judges and converting multimodal information into text.
-* ```2023.8.31``` 🌟🌟🌟 We release the Int4 quantized model for Qwen-VL-Chat, **Qwen-VL-Chat-Int4**, which requires low memory costs but achieves improved inference speed. Besides, there is no significant performance degradation on the benchmark evaluation.
-* ```2023.8.22``` 🎉🎉🎉 We release both **Qwen-VL** and **Qwen-VL-Chat** on ModelScope and Hugging Face. We also provide a [paper](https://arxiv.org/abs/2308.12966) for more details about the model, including training details and model performance.
-
 
 ## Evaluation
 
