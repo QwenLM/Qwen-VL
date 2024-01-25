@@ -1,5 +1,5 @@
 <p align="left">
-        中文</a>&nbsp ｜ &nbsp<a href="README.md">English</a> ｜ &nbsp<a href="README_JA.md">日本語</a>&nbsp
+        <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp&nbsp ｜ &nbsp<a href="README_JA.md">日本語</a>&nbsp｜ &nbsp<a href="README_KO.md">한국어</a>&nbsp
 </p>
 <br><br>
 
@@ -9,41 +9,73 @@
 <br>
 
 <p align="center">
-        Qwen-VL <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖 <a> | <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>&nbsp ｜ Qwen-VL-Chat <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖 <a>| <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>&nbsp ｜ Qwen-VL-Chat-Int4 <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
+  Qwen-VL 
+  <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖</a>&nbsp ｜ 
+  Qwen-VL-Chat 
+  <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖</a>&nbsp 
+  (Int4: 
+  <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a> 
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat-Int4/summary">🤖</a>&nbsp) ｜
+  Qwen-VL-Plus 
+  <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Plus">🤗</a> 
+  <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">🤖</a>&nbsp ｜ 
+  Qwen-VL-Max 
+  <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Max">🤗</a>
+  <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Max/summary">🤖</a>&nbsp
 <br>
-<a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">Demo</a>&nbsp ｜ &nbsp<a href="https://arxiv.org/abs/2308.12966">Paper</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://github.com/camenduru/Qwen-VL-Chat-colab">Colab</a>&nbsp&nbsp | &nbsp <a href="TUTORIAL_zh.md">Tutorial</a>
+  <a href="https://tongyi.aliyun.com/qianwen">Web</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="http://ofasys-wlcb.oss-accelerate-overseas.aliyuncs.com/QwenVL/blog/app_qrcode.jpg">APP</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start">API</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="https://arxiv.org/abs/2308.12966">Paper</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="TUTORIAL.md">Tutorial</a>
 </p>
 <br><br>
 
-## Qwen-VL-Plus
+---
+## Qwen-VL-Plus & Qwen-VL-Max
 
-Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianwen.aliyun.com), [🤖](https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary)和[API](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start)免费访问。Qwen-VL-Plus的核心特性包括：
+Qwen-VL 系列再次迎来重磅升级，我们推出 Qwen-VL-Plus 和 Qwen-VL-Max 两个升级版的模型。目前支持通过<a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Max">🤗</a>、<a href="https://modelscope.cn/studios/qwen/Qwen-VL-Max/summary">🤖</a>、[网页端](https://qianwen.aliyun.com)、[APP](http://ofasys-wlcb.oss-accelerate-overseas.aliyuncs.com/QwenVL/blog/app_qrcode.jpg) 和 [API](https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start)免费访问。
 
-- 显著提高处理图像中的文本的能力，特别是在图像中中文的识别能力优于GPT-4V：使其成为从图像中提取、组织和总结文本信息等任务的有用工具。
-- 支持的图像分辨率范围扩大：允许模型处理不同宽高比和和更高分辨率的图像，包括更大和更长的图像。
-- 增强视觉推理和决策能力：用户可以拍摄一个数学问题的照片并发送给Qwen-VL-Plus，它将帮助用户逐步解决它。
+| 模型名 | 模型简介 |
+| --- | --- |
+| Qwen-VL-Plus | 通义千问大规模视觉语言模型增强版。大幅提升细节识别能力和文字识别能力，支持超百万像素分辨率和任意长宽比规格的图像。在广泛的视觉任务上提供**卓越**的性能。 |
+| Qwen-VL-Max | 通义千问超大规模视觉语言模型。相比增强版，再次提升视觉推理能力和指令遵循能力，提供更高的视觉感知和认知水平。在更多复杂任务上提供**最佳**的性能。 |
+
+这两个版本的主要技术升级在于：
+- 大幅提升图像相关的推理能力；
+- 大幅提升对图中细节和文字的识别、提取和分析能力；
+- 支持百万像素以上的高清分辨率图，支持各种长宽比的图像；
+
+这两个模型不仅大幅超越此前所有开源 LVLM 模型的最佳水平，并且在多项图文多模态标准测试中获得了堪比 Gemini Ultra 和 GPT4-v 的水准。
+甚至，Qwen-VL-Max 在中文问答、中文文字理解相关的任务上超越了 OpenAI的 GPT4-v 和 Google 的 Gemini-Pro。
 
 <table>
 <thead>
   <tr>
     <th>Model</th>
-    <th>DocVQA<sup>(test)</sup></th>
-    <th>ChartQA<sup>(test)</sup></th>
-    <th>AI2D<sup>(test)</sup></th>
-    <th>TextVQA<sup>(val)</sup></th>
-    <th>MMMU<sup>(val)</sup></th>
-    <th>MathVista<sup>(testmini)</sup></th>
+    <th>DocVQA<br><sup>(文档理解)</sup></th>
+    <th>ChartQA<br><sup>(图表理解)</sup></th>
+    <th>AI2D<br><sup>(科学图例)</sup></th>
+    <th>TextVQA<br><sup>(文字阅读)</sup></th>
+    <th>MMMU<br><sup>(多学科问题)</sup></th>
+    <th>MathVista<br><sup>(数学推理)</sup></th>
+    <th>MM-Bench-CN<br><sup>(中文问答)</sup></th>
   </tr>
 </thead>
 <tbody align="center">
   <tr>
-    <td>Other Best Generalist LVLM</td>
-    <td>81.6%<br><sub>(CogAgent)</sub></td>
-    <td>68.4%<br><sub>(CogAgent)</sub></td>
-    <td>73.7%<br><sub>(Fuyu-Medium)</sub></td>
-    <td>76.1%<br><sub>(CogAgent)</sub></td>
-    <td>36.4%<br><sub>(LLaVA-1.5)</sub></td>
-    <td>36.7%<br><sub>(SPHINX-V2)</sub></td>
+    <td>Other Best<br>Open-source LVLM</td>
+    <td>81.6%<br><sup>(CogAgent)</sup></td>
+    <td>68.4%<br><sup>(CogAgent)</sup></td>
+    <td>73.7%<br><sup>(Fuyu-Medium)</sup></td>
+    <td>76.1%<br><sup>(CogAgent)</sup></td>
+    <td>45.9%<br><sup>(Yi-VL-34B)</sup></td>
+    <td>36.7%<br><sup>(SPHINX-V2)</sup></td>
+    <td>72.4%<br><sup>(InternLM-XComposer-VL)</sup></td>
   </tr>
   <tr>
     <td>Gemini Pro</td>
@@ -53,15 +85,17 @@ Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianw
     <td>74.6%</td>
     <td>47.9%</td>
     <td>45.2%</td>
+    <td>74.3%</td>
   </tr>
   <tr>
     <td>Gemini Ultra</td>
     <td>90.9%</td>
-    <td><b>80.8%</b></td>
-    <td><b>79.5%</b></td>
-    <td><b>82.3%</b></td>
-    <td><b>59.4%</b></td>
-    <td><b>53.0%</b></td>
+    <td>80.8% <sup>1</sup></td>
+    <td>79.5% <sup>1</sup></td>
+    <td>82.3% <sup>1</sup></td>
+    <td>59.4% <sup>1</sup></td>
+    <td>53.0% <sup>1</sup></td>
+    <td>-</td>
   </tr>
   <tr>
     <td>GPT-4V</td>
@@ -71,20 +105,48 @@ Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianw
     <td>78.0%</td>
     <td>56.8%</td>
     <td>49.9%</td>
+    <td>73.9%</td>
   </tr>
   <tr>
     <td><b>Qwen-VL-Plus</b></td>
-    <td><b>91.4% <sup>1</sup></b></td>
-    <td>78.1% <sup>3</sup></td>
-    <td>75.9% <sup>3</sup></td>
-    <td>78.9% <sup>2</sup></td>
-    <td>46.5% <sup>4</sup></td>
-    <td>41.0% <sup>4</sup></td>
+    <td>91.4%</td>
+    <td>78.1%</td>
+    <td>75.9%</td>
+    <td>78.9%</td>
+    <td>44.0%</td>
+    <td>43.3%</td>
+    <td>68.0%</td>
+  </tr>
+  <tr>
+    <td><b>Qwen-VL-Max</b></td>
+    <td>92.5% <sup>1</sup></td>
+    <td>79.8% <sup>2</sup></td>
+    <td>79.3% <sup>2</sup></td>
+    <td>79.5% <sup>2</sup></td>
+    <td>50.8% <sup>3</sup></td>
+    <td>50.0% <sup>2</sup></td>
+    <td>75.1% <sup>1</sup></td>
   </tr>
 </tbody>
 </table>
 
-所有评测都是在不使用任何外部OCR工具(“only pixel”)的情况下获得的。此外，Qwen-VL-Plus也以下榜单中实现了SOTA：[MM-Bench](https://mmbench.opencompass.org.cn/leaderboard), [MME](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), [Seed-Bench-v1](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard).
+所有评测都是在不使用任何外部OCR工具(“only pixel”)的情况下获得的。
+
+---
+
+## 新闻
+* 2024年01月18日 我们推出 Qwen-Vl-Max，大幅超越此前所有开源 LVLM 模型的最佳水平，并且在多项图文多模态标准测试中获得了堪比 Gemini Ultra 和 GPT4-v 的水准。直接访问[通义千问网页端或APP](https://qianwen.aliyun.com)就能体验新模型。
+* 2023年11月28日 Qwen-VL单模型在[DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1)达到了最强水平，超越了GPT4V,PALI-X，与此同时它还是一个通用模型，直接输入图片就能帮你分析理解各种任务。
+* 2023年9月12日 更新Qwen-VL-Chat模型，该模型有更鲁棒的中文指令跟随，更好的网页和表格图片理解和问答能力以及更好的对话表现(Touchstone: 中文: 401.2->481.7, 英文: 645.2->711.6)。
+* 2023年9月12日 支持Qwen-VL和Qwen-VL-Chat的微调，其中包括全参数微调、LoRA以及Q-LoRA
+* 2023年9月8日 感谢[camenduru](https://github.com/camenduru)贡献了[Colab](https://github.com/camenduru/Qwen-VL-Chat-colab)示例，每个人都可以以此为教程，在12G的GPU上做本地或在线的Demo。
+* 2023年9月5日 在社区多模态通用模型榜单 [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) 上取得了感知和认知双赛道的当前最好结果。
+* 2023年9月4日 在社区多模态通用模型榜单 [SEED-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard) 上取得了图像理解和视频理解的当前最好结果。
+* 2023年9月1日 发布[TouchStone](https://github.com/OFA-Sys/TouchStone) 测评, 这是一个综合评估LVLM能力的测评,它不仅考察模型的视觉描述和推理能力，还包括根据视觉内容的文学创作能力。同时它是将多模态信息用文本表述并用LLMs进行评估的方法。
+* 2023年8月31日 发布Qwen-VL-Chat量化模型，**Qwen-VL-Chat-Int4**,该模型显存占用低，推理速度相比半精度模型显著提升，在基准评测上效果损失较小。
+* 2023年8月22日 在魔搭社区（ModelScope）和Hugging Face同步推出Qwen-VL和Qwen-VL-Chat模型。同时，我们提供一个[论文](https://arxiv.org/abs/2308.12966)介绍了相关的模型结构、训练细节和模型表现。
+
+---
 
 ## Qwen-VL
 
@@ -107,18 +169,6 @@ Qwen-VL-Plus 是 Qwen-VL 的升级版，目前支持通过[网页](https://qianw
 - Qwen-VL: Qwen-VL 以 Qwen-7B 的预训练模型作为语言模型的初始化，并以 [Openclip ViT-bigG](https://github.com/mlfoundations/open_clip) 作为视觉编码器的初始化，中间加入单层随机初始化的 cross-attention，经过约1.5B的图文数据训练得到。最终图像输入分辨率为448。
 - Qwen-VL-Chat: 在 Qwen-VL 的基础上，我们使用对齐机制打造了基于大语言模型的视觉AI助手Qwen-VL-Chat，它支持更灵活的交互方式，包括多图、多轮问答、创作等能力。
   <br>
-
-## 新闻
-* 2023年11月28日 Qwen-VL单模型在[DOCVQA](https://rrc.cvc.uab.es/?ch=17&com=evaluation&task=1)达到了最强水平，超越了GPT4V,PALI-X，与此同时它还是一个通用模型，直接输入图片就能帮你分析理解各种任务。直接访问[多模态tab](https://qianwen.aliyun.com)就能体验新模型。
-* 2023年9月12日 更新Qwen-VL-Chat模型，该模型有更鲁棒的中文指令跟随，更好的网页和表格图片理解和问答能力以及更好的对话表现(Touchstone: 中文: 401.2->481.7, 英文: 645.2->711.6)。
-* 2023年9月12日 支持Qwen-VL和Qwen-VL-Chat的微调，其中包括全参数微调、LoRA以及Q-LoRA
-* 2023年9月8日 感谢[camenduru](https://github.com/camenduru)贡献了[Colab](https://github.com/camenduru/Qwen-VL-Chat-colab)示例，每个人都可以以此为教程，在12G的GPU上做本地或在线的Demo。
-* 2023年9月5日 在社区多模态通用模型榜单 [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) 上取得了感知和认知双赛道的当前最好结果。
-* 2023年9月4日 在社区多模态通用模型榜单 [SEED-Bench](https://huggingface.co/spaces/AILab-CVC/SEED-Bench_Leaderboard) 上取得了图像理解和视频理解的当前最好结果。
-* 2023年9月1日 发布[TouchStone](https://github.com/OFA-Sys/TouchStone) 测评, 这是一个综合评估LVLM能力的测评,它不仅考察模型的视觉描述和推理能力，还包括根据视觉内容的文学创作能力。同时它是将多模态信息用文本表述并用LLMs进行评估的方法。
-* 2023年8月31日 发布Qwen-VL-Chat量化模型，**Qwen-VL-Chat-Int4**,该模型显存占用低，推理速度相比半精度模型显著提升，在基准评测上效果损失较小。
-* 2023年8月22日 在魔搭社区（ModelScope）和Hugging Face同步推出Qwen-VL和Qwen-VL-Chat模型。同时，我们提供一个[论文](https://arxiv.org/abs/2308.12966)介绍了相关的模型结构、训练细节和模型表现。
-
 
 ## 评测
 
