@@ -120,7 +120,7 @@ Notably, Qwen-VL-Max outperforms both GPT-4V from OpenAI and Gemini from Google 
   </tr>
   <tr>
     <td><b>Qwen-VL-Max</b></td>
-    <td>92.5% <sup>1</sup></td>
+    <td>93.1% <sup>1</sup></td>
     <td>79.8% <sup>2</sup></td>
     <td>79.3% <sup>2</sup></td>
     <td>79.5% <sup>2</sup></td>
