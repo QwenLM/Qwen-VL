@@ -58,13 +58,13 @@ Notably, Qwen-VL-Max outperforms both GPT-4V from OpenAI and Gemini from Google 
 <thead>
   <tr>
     <th>Model</th>
-    <th>DocVQA<br><sup><sup>Document understanding</sup><sup></th>
-    <th>ChartQA<br><sup><sup>Chart understanding</sup></sup></th>
-    <th>AI2D<br><sup><sup>Science diagrams</sup></sup></th>
-    <th>TextVQA<br><sup><sup>Text reading</sup></sup></th>
-    <th>MMMU<br><sup><sup>College-level problems</sup></sup></th>
-    <th>MathVista<br><sup><sup>Mathematical reasoning</sup></sup></th>
-    <th>MM-Bench-CN<br><sup><sup>Natural image QA in Chinese</sup></sup></th>
+    <th>DocVQA</th>
+    <th>ChartQA</th>
+    <th>AI2D</th>
+    <th>TextVQA</th>
+    <th>MMMU</th>
+    <th>MathVista</th>
+    <th>MM-Bench-CN</th>
   </tr>
 </thead>
 <tbody align="center">
@@ -131,7 +131,7 @@ Notably, Qwen-VL-Max outperforms both GPT-4V from OpenAI and Gemini from Google 
 </tbody>
 </table>
 
-All numbers are obtained without any use of external OCR tools ('pixel only'). 
+All numbers are obtained without any use of external OCR tools ('pixel only').
 
 ---
 
