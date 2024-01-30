@@ -947,7 +947,7 @@ print(response)
   }
 ]
 ```
-为针对多样的VL任务，我们增加了一下的特殊tokens： `<img> </img> <ref> </ref> <box> </box>`.
+为针对多样的VL任务，我们增加了一个特殊的tokens： `<img> </img> <ref> </ref> <box> </box>`.
 
 对于带图像输入的内容可表示为 `Picture id: <img>img_path</img>\n{your prompt}`，其中`id`表示对话中的第几张图片。"img_path"可以是本地的图片或网络地址。 
 
