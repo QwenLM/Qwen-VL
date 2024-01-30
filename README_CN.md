@@ -123,8 +123,8 @@ Qwen-VL 系列再次迎来重磅升级，我们推出 Qwen-VL-Plus 和 Qwen-VL-M
     <td>79.8% <sup>2</sup></td>
     <td>79.3% <sup>2</sup></td>
     <td>79.5% <sup>2</sup></td>
-    <td>50.8% <sup>3</sup></td>
-    <td>50.0% <sup>2</sup></td>
+    <td>51.4% <sup>3</sup></td>
+    <td>51.0% <sup>2</sup></td>
     <td>75.1% <sup>1</sup></td>
   </tr>
 </tbody>
