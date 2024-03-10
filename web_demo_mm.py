@@ -164,7 +164,7 @@ def _launch_demo(args, model, tokenizer):
             _chatbot[-1] = (_chatbot[-1][0], None)
         else:
             _chatbot.append((chatbot_item[0], None))
-        return predict(_chatbot, task_history)
+        yield from predict(_chatbot, task_history)
 
     def add_text(history, task_history, text):
         task_text = text
