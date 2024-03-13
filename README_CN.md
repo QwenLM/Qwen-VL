@@ -800,7 +800,7 @@ if not hasattr(tokenizer, 'model_dir'):
 # 打开bf16精度，A100、H100、RTX3060、RTX3070等显卡建议启用以节省显存
 # model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True, bf16=True).eval()
 # 打开fp16精度，V100、P100、T4等显卡建议启用以节省显存
-model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True, fp16=True).eval()
+#model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True, fp16=True).eval()
 # 使用CPU进行推理，需要约32GB内存
 # model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="cpu", trust_remote_code=True).eval()
 # 默认gpu进行推理，需要约24GB显存
