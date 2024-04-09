@@ -28,7 +28,7 @@
   <a href="https://tongyi.aliyun.com/qianwen">Web</a>&nbsp&nbsp | &nbsp&nbsp
   <a href="http://ofasys-wlcb.oss-accelerate-overseas.aliyuncs.com/QwenVL/blog/app_qrcode.jpg">APP</a>&nbsp&nbsp | &nbsp&nbsp
   <a href="https://help.aliyun.com/zh/dashscope/developer-reference/vl-plus-quick-start">API</a>&nbsp&nbsp | &nbsp&nbsp
-  <a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp
+  <a href="https://github.com/QwenLM/Qwen/blob/main/assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp
   <a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp | &nbsp&nbsp
   <a href="https://arxiv.org/abs/2308.12966">Paper</a>&nbsp&nbsp | &nbsp&nbsp
   <a href="TUTORIAL.md">Tutorial</a>
