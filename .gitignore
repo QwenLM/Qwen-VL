@@ -1,0 +1,14 @@
+__pycache__
+*.so
+build
+.coverage_*
+*.egg-info
+*~
+.vscode/
+.idea/
+.DS_Store
+
+/private/
+Qwen-VL-Chat/
+Qwen-VL-Chat-Int4/
+SimSun.ttf
