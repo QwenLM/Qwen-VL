@@ -976,7 +976,7 @@ The finetuning scripts allow you to perform:
 - Q-LoRA
 
 ### Full-parameter finetuning
-Full-parameter parameter finetuning requires updating all parameters of LLM in the whole training process. In our experiments, frozening the parameters of ViT during the fine-tuning phase achieves better performance. To launch your training, run the following script:
+Full-parameter parameter finetuning requires updating all parameters of LLM in the whole training process. In our experiments, freezing the parameters of ViT during the fine-tuning phase achieves better performance. To launch your training, run the following script:
 
 ```bash
 sh finetune/finetune_ds.sh
