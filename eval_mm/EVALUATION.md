@@ -614,7 +614,7 @@ cd ../..
 </details>
 
 <details>
-<summary>Data Preparation</summary>
+<summary>Evaluation</summary>
 
 ```bash
 checkpoint=/PATH/TO/CHECKPOINT
