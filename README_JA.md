@@ -54,13 +54,13 @@ Qwen-VL シリーズの 2 つのモデルを公開します:
 モデルの能力を2つの観点から評価しました:
 
 1. **標準ベンチマーク**: マルチモーダルなタスクの 4 つの主要カテゴリーについて、モデルの基本的なタスク能力を評価する:
-   
+
    - ゼロショットキャプション: 未見のデータセットに対して、モデルのゼロショット画像キャプション能力を評価する;
    - 一般的な VQA: 判定、色、数、カテゴリなど、画像の一般的な質問応答能力を評価する;
    - テキストベース VQA: 文書 QA、図表 QAなど、写真内のテキストを認識するモデルの能力を評価する;
    - 参照表現理解: 参照表現理解: 参照表現で記述された画像内の対象物を特定する能力を評価する。
 2. **TouchStone**: 総合的なテキスト画像対話能力と人間とのアライメントレベルを評価するために、GPT4 によるスコアリングに基づく TouchStone と呼ばれるベンチマークを構築し、LVLM モデルを評価しました。
-   
+
    - TouchStone ベンチマークは、合計 300 以上の画像、800 以上の質問、27 のカテゴリをカバーしています。例えば、属性ベースの Q&A、有名人の認識、詩の作文、複数の画像の要約、商品比較、数学の問題解決などです;
    - 画像の直接入力という GPT4 の現在の制限を打ち破るため、TouchStone は人間のラベル付けによるきめ細かい画像注釈を提供します。これらの詳細な注釈は、質問とモデルの出力と共に、採点のために GPT4 に提示されます。
    - ベンチマークには英語版と中国語版があります。
@@ -734,7 +734,7 @@ print(response)
 ベンチマーク **[TouchStone](https://github.com/OFA-Sys/TouchStone)** において、BF16 モデルと Int4 モデルの両方のモデル性能を例示し、量子化モデルが大きな性能劣化に悩まされないことを見出しました。結果を以下に示します：
 
 | Quantization | ZH         | EN            |
-| ------------ | :--------: | :-----------: | 
+| ------------ | :--------: | :-----------: |
 | BF16         | 401.2      |    645.2      |
 | Int4         | 386.6      |    651.4      |
 
@@ -803,7 +803,7 @@ BF16 精度と Int4 量子化の下で、画像（258 トークンを要する�
       }
     ]
   },
-  { 
+  {
     "id": "identity_2",
     "conversations": [
       {
@@ -893,7 +893,7 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 ).eval()
 
 merged_model = model.merge_and_unload()
-# max_shard_size and safe serialization are not necessary. 
+# max_shard_size and safe serialization are not necessary.
 # They respectively work for sharding checkpoint and save the model to safetensors
 merged_model.save_pretrained(new_model_directory, max_shard_size="2048MB", safe_serialization=True)
 ```

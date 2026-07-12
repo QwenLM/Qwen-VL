@@ -9,19 +9,19 @@
 <br>
 
 <p align="center">
-  Qwen-VL 
+  Qwen-VL
   <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>
-  <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖</a>&nbsp ｜ 
-  Qwen-VL-Chat 
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖</a>&nbsp ｜
+  Qwen-VL-Chat
   <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
-  <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖</a>&nbsp 
-  (Int4: 
-  <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a> 
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖</a>&nbsp
+  (Int4:
+  <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
   <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat-Int4/summary">🤖</a>&nbsp) ｜
-  Qwen-VL-Plus 
-  <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Plus">🤗</a> 
-  <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">🤖</a>&nbsp ｜ 
-  Qwen-VL-Max 
+  Qwen-VL-Plus
+  <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Plus">🤗</a>
+  <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">🤖</a>&nbsp ｜
+  Qwen-VL-Max
   <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Max">🤗</a>
   <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Max/summary">🤖</a>&nbsp
 <br>
@@ -175,19 +175,19 @@ Qwen-VL 系列再次迎来重磅升级，我们推出 Qwen-VL-Plus 和 Qwen-VL-M
 我们从三个角度评测了模型的能力：
 
 1. 在**英文标准 Benchmark** 上评测模型的基础任务能力。目前评测了四大类多模态任务：
-   
+
    - Zero-shot Captioning: 评测模型在未见过数据集上的零样本图片描述能力；
    - General VQA: 评测模型的通用问答能力，例如判断题、颜色、个数、类目等问答能力；
    - Text-based VQA：评测模型对于图片中文字相关的识别/问答能力，例如文档问答、图表问答、文字问答等；
    - Referring Expression Compression：评测模型给定物体描述画检测框的能力；
 2. **试金石 (TouchStone)**：为了评测模型整体的图文对话能力和人类对齐水平。我们为此构建了一个基于 GPT4 打分来评测 LVLM 模型的 Benchmark：TouchStone。在 TouchStone-v0.1 中：
-   
+
    - 评测基准总计涵盖 300+张图片、800+道题目、27个类别。包括基础属性问答、人物地标问答、影视作品问答、视觉推理、反事实推理、诗歌创作、故事写作，商品比较、图片解题等**尽可能广泛的类别**。
    - 为了弥补目前 GPT4 无法直接读取图片的缺陷，我们给所有的带评测图片提供了**人工标注的充分详细描述**，并且将图片的详细描述、问题和模型的输出结果一起交给 GPT4 打分。
    - 评测同时包含英文版本和中文版本。
 
 3. **其它多模态通用模型榜单**：我们也在其它多模态通用模型榜单中评测了模型的能力：
-   
+
    - MME Benchmark: 是一个多模态大型语言模型的综合评价基准。它在总共14个子任务上评测**感知和认知**能力，Qwen-VL-Chat在这两个总维度上都实现了当前最好结果。
    - SEED-Bench: 是一个包含1.9万选择题的多模态基准测评，通过人工注释的结果评估多模态大模型，涵盖12个评估维度，包括**图像和视频理解**，Qwen-VL和Qwen-VL-chat在这个基准上实现了当前最好结果。
 
@@ -864,7 +864,7 @@ print(response)
 我们列出不同精度下模型在评测基准 **[TouchStone](https://github.com/OFA-Sys/TouchStone)** 上的表现，并发现量化模型并没有显著性能损失。结果如下所示：
 
 | Quantization | ZH         | EN            |
-| ------------ | :--------: | :-----------: | 
+| ------------ | :--------: | :-----------: |
 | BF16         | 401.2      |    645.2      |
 | Int4         | 386.6      |    651.4      |
 
@@ -932,7 +932,7 @@ print(response)
       }
     ]
   },
-  { 
+  {
     "id": "identity_2",
     "conversations": [
       {
@@ -949,7 +949,7 @@ print(response)
 ```
 为针对多样的VL任务，我们增加了一下的特殊tokens： `<img> </img> <ref> </ref> <box> </box>`.
 
-对于带图像输入的内容可表示为 `Picture id: <img>img_path</img>\n{your prompt}`，其中`id`表示对话中的第几张图片。"img_path"可以是本地的图片或网络地址。 
+对于带图像输入的内容可表示为 `Picture id: <img>img_path</img>\n{your prompt}`，其中`id`表示对话中的第几张图片。"img_path"可以是本地的图片或网络地址。
 
 对话中的检测框可以表示为`<box>(x1,y1),(x2,y2)</box>`，其中 `(x1, y1)` 和`(x2, y2)`分别对应左上角和右下角的坐标，并且被归一化到`[0, 1000)`的范围内. 检测框对应的文本描述也可以通过`<ref>text_caption</ref>`表示。
 
@@ -1021,7 +1021,7 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 ).eval()
 
 merged_model = model.merge_and_unload()
-# max_shard_size and safe serialization are not necessary. 
+# max_shard_size and safe serialization are not necessary.
 # They respectively work for sharding checkpoint and save the model to safetensors
 merged_model.save_pretrained(new_model_directory, max_shard_size="2048MB", safe_serialization=True)
 ```

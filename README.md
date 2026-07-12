@@ -9,19 +9,19 @@
 <br>
 
 <p align="center">
-  Qwen-VL 
+  Qwen-VL
   <a href="https://huggingface.co/Qwen/Qwen-VL">🤗</a>
-  <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖</a>&nbsp ｜ 
-  Qwen-VL-Chat 
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL/summary">🤖</a>&nbsp ｜
+  Qwen-VL-Chat
   <a href="https://huggingface.co/Qwen/Qwen-VL-Chat">🤗</a>
-  <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖</a>&nbsp 
-  (Int4: 
-  <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a> 
+  <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat/summary">🤖</a>&nbsp
+  (Int4:
+  <a href="https://huggingface.co/Qwen/Qwen-VL-Chat-Int4">🤗</a>
   <a href="https://modelscope.cn/models/qwen/Qwen-VL-Chat-Int4/summary">🤖</a>&nbsp) ｜
-  Qwen-VL-Plus 
-  <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Plus">🤗</a> 
-  <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">🤖</a>&nbsp ｜ 
-  Qwen-VL-Max 
+  Qwen-VL-Plus
+  <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Plus">🤗</a>
+  <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Chat-Demo/summary">🤖</a>&nbsp ｜
+  Qwen-VL-Max
   <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Max">🤗</a>
   <a href="https://modelscope.cn/studios/qwen/Qwen-VL-Max/summary">🤖</a>&nbsp
 <br>
@@ -175,17 +175,17 @@ We release two models of the Qwen-VL series:
 We evaluated the model's abilities from three perspectives:
 
 1. **Standard Benchmarks**: We evaluate the model's basic task capabilities on four major categories of multimodal tasks:
-   
+
    - Zero-shot Captioning: Evaluate model's zero-shot image captioning ability on unseen datasets;
    - General VQA: Evaluate the general question-answering ability of pictures, such as the judgment, color, number, category, etc;
    - Text-based VQA: Evaluate the model's ability to recognize text in pictures, such as document QA, chart QA, etc;
    - Referring Expression Comprehension: Evaluate the ability to localize a target object in an image described by a referring expression.
 2. **TouchStone**: To evaluate the overall text-image dialogue capability and alignment level with humans, we have constructed a benchmark called [TouchStone](https://github.com/OFA-Sys/TouchStone), which is based on scoring with GPT4 to evaluate the LVLM model.
-   
+
    - The TouchStone benchmark covers a total of 300+ images, 800+ questions, and 27 categories. Such as attribute-based Q&A, celebrity recognition, writing poetry, summarizing multiple images, product comparison, math problem solving, etc;
    - In order to break the current limitation of GPT4 in terms of direct image input, TouchStone provides fine-grained image annotations by human labeling. These detailed annotations, along with the questions and the model's output, are then presented to GPT4 for scoring.
    - The benchmark includes both English and Chinese versions.
-  
+
 3. **Other Multimodal Benchmarks**: We also evaluated our model's capabilities in other multimodal benchmarks:
 
    - [MME Benchmark](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation), a comprehensive evaluation benchmark for multimodal large language models. Qwen-VL-Chat achieves SOTAs on both perception and cognition tracks.
@@ -873,7 +873,7 @@ print(response)
 We illustrate the model performance of both BF16 and Int4 models on the benchmark **[TouchStone](https://github.com/OFA-Sys/TouchStone)**, and we find that the quantized model does not suffer from significant performance degradation. Results are shown below:
 
 | Quantization | ZH         | EN            |
-| ------------ | :--------: | :-----------: | 
+| ------------ | :--------: | :-----------: |
 | BF16         | 401.2      |    645.2      |
 | Int4         | 386.6      |    651.4      |
 
@@ -946,7 +946,7 @@ To prepare your training data, you need to put all the samples into a list and s
       }
     ]
   },
-  { 
+  {
     "id": "identity_2",
     "conversations": [
       {
@@ -963,9 +963,9 @@ To prepare your training data, you need to put all the samples into a list and s
 ```
 For the VL tasks, there are special tokens that are used, including `<img> </img> <ref> </ref> <box> </box>`.
 
-The picture is represented as `Picture id: <img>img_path</img>\n{your prompt}`, where `id` indicates the position of the image in the conversation, starting from 1. The "img_path" can be a local file path or a web link. 
+The picture is represented as `Picture id: <img>img_path</img>\n{your prompt}`, where `id` indicates the position of the image in the conversation, starting from 1. The "img_path" can be a local file path or a web link.
 
-The coordinate box is expressed as `<box>(x1,y1),(x2,y2)</box>`·, where `(x1, y1)` and `(x2, y2)` are normalized values in the range `[0, 1000)`. Its corresponding text description can be identified by `<ref>text_caption</ref>`. 
+The coordinate box is expressed as `<box>(x1,y1),(x2,y2)</box>`·, where `(x1, y1)` and `(x2, y2)` are normalized values in the range `[0, 1000)`. Its corresponding text description can be identified by `<ref>text_caption</ref>`.
 
 
 After data preparation, you can use the provided shell scripts to run finetuning. Remember to specify the path to the data file, `$DATA`.
@@ -994,7 +994,7 @@ sh finetune/finetune_lora_single_gpu.sh
 sh finetune/finetune_lora_ds.sh
 ```
 
-In comparison with full-parameter finetuning, LoRA ([paper](https://arxiv.org/abs/2106.09685)) only updates the parameters of adapter layers but keeps the original large language model layers frozen. This allows much fewer memory costs and thus fewer computation costs. 
+In comparison with full-parameter finetuning, LoRA ([paper](https://arxiv.org/abs/2106.09685)) only updates the parameters of adapter layers but keeps the original large language model layers frozen. This allows much fewer memory costs and thus fewer computation costs.
 
 Note that if you use LoRA to finetune the base language model, e.g., Qwen-VL, instead of chat models, e.g., Qwen-VL-Chat, the script automatically switches the embedding and output layer as trainable parameters. This is because the base language model has no knowledge of special tokens brought by ChatML format. Thus these layers should be updated for the model to understand and predict the tokens. Or in another word, if your training brings in special tokens in LoRA, you should set the layers to trainable parameters by setting `modules_to_save` inside the code. Additionally, we find that there is a significant gap between the memory footprint of LoRA with and without these trainable parameters. Therefore, if you have trouble with memory, we advise you to LoRA finetune the chat models. Check the profile below for more information.
 
@@ -1008,7 +1008,7 @@ sh finetune/finetune_qlora_single_gpu.sh
 sh finetune/finetune_qlora_ds.sh
 ```
 
-For Q-LoRA, we advise you to load our provided quantized model, e.g., Qwen-VL-Chat-Int4. 
+For Q-LoRA, we advise you to load our provided quantized model, e.g., Qwen-VL-Chat-Int4.
 You **SHOULD NOT** use the bf16 models. Different from full-parameter finetuning and LoRA, only fp16 is supported for Q-LoRA. Besides, for Q-LoRA, the troubles with the special tokens in LoRA still exist. However, as we only provide the Int4 models for chat models, which means the language model has learned the special tokens of ChatML format, you have no worry about the layers. Note that the layers of the Int4 model should not be trainable, and thus if you introduce special tokens in your training, Q-LoRA might not work.
 
 
@@ -1037,7 +1037,7 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 ).eval()
 
 merged_model = model.merge_and_unload()
-# max_shard_size and safe serialization are not necessary. 
+# max_shard_size and safe serialization are not necessary.
 # They respectively work for sharding checkpoint and save the model to safetensors
 merged_model.save_pretrained(new_model_directory, max_shard_size="2048MB", safe_serialization=True)
 ```

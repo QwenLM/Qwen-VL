@@ -3,7 +3,7 @@
 ### build
 
 ```
-docker build -t qwen-vl-chat:webdemo --platform linux/amd64 -f Dockerfile.qwendemo . 
+docker build -t qwen-vl-chat:webdemo --platform linux/amd64 -f Dockerfile.qwendemo .
 ```
 
 ### run
@@ -17,7 +17,7 @@ docker run -it --gpus device=0 -d --restart always -v /var/run/docker.sock:/var/
 ### build
 
 ```
-docker build -t qwen-vl-chat:openai --platform linux/amd64 -f Dockerfile.qwenopenai . 
+docker build -t qwen-vl-chat:openai --platform linux/amd64 -f Dockerfile.qwenopenai .
 ```
 
 ### run
@@ -31,7 +31,7 @@ docker run -it --gpus device=0 -d --restart always -v /var/run/docker.sock:/var/
 ### build
 
 ```
-docker build -t qwen-vl-chat:int4-openai --platform linux/amd64 -f Dockerfile.qwenint4openai . 
+docker build -t qwen-vl-chat:int4-openai --platform linux/amd64 -f Dockerfile.qwenint4openai .
 ```
 
 ### run
